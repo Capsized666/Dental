@@ -1,0 +1,312 @@
+{
+    "objectList": [
+        {
+            "name": "Canvas",
+            "position": [
+                612.0,
+                278.5,
+                0.0
+            ],
+            "rotation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "root",
+            "child": [
+                "Main Background",
+                "FirstPlane"
+            ]
+        },
+        {
+            "name": "Directional Light",
+            "position": [
+                0.0,
+                3.0,
+                0.0
+            ],
+            "rotation": [
+                0.8754261136054993,
+                0.4082178771495819,
+                -0.23456968367099763,
+                0.10938163101673126
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                0.9999999403953552
+            ],
+            "parent": "root",
+            "child": []
+        },
+        {
+            "name": "Main Camera",
+            "position": [
+                0.0,
+                1.0,
+                -10.0
+            ],
+            "rotation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "root",
+            "child": []
+        },
+        {
+            "name": "backload",
+            "position": [
+                612.0,
+                278.5,
+                0.0
+            ],
+            "rotation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "LoaderBar",
+            "child": []
+        },
+        {
+            "name": "Background",
+            "position": [
+                612.0,
+                278.5,
+                52.0
+            ],
+            "rotation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "LoadScreen",
+            "child": []
+        },
+        {
+            "name": "Text",
+            "position": [
+                612.0,
+                278.5,
+                0.0
+            ],
+            "rotation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "LoaderBar",
+            "child": []
+        },
+        {
+            "name": "loadcolor",
+            "position": [
+                612.0,
+                278.5,
+                0.0
+            ],
+            "rotation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "LoaderBar",
+            "child": []
+        },
+        {
+            "name": "LoadScreen",
+            "position": [
+                612.0,
+                278.5,
+                0.0
+            ],
+            "rotation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "Comendant",
+            "child": [
+                "Background",
+                "LoaderBar"
+            ]
+        },
+        {
+            "name": "LoaderBar",
+            "position": [
+                612.0,
+                278.5,
+                0.0
+            ],
+            "rotation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "LoadScreen",
+            "child": [
+                "backload",
+                "loadcolor",
+                "Text"
+            ]
+        },
+        {
+            "name": "Options",
+            "position": [
+                612.0,
+                111.39999389648438,
+                0.0
+            ],
+            "rotation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "FirstPlane",
+            "child": []
+        },
+        {
+            "name": "Main Background",
+            "position": [
+                612.0,
+                278.5,
+                0.0
+            ],
+            "rotation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "Canvas",
+            "child": []
+        },
+        {
+            "name": "New game",
+            "position": [
+                612.0,
+                167.10000610351563,
+                0.0
+            ],
+            "rotation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "FirstPlane",
+            "child": []
+        },
+        {
+            "name": "Exit",
+            "position": [
+                612.0,
+                55.69999694824219,
+                0.0
+            ],
+            "rotation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "FirstPlane",
+            "child": []
+        },
+        {
+            "name": "FirstPlane",
+            "position": [
+                612.0,
+                278.5,
+                0.0
+            ],
+            "rotation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "Canvas",
+            "child": [
+                "New game",
+                "Options",
+                "Exit"
+            ]
+        }
+    ]
+}
