@@ -8,14 +8,16 @@ public class LoaderBar : MonoBehaviour
 {
     Canvas pCanvas;
     bool isHide;
-    public Image backLoad;
-    public Image loadcolor;
-    public Text LoadText;
+    bool complet;
+    public Image    backLoad;
+    public Image    loadcolor;
+    public Text     LoadText;
 
     // Start is called before the first frame update
     void Start()
     {
         isHide = false;
+        complet = false;
         pCanvas = GetComponentInParent<Canvas>();
         //print(
         //pCanvas.pixelRect.width);
@@ -42,28 +44,43 @@ public class LoaderBar : MonoBehaviour
             default:
                 break;
         }
-
+        if (a==1)
+        {
+            complet = true;
+        }
     }
     
-    void LateUpdate()
+    void FixedUpdate()
     {
         if (pCanvas.pixelRect.width*0.25f!= backLoad.rectTransform.sizeDelta.x)
         {
             reCalculate();
         }
         hideOperation();
-        
     }
+        
 
     private void hideOperation()
     {
-        if (isHide)
+        if (complet)
         {
-
+            backLoad.color = new Color(backLoad.color.r, backLoad.color.g, backLoad.color.b,
+                Mathf.Lerp(backLoad.color.a, 0, Time.deltaTime*5));
+            loadcolor.color = new Color(loadcolor.color.r, loadcolor.color.g, loadcolor.color.b,
+                Mathf.Lerp(backLoad.color.a, 0, Time.deltaTime * 7));
+            LoadText.color = new Color(LoadText.color.r, LoadText.color.g, LoadText.color.b,
+                Mathf.Lerp(backLoad.color.a, 0, Time.deltaTime * 9));
         }
+
         else
         {
 
+            backLoad.color = new Color(backLoad.color.r, backLoad.color.g, backLoad.color.b,
+                Mathf.Lerp(backLoad.color.a, 255, Time.deltaTime));
+            loadcolor.color = new Color(loadcolor.color.r, loadcolor.color.g, loadcolor.color.b,
+                Mathf.Lerp(backLoad.color.a, 255, Time.deltaTime));
+            LoadText.color = new Color(LoadText.color.r, LoadText.color.g, LoadText.color.b,
+                Mathf.Lerp(backLoad.color.a, 255, Time.deltaTime));
         }
     }
 
