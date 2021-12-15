@@ -267,9 +267,7 @@ public sealed class Comendant : MonoBehaviour
         }
         loadScreen = GetComponentInChildren<LoadScreen>();
         DontDestroyOnLoad(this);
-
-
-     }
+    }
 
     private void loadArdessable(out addressableGuidNameList adressList)
     {
@@ -288,10 +286,6 @@ public sealed class Comendant : MonoBehaviour
         }
         adressList = JsonUtility.FromJson<addressableGuidNameList>(s);
     }
-
-
-
-
     void OnEnable()
     {
         //print(State);
@@ -305,7 +299,6 @@ public sealed class Comendant : MonoBehaviour
             }
         }
         initState();
-       
         startCount = Recvisit.Count;
         loadScreen.setProgress(0,1);
         StartCoroutine(LoadLost());
@@ -340,18 +333,6 @@ public sealed class Comendant : MonoBehaviour
             
         yield break;
         //yield return null;
-    }
-    private bool objOnScene(obj4load obj4load)
-    {
-        foreach (var item in Recvisit)
-        {
-            obj4load nobj = new obj4load();
-            if (obj4load.compare(nobj.convertGO(item)))
-            {
-                return true;
-            }
-        }
-        return false;
     }
     void FixedUpdate()
     {

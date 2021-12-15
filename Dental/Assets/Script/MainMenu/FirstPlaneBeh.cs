@@ -15,20 +15,15 @@ public class FirstPlaneBeh : MonoBehaviour
     public TextMeshProUGUI ext;
 
     // Start is called before the first frame update
-    void Start()
-    {
-                
-    }
-
-    // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         sizeManager(CanvasBeh.Instance.getSize());
     }
+                
 
     private void sizeManager(Vector2 mSize)
     {
-        exit.sizeDelta = new Vector2 (mSize.x*0.165f, mSize.y*0.1f);
+        exit.sizeDelta = new Vector2 (mSize.x*0.22f, mSize.y*0.10f);
         optinon.sizeDelta = exit.sizeDelta;
         newgame.sizeDelta = exit.sizeDelta;
 
@@ -38,8 +33,5 @@ public class FirstPlaneBeh : MonoBehaviour
 
         ext.fontSize = gn.fontSize;
         opt.fontSize = gn.fontSize;
-
-
-
     }
 }

@@ -1,10 +1,11 @@
 {
     "objectList": [
         {
+            "HashCode": 0,
             "name": "Canvas",
             "position": [
-                612.0,
-                278.5,
+                563.0,
+                392.0,
                 0.0
             ],
             "rotation": [
@@ -21,10 +22,13 @@
             "parent": "root",
             "child": [
                 "Main Background",
-                "FirstPlane"
+                "FirstPlane",
+                "Options",
+                "NewGame"
             ]
         },
         {
+            "HashCode": 0,
             "name": "Directional Light",
             "position": [
                 0.0,
@@ -46,6 +50,7 @@
             "child": []
         },
         {
+            "HashCode": 0,
             "name": "Main Camera",
             "position": [
                 0.0,
@@ -67,31 +72,11 @@
             "child": []
         },
         {
-            "name": "backload",
+            "HashCode": 0,
+            "name": "ServiceStuff",
             "position": [
-                612.0,
-                278.5,
-                0.0
-            ],
-            "rotation": [
-                1.0,
-                0.0,
-                0.0,
-                0.0
-            ],
-            "scale": [
-                1.0,
-                1.0,
-                1.0
-            ],
-            "parent": "LoaderBar",
-            "child": []
-        },
-        {
-            "name": "Background",
-            "position": [
-                612.0,
-                278.5,
+                603.0,
+                316.5,
                 52.0
             ],
             "rotation": [
@@ -105,14 +90,15 @@
                 1.0,
                 1.0
             ],
-            "parent": "LoadScreen",
+            "parent": "root",
             "child": []
         },
         {
-            "name": "Text",
+            "HashCode": 0,
+            "name": "Label",
             "position": [
-                612.0,
-                278.5,
+                563.0,
+                784.0,
                 0.0
             ],
             "rotation": [
@@ -126,14 +112,15 @@
                 1.0,
                 1.0
             ],
-            "parent": "LoaderBar",
+            "parent": "Options",
             "child": []
         },
         {
-            "name": "loadcolor",
+            "HashCode": 0,
+            "name": "Back",
             "position": [
-                612.0,
-                278.5,
+                0.0,
+                784.0,
                 0.0
             ],
             "rotation": [
@@ -147,14 +134,15 @@
                 1.0,
                 1.0
             ],
-            "parent": "LoaderBar",
+            "parent": "NewGame",
             "child": []
         },
         {
-            "name": "LoadScreen",
+            "HashCode": 0,
+            "name": "NewGame",
             "position": [
-                612.0,
-                278.5,
+                563.0,
+                392.0,
                 0.0
             ],
             "rotation": [
@@ -168,126 +156,17 @@
                 1.0,
                 1.0
             ],
-            "parent": "Comendant",
+            "parent": "Canvas",
             "child": [
-                "Background",
-                "LoaderBar"
+                "Back"
             ]
         },
         {
-            "name": "LoaderBar",
-            "position": [
-                612.0,
-                278.5,
-                0.0
-            ],
-            "rotation": [
-                1.0,
-                0.0,
-                0.0,
-                0.0
-            ],
-            "scale": [
-                1.0,
-                1.0,
-                1.0
-            ],
-            "parent": "LoadScreen",
-            "child": [
-                "backload",
-                "loadcolor",
-                "Text"
-            ]
-        },
-        {
+            "HashCode": 0,
             "name": "Options",
             "position": [
-                612.0,
-                111.39999389648438,
-                0.0
-            ],
-            "rotation": [
-                1.0,
-                0.0,
-                0.0,
-                0.0
-            ],
-            "scale": [
-                1.0,
-                1.0,
-                1.0
-            ],
-            "parent": "FirstPlane",
-            "child": []
-        },
-        {
-            "name": "Main Background",
-            "position": [
-                612.0,
-                278.5,
-                0.0
-            ],
-            "rotation": [
-                1.0,
-                0.0,
-                0.0,
-                0.0
-            ],
-            "scale": [
-                1.0,
-                1.0,
-                1.0
-            ],
-            "parent": "Canvas",
-            "child": []
-        },
-        {
-            "name": "New game",
-            "position": [
-                612.0,
-                167.10000610351563,
-                0.0
-            ],
-            "rotation": [
-                1.0,
-                0.0,
-                0.0,
-                0.0
-            ],
-            "scale": [
-                1.0,
-                1.0,
-                1.0
-            ],
-            "parent": "FirstPlane",
-            "child": []
-        },
-        {
-            "name": "Exit",
-            "position": [
-                612.0,
-                55.69999694824219,
-                0.0
-            ],
-            "rotation": [
-                1.0,
-                0.0,
-                0.0,
-                0.0
-            ],
-            "scale": [
-                1.0,
-                1.0,
-                1.0
-            ],
-            "parent": "FirstPlane",
-            "child": []
-        },
-        {
-            "name": "FirstPlane",
-            "position": [
-                612.0,
-                278.5,
+                563.0,
+                392.0,
                 0.0
             ],
             "rotation": [
@@ -303,7 +182,119 @@
             ],
             "parent": "Canvas",
             "child": [
-                "New game",
+                "Label"
+            ]
+        },
+        {
+            "HashCode": 0,
+            "name": "Options",
+            "position": [
+                563.0,
+                127.20001220703125,
+                0.0
+            ],
+            "rotation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "FirstPlane",
+            "child": []
+        },
+        {
+            "HashCode": 0,
+            "name": "Main Background",
+            "position": [
+                563.0,
+                392.0,
+                0.0
+            ],
+            "rotation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "Canvas",
+            "child": []
+        },
+        {
+            "HashCode": 0,
+            "name": "New Game",
+            "position": [
+                563.0,
+                178.30999755859376,
+                0.0
+            ],
+            "rotation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "FirstPlane",
+            "child": []
+        },
+        {
+            "HashCode": 0,
+            "name": "Exit",
+            "position": [
+                563.0,
+                70.10000610351563,
+                0.0
+            ],
+            "rotation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "FirstPlane",
+            "child": []
+        },
+        {
+            "HashCode": 0,
+            "name": "FirstPlane",
+            "position": [
+                563.0,
+                392.0,
+                0.0
+            ],
+            "rotation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "Canvas",
+            "child": [
+                "New Game",
                 "Options",
                 "Exit"
             ]

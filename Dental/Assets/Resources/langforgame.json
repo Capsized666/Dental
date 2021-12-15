@@ -1,0 +1,84 @@
+{
+   "ServiceText": [
+      {
+         "uiname": "New Game",
+         "uitext": [
+            "Нова гра",
+            "Новая игра",
+            "New Game"
+         ]
+      },
+      {
+         "uiname": "Options",
+         "uitext": [
+            "Опції",
+            "Настройки",
+            "Options"
+         ]
+      },
+      {
+         "uiname": "Exit",
+         "uitext": [
+            "Вихід",
+            "Выход",
+            "Exit"
+         ]
+      },
+      {
+         "uiname": "Back",
+         "uitext": [
+            "Назад",
+            "Назад",
+            "Back"
+         ]
+      },
+      {
+         "uiname": "Language",
+         "uitext": [
+            "Україньська",
+            "Русский",
+            "English"
+         ]
+      },
+      {
+         "uiname": "Lang",
+         "uitext": [
+            "Мова",
+            "Язык",
+            "Language"
+         ]
+      },
+	  {
+         "uiname": "Mode",
+         "uitext": [
+            "Режим",
+            "Режим",
+            "Mode"
+         ]
+      },
+      {
+         "uiname": "NGLabel",
+         "uitext": [
+            "Оберіть сценарій",
+            "Выберите сценарий",
+            "Select Scenario"
+         ]
+      },
+      {
+         "uiname": "practical",
+         "uitext": [
+            "Пактика",
+            "Пактика",
+            "Practical"
+         ]
+      },
+      {
+         "uiname": "examinate",
+         "uitext": [
+            "Екзамен",
+            "Экзамен",
+            "Exam"
+         ]
+      }
+   ]
+}

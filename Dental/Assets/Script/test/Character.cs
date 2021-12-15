@@ -11,9 +11,8 @@ public sealed class Character : MonoBehaviour
     public static Character Instance;
 
     CharacterController characterController;
-    [SerializeField]
-    public UnityEvent CORE;
-    
+
+    CameraBeh _cambeh;
     public float speed = 6.0f;
     public float jumpSpeed = 8.0f;
     public float gravity = 20.0f;
@@ -35,12 +34,13 @@ public sealed class Character : MonoBehaviour
     void Start()
     {
         characterController = GetComponent<CharacterController>();
+        _cambeh = CameraBeh.Instance;
     }
 
     void Update()
     {
         cursorChek();
-        if (disable)
+        if (_cambeh.parent() != transform)
         {
             return;
         }
@@ -49,7 +49,7 @@ public sealed class Character : MonoBehaviour
 
     private void cursorChek()
     {
-        if (disable)
+        if (_cambeh.parent() != transform)
         {
             if (Cursor.lockState != CursorLockMode.Confined)
             {

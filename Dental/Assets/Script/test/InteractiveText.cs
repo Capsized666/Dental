@@ -9,10 +9,13 @@ public class InteractiveText : MonoBehaviour
     CanvasBeh _canvas;
     RectTransform _rt;
     Text _txt;
+
+    
     void Awake()
     {
         _rt = GetComponent<RectTransform>();
         _txt = GetComponent<Text>();
+        _txt.text = "";
     }
     private void Start()
     {
