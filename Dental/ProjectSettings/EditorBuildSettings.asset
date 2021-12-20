@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/Scenes/Stomate.unity
+    guid: 14c29501a2cfee441817d3d64ceb7168
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 75b7d1052add44f4a97a514c94e97485,
       type: 2}

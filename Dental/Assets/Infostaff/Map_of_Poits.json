@@ -1,0 +1,43 @@
+  {
+    "FloorMap":[
+      {
+        "Build":"Main",
+        "Floor": "3",
+        "PosList":[
+          {
+            "name": [
+              "Hall",
+              "pos1"
+            ],
+            "cordin": [
+              0.4,
+              0.1
+            ] 
+          },
+          {
+            "name": [
+              "Corridor",
+              "pos1"
+            ],
+            "cordin": [
+              0.6,
+              0.5
+            ]
+          },
+          {
+            "name": [
+              "Hall",
+              "pos0"
+            ],
+            "cordin": [
+              0.1,
+              0.1
+            ]
+          }
+        ]
+      }
+    ]
+  }
+    
+    
+    

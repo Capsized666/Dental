@@ -27,7 +27,7 @@ public class addressableGuidNameList
         return false;
     }
 }
-[InitializeOnLoad]
+////[InitializeOnLoad]
 public static class AssetTable
 {
 

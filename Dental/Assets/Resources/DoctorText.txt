@@ -1,0 +1,63 @@
+{
+   "DQuestion":[
+         {
+            "Category":"Passport Data",
+            "LangData":["Паспортні данні",
+                        "Паспортные данные",
+                        "Passport Data"],
+            "ListOfQuest":[
+               {
+                  "Category":"Our name",
+                  "LangData":["Ваше повне ім`я",
+                              "Ваше полное имя",
+                              "Your full name"],
+               },
+               {
+                  "Category":"Age",
+                  "LangData":["Ваш вік",
+                              "Ваш возраст",
+                              "Your age"],
+               },
+               {
+                  "Category":"Nationality",
+                  "LangData":["Ваша національність",
+                              "Ваша национальность",
+                              "Your nationality"],
+               },
+               {
+                  "Category":"HomeAddress",
+                  "LangData":["Ваша домашня адреса",
+                              "Ваш домашний адрес",
+                              "Your home address"],
+               }
+               ,
+               {
+                  "Category":"Work",
+                  "LangData":["Ваше месце роботы",
+                              "Ваше место работы",
+                              "Your work place "],
+               },
+               {
+                  "Category":"Profession",
+                  "LangData":["Ваше професія",
+                              "Ваше профессия",
+                              "Your Profession "],
+               },
+               {
+                  "Category":"DateToClinic",
+                  "LangData":["Дата надходження до клініки",
+                              "Дата поступления в клинику",
+                              "Date of admission to the clinic"],
+               },
+               {
+                  "Category":"Diagnosis",
+                  "LangData":["Диагноз направившего лечебного учреждения",
+                              "Диагноз направившего лечебного учреждения",
+                              "Referring hospital diagnosis"],
+               }
+               ]
+            
+         }
+      ]
+   
+}

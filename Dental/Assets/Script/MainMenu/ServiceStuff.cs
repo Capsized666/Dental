@@ -90,7 +90,7 @@ public class ServiceStuff:MonoBehaviour {
         return currLangPack.FindByName(name);    
     }
     public Lang getLang() { return currlang; }
-    public gameMode getMode() { return curentMode;}
+    public gameMode getMode( ){ return curentMode;}
     public void changeLang() {
         switch (currlang)
         {

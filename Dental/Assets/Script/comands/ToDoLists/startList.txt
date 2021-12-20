@@ -1,0 +1,5 @@
+spawn sph xp=2 yp=2 zp=2 
+pause 
+spawn sph xp=1 yp=3 zp=1
+pause 
+spawn sph xp=1 yp=2 zp=3 
