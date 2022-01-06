@@ -31,8 +31,6 @@ public class UniversalScreenBeh : MonoBehaviour
     // [SerializeField]
     public bool ImageVisible;
 
-
-
     private void Awake()
     {
         currState = StateOfLoadScreen.Loading;
@@ -105,8 +103,9 @@ public class UniversalScreenBeh : MonoBehaviour
             (Loadimg.color.r, Loadimg.color.g, Loadimg.color.b, alpha);
         LoadText.color = new Color
             (LoadText.color.r, LoadText.color.g, LoadText.color.b, alpha);
+
+        Loadimg.rectTransform.Rotate(Vector3.forward * -3);
     }
-     
     private void setLastChild()
     {
         if (currState != StateOfLoadScreen.Look)

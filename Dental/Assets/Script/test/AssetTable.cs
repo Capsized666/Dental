@@ -27,14 +27,14 @@ public class addressableGuidNameList
         return false;
     }
 }
-////[InitializeOnLoad]
+#if UNITY_EDITOR
+[InitializeOnLoad]
 public static class AssetTable
 {
 
     static AssetTable()
     {
 
-#if UNITY_EDITOR
         addressableGuidNameList addressableListObject = new addressableGuidNameList();
         addressableListObject.GuidNameData = new List<addressableGUIDName>();
 
@@ -77,6 +77,6 @@ public static class AssetTable
         {
             Debug.Log($"Pizda togo sho {e.ToString()}");
         }
-#endif
     }
 }
+#endif

@@ -4,51 +4,8 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class EventString : UnityEvent<string> { }
 
-public enum gameMode { 
-        practical=0,
-        examinate=1
-}
-public enum Lang { 
-    ua=0,
-    ru=1,
-    en=2}
-[Serializable]
-public struct mainSetting {
-    //public List<ServiceText> uitext;
-    public serviceText[] ServiceText;
-    //public List<uitext> DialogText;
-    public void fillAllText() {
-        foreach (var item in ServiceText)
-        {
-            item.fillText();
-        }
-    }
-    public Dictionary<Lang, string> FindByName(string s) {
-        foreach (var item in ServiceText)
-        {
-            if (s==item.uiname)
-            {
-                return item.uiTextD;
-            }
-        }
-        return new Dictionary<Lang, string>();
-    }
-}
-[Serializable]
-public class serviceText
-{
-    public string uiname;
-    public string[] uitext;
-    public Dictionary<Lang, String> uiTextD = new Dictionary<Lang, string>();
 
-    public void fillText() {
-        uiTextD.Add(Lang.ua,uitext[0]);
-        uiTextD.Add(Lang.ru,uitext[1]);
-        uiTextD.Add(Lang.en,uitext[2]);
-    }
-}
 public class ServiceStuff:MonoBehaviour {
 
     public static ServiceStuff Instance;
@@ -64,6 +21,7 @@ public class ServiceStuff:MonoBehaviour {
         currlang=Lang.en;
         curentMode = gameMode.practical;
         loadLang();
+       
         DontDestroyOnLoad(Instance);
     }
     private void loadLang()
@@ -105,8 +63,86 @@ public class ServiceStuff:MonoBehaviour {
                 break;
         }
     }
-
     public void changeMode() {
         curentMode = curentMode == gameMode.practical ? gameMode.examinate: gameMode.practical;
     } 
+}
+
+public class EventString : UnityEvent<string> { }
+
+public enum gameMode
+{
+    practical = 0,
+    examinate = 1
+}
+public enum Lang
+{
+    ua = 0,
+    ru = 1,
+    en = 2
+}
+
+[Serializable]
+public struct mainSetting
+{
+    //public List<ServiceText> uitext;
+    public serviceText[] ServiceText;
+    public questionText[] DQuestion;
+    public answerText[] PAnswer;
+
+    public void fillAllText()
+    {
+        foreach (var item in ServiceText)
+        {
+            item.fillText();
+        }
+        foreach (var item in DQuestion)
+        {
+            //item.fillText();
+        }
+    }
+    public Dictionary<Lang, string> FindByName(string s)
+    {
+        foreach (var item in ServiceText)
+        {
+            if (s == item.uiname)
+            {
+                return item.uiTextD;
+            }
+        }
+        return new Dictionary<Lang, string>();
+    }
+}
+
+[Serializable]
+public class serviceText
+{
+    public string uiname;
+    public string[] uitext;
+    public Dictionary<Lang, String> uiTextD = new Dictionary<Lang, string>();
+
+    public void fillText()
+    {
+        uiTextD.Add(Lang.ua, uitext[0]);
+        uiTextD.Add(Lang.ru, uitext[1]);
+        uiTextD.Add(Lang.en, uitext[2]);
+    }
+}
+
+[Serializable]
+public struct questionText
+{
+    public string uiname;
+    public string[] uitext;
+    public serviceText[] ServiceText;
+
+
+}
+
+[Serializable]
+public struct answerText
+{
+    public string Patient;
+    public serviceText[] PassportData;
+    public serviceText[] PatientComplaints;
 }

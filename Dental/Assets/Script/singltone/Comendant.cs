@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Consoleum;
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
-using System.IO;
+
 
 /// <summary>
 /// Класс хранящий и реализующий взаимодействие с ними
@@ -20,6 +18,8 @@ public class Comendant : MonoBehaviour
 
     public addressableGuidNameList adressList;
     public static string State = "ret";
+    private bool guiOn;
+
     /// <summary>
     /// Добавление дочернего обьета
     /// </summary>
@@ -30,12 +30,10 @@ public class Comendant : MonoBehaviour
         go.transform.SetParent(this.gameObject.transform);
         Recvisit = RollCall();
     }
-
     public string[] getAllObject() {
        var names = GetRecursChild(this.gameObject.transform,0);
        return names.ToArray();
     }
-    
     private List<string> GetRecursChild(Transform t,int r)
     {
        List<string> ls = new List<string>();
@@ -48,7 +46,6 @@ public class Comendant : MonoBehaviour
 
        return ls;
     }
-    
     private string[] GetChildS(Transform t,int r)
     {
         var ret = new string[t.childCount];
@@ -60,7 +57,6 @@ public class Comendant : MonoBehaviour
         }
         return ret;
     }
-
     private string tabs(int r) {
         var s = "";
         for (int i = 0; i < r; i++)
@@ -69,11 +65,9 @@ public class Comendant : MonoBehaviour
         }
         return s;
     }
-
     private List<GameObject> RollCall() {
         return GetRecursGO(this.gameObject.transform);
     }
-
     private List<GameObject> GetRecursGO(Transform t)
     {
         var ls =new List<GameObject>();
@@ -86,6 +80,12 @@ public class Comendant : MonoBehaviour
 
         return ls;
     }
+
+    
+    
+
+
+
     /// <summary>
     /// Print name of All Obj on Scene 
     /// </summary>
@@ -115,18 +115,32 @@ public class Comendant : MonoBehaviour
         Recvisit = new List<GameObject>();
         curretstruct = new main();
         DontDestroyOnLoad(this.gameObject);
+        Recvisit = RollCall();
     }
+    void OnEnable()
+    {
+        guiOn = false;
+        var cam = FindObjectsOfType(typeof(Comendant));
+        foreach (Comendant item in cam)
+        {
+            if (item != Instance)
+            {
+                DestroyImmediate(item.gameObject);
+            }
+        }
 
+    }
     void Start()
     {
         
     }
-
-
     void Update()
     {
         
     }
+
+    /*
+    
     private void loadArdessable(out addressableGuidNameList adressList)
     {
         var path = Path.Combine(Application.dataPath + "/Resources", "assetTable.json");
@@ -144,6 +158,7 @@ public class Comendant : MonoBehaviour
         }
         adressList = JsonUtility.FromJson<addressableGuidNameList>(s);
     }
+
     IEnumerator LoadLost()
     {
 
@@ -154,29 +169,21 @@ public class Comendant : MonoBehaviour
             {
                 if (adressList.canBeLoaded(curretstruct.objectList[i].name))
                 {
-                    //UpdateScene();
-                    //AsyncOperationHandle asynAction = new AsyncOperationHandle();
                     var asynAction = Addressables.LoadAssetAsync<GameObject>
                         (curretstruct.objectList[i].name);
                     curretstruct.objectList[i].HashCode = asynAction.GetHashCode();
-                    //print(asynAction.GetHashCode()+" v");
                     asynAction.Completed += OnLoadAsset;
-
+                    
                     /*
                     loadScreen.setProgress(Recvisit.Count,
                                             curretstruct.objectList.Length);
-                     */
+                    
                     yield return new WaitForSecondsRealtime(.4f);
                 }
             }
         }
-
-
         yield break;
-        //yield return null;
     }
-
-
     void OnLoadAsset(AsyncOperationHandle<GameObject> handle)
     {
         //print(handle.GetHashCode() +  " w");
@@ -194,14 +201,12 @@ public class Comendant : MonoBehaviour
                 Vector3 p, s = Vector3.zero;
                 Quaternion r = Quaternion.identity;
 
-
                 var cur = curretstruct.getByHashCode(handle.GetHashCode());
                 cur.getPos(out p, out r, out s);
                 spawnObject.transform.position = p;
                 spawnObject.transform.rotation = r;
                 spawnObject.transform.localScale = s;
                 Recvisit.Add(spawnObject);
-
 
                 if (cur.parent != "root")
                 {
@@ -222,11 +227,11 @@ public class Comendant : MonoBehaviour
         {
             if (go.compareTransform(item))
             {
-
                 return item.transform;
-
             }
         }
         return null;
     }
+     */
+        
 }

@@ -1,0 +1,360 @@
+{
+   "DQuestion":[
+        {		 
+            "Category":"Passport Data",
+            "LangData":["Паспортні данні",
+                        "Паспортные данные",
+                        "Passport Data"],
+            "ListOfQuest":[
+               {
+                  "Category":"Our name",
+                  "LangData":["Ваше повне ім`я",
+                              "Ваше полное имя",
+                              "Your full name"]
+               },
+               {
+                  "Category":"Age",
+                  "LangData":["Ваш вік",
+                              "Ваш возраст",
+                              "Your age"]
+               },
+               {
+                  "Category":"Nationality",
+                  "LangData":["Ваша національність",
+                              "Ваша национальность",
+                              "Your nationality"]
+               },
+               {
+                  "Category":"HomeAddress",
+                  "LangData":["Ваша домашня адреса",
+                              "Ваш домашний адрес",
+                              "Your home address"]
+               },
+               {
+                  "Category":"Work",
+                  "LangData":["Ваше місце роботи",
+                              "Ваше место работы",
+                              "Your work place "]
+               },
+               {
+                  "Category":"Profession",
+                  "LangData":["Ваше професія",
+                              "Ваше профессия",
+                              "Your Profession "]
+               },
+               {
+                  "Category":"DateToClinic",
+                  "LangData":["Дата надходження до клініки",
+                              "Дата поступления в клинику",
+                              "Date of admission to the clinic"]
+               },
+               {
+                  "Category":"Diagnosis",
+                  "LangData":["Діагноз лікувальної установи, що направила",
+                              "Диагноз направившего лечебного учреждения",
+                              "Referring hospital diagnosis"]
+               }
+            ]
+        },
+		{		 
+            "Category":"Patient complaints",
+            "LangData":["Скарги пацієнта",
+                        "Жалобы пациента",
+                        "Patient complaints"],
+            "ListOfQuest":[
+               {
+                  "Category":"Reason",
+                  "LangData":["З якого приводу звертаетесь",
+                              "По какому поводу обращаетесь",
+                              "What are you asking about?"]
+               },
+               {
+                  "Category":"Pain",
+                  "LangData":["Яку біль відчуваєте?",
+                              "Какую боль ощущаете?",
+                              "What pain do you feel?"]
+               },
+               {
+                  "Category":"Swelling",
+                  "LangData":["Чи е припухлість?",
+                              "Есть ли припухлость?",
+                              "Is it swelling?"]
+               },
+               {
+                  "Category":"Dysfunction",
+                  "LangData":["Чимось заважае?",
+                              "Чем-то мешает?",
+                              "Is something interfering?"]
+               },
+               {
+                  "Category":"Neoplasm",
+                  "LangData":["Відчуваете новоутворення?",
+                              "Чувствуете новообразование?",
+                              "Feeling new?"]
+               },
+               {
+                  "Category":"Smell",
+                  "LangData":["Наявність запаху?",
+                              "Наличие запаха?",
+                              "The presence of odor?"]
+               },
+               {
+                  "Category":"Selections",
+                  "LangData":["Наявність виділень?",
+                              "Наличие выделений?",
+                              "The presence of selections?"]
+               },
+               {
+                  "Category":"Salivation",
+                  "LangData":["Чи змінилось слиновиділення?",
+                              "Изменилось ли слюноотделение?",
+                              "Has salivation changed?"]
+               },
+               {
+                  "Category":"Taste",
+                  "LangData":["Чи змінився присмак?",
+                              "Изменился ли привкус?",
+                              "Has the taste changed?"]
+               },
+               {
+                  "Category":"Sensitivity",
+                  "LangData":["Яке порушення чутливості?",
+                              "Каково нарушение чувствительности?",
+                              "What is a sensitivity disorder?"]
+               }
+            ]
+        }
+    ],
+	"PAnswer":[
+		{
+			"Patient":"Patient1",
+			"Passport Data":[
+               {
+                  "Category":"Our name",
+                  "LangData":["Токарєв Артур Ігорович",
+                              "Токарев Артур Игоревич",
+                              "Tokarev Artur Igorovich"]
+               },
+               {
+                  "Category":"Age",
+                  "LangData":["27 років",
+                              "27 лет",
+                              "27 years old"]
+               },
+               {
+                  "Category":"Nationality",
+                  "LangData":["Українець",
+                              "Украинец",
+                              "Ukrainian"]
+               },
+               {
+                  "Category":"HomeAddress",
+                  "LangData":["Місто Харків вулиця Курилівська, 95",
+                              "Город Харьков улица Куриловская, 95",
+                              "The city of Kharkiv, 95 Kurylivska Street"]
+               },
+               {
+                  "Category":"Work",
+                  "LangData":["Харьковский тракторній завод",
+                              "Харьковский тракторный завод",
+                              "Kharkiv Tractor Plant"]
+               },
+               {
+                  "Category":"Profession",
+                  "LangData":["Слюсар",
+                              "Слесарь",
+                              "Mechanic"]
+               },
+               {
+                  "Category":"DateToClinic",
+                  "LangData":["Сьогодні",
+                              "Сегодня",
+                              "Today"]
+               },
+               {
+                  "Category":"Diagnosis",
+                  "LangData":["Прийшов самостійно",
+                              "Пришел самостоятельно",
+                              "I came on my own"]
+               }
+            ],
+			"Patient complaints":[
+			{
+                  "Category":"Reason",
+                  "LangData":["З якого приводу звертаетесь",
+                              "По какому поводу обращаетесь",
+                              "What are you asking about?"]
+               },
+               {
+                  "Category":"Pain",
+                  "LangData":["Яку біль відчуваєте?",
+                              "Какую боль ощущаете?",
+                              "What pain do you feel?"]
+               },
+               {
+                  "Category":"Swelling",
+                  "LangData":["Чи е припухлість?",
+                              "Есть ли припухлость?",
+                              "Is it swelling?"]
+               },
+               {
+                  "Category":"Dysfunction",
+                  "LangData":["Чимось заважае?",
+                              "Чем-то мешает?",
+                              "Is something interfering?"]
+               },
+               {
+                  "Category":"Neoplasm",
+                  "LangData":["Відчуваете новоутворення?",
+                              "Чувствуете новообразование?",
+                              "Feeling new?"]
+               },
+               {
+                  "Category":"Smell",
+                  "LangData":["Наявність запаху?",
+                              "Наличие запаха?",
+                              "The presence of odor?"]
+               },
+               {
+                  "Category":"Selections",
+                  "LangData":["Наявність виділень?",
+                              "Наличие выделений?",
+                              "The presence of selections?"]
+               },
+               {
+                  "Category":"Salivation",
+                  "LangData":["Чи змінилось слиновиділення?",
+                              "Изменилось ли слюноотделение?",
+                              "Has salivation changed?"]
+               },
+               {
+                  "Category":"Taste",
+                  "LangData":["Чи змінився присмак?",
+                              "Изменился ли привкус?",
+                              "Has the taste changed?"]
+               },
+               {
+                  "Category":"Sensitivity",
+                  "LangData":["Яке порушення чутливості?",
+                              "Каково нарушение чувствительности?",
+                              "What is a sensitivity disorder?"]
+               }]
+		}
+		{
+			"Patient":"Patient2",
+			"Passport Data":[
+               {
+                  "Category":"Our name",
+                  "LangData":["Христенко Ілля Андрійович",
+                              "Христенко Илья Андреевич",
+                              "Khristenko Ilya Andreevich"]
+               },
+               {
+                  "Category":"Age",
+                  "LangData":["42 роки",
+                              "42 года",
+                              "42 years old"]
+               },
+               {
+                  "Category":"Nationality",
+                  "LangData":["Українець",
+                              "Украинец",
+                              "Ukrainian"]
+               },
+               {
+                  "Category":"HomeAddress",
+                  "LangData":["Місто Харків вулиця Академіка Павлова, 135",
+                              "Город Харьков улица Академика Павлова, 135",
+                              "The city of Kharkiv, Academician Pavlov Street, 135"]
+               },
+               {
+                  "Category":"Work",
+                  "LangData":["Харківський радіозавод Протон",
+                              "Харьковский радиозавод Протон",
+                              "Kharkov Radio Plant Proton"]
+               },
+               {
+                  "Category":"Profession",
+                  "LangData":["Наладчик",
+                              "Наладчик",
+                              "Service technician"]
+               },
+               {
+                  "Category":"DateToClinic",
+                  "LangData":["Сьогодні",
+                              "Сегодня",
+                              "Today"]
+               },
+               {
+                  "Category":"Diagnosis",
+                  "LangData":["Прийшов самостійно",
+                              "Пришел самостоятельно",
+                              "I came on my own"]
+               }
+            ],
+			"Patient complaints":[
+			{
+                  "Category":"Reason",
+                  "LangData":["З якого приводу звертаетесь",
+                              "По какому поводу обращаетесь",
+                              "What are you asking about?"]
+               },
+               {
+                  "Category":"Pain",
+                  "LangData":["Яку біль відчуваєте?",
+                              "Какую боль ощущаете?",
+                              "What pain do you feel?"]
+               },
+               {
+                  "Category":"Swelling",
+                  "LangData":["Чи е припухлість?",
+                              "Есть ли припухлость?",
+                              "Is it swelling?"]
+               },
+               {
+                  "Category":"Dysfunction",
+                  "LangData":["Чимось заважае?",
+                              "Чем-то мешает?",
+                              "Is something interfering?"]
+               },
+               {
+                  "Category":"Neoplasm",
+                  "LangData":["Відчуваете новоутворення?",
+                              "Чувствуете новообразование?",
+                              "Feeling new?"]
+               },
+               {
+                  "Category":"Smell",
+                  "LangData":["Наявність запаху?",
+                              "Наличие запаха?",
+                              "The presence of odor?"]
+               },
+               {
+                  "Category":"Selections",
+                  "LangData":["Наявність виділень?",
+                              "Наличие выделений?",
+                              "The presence of selections?"]
+               },
+               {
+                  "Category":"Salivation",
+                  "LangData":["Чи змінилось слиновиділення?",
+                              "Изменилось ли слюноотделение?",
+                              "Has salivation changed?"]
+               },
+               {
+                  "Category":"Taste",
+                  "LangData":["Чи змінився присмак?",
+                              "Изменился ли привкус?",
+                              "Has the taste changed?"]
+               },
+               {
+                  "Category":"Sensitivity",
+                  "LangData":["Яке порушення чутливості?",
+                              "Каково нарушение чувствительности?",
+                              "What is a sensitivity disorder?"]
+               }]
+		}
+	]
+	
+   
+}

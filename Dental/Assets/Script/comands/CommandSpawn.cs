@@ -78,13 +78,8 @@ namespace Consoleum
             
             //Debug.Log($"{args[0]} {NameObj}");
             Addressables.LoadAssetAsync<GameObject>(NameObj).Completed += OnLoadAsset;
-        
         }
-
-      
-
-
-
+        
         void OnLoadAsset(AsyncOperationHandle<GameObject> handle)
         {
             if (handle.Status == AsyncOperationStatus.Succeeded)

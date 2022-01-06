@@ -13,7 +13,7 @@ public class ModeBeh : MonoBehaviour
         _mm = FindObjectOfType<menuManager>();
         tmpText = GetComponent<TextMeshProUGUI>();
         nameDic = ServiceStuff.Instance.getUIDict(ServiceStuff.Instance.getMode().ToString());
-        print(ServiceStuff.Instance.getMode().ToString());
+        //print(ServiceStuff.Instance.getMode().ToString());
 
     }
 

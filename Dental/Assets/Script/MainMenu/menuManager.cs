@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 public enum menuState { 
     firstPlane=1,
     Option=2,
@@ -17,9 +19,18 @@ public class menuManager : MonoBehaviour
     public GameObject optionplane;
     public GameObject newGameplane;
 
+    public RectTransform BackImg;
+
+    public RectTransform fp;
+    public RectTransform op;
+    public RectTransform ntp;
+
     void Awake()
     {
         currentState = menuState.firstPlane;
+        fp=  firstplane  .GetComponent<RectTransform>();
+        op=  optionplane .GetComponent<RectTransform>();
+        ntp= newGameplane.GetComponent<RectTransform>();
     }
 
     
@@ -30,6 +41,17 @@ public class menuManager : MonoBehaviour
 
     private void chekstete()
     {
+        BackImg.sizeDelta = CanvasBeh.Instance.getSize();
+        fp.sizeDelta  = BackImg.sizeDelta;
+        op.sizeDelta  = BackImg.sizeDelta;
+        ntp.sizeDelta = BackImg.sizeDelta;
+
+        BackImg.anchoredPosition = Vector2.zero;
+        fp. anchoredPosition = Vector2.zero;
+        op. anchoredPosition = Vector2.zero;
+        ntp.anchoredPosition = Vector2.zero;
+
+
         switch (currentState)
         {
             case menuState.firstPlane:

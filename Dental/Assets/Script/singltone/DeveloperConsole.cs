@@ -82,19 +82,16 @@ namespace Consoleum
         }
 
         public static void AddCommandToconsole(string _name,ConsoleCommand _command) {
-
             if (!Commands.ContainsKey(_name))
             {
                 Commands.Add(_name, _command);
             }
-
         }
-
+        
         public void AddMessageToConsole(string msg) {
             consoleText.text += msg + '\n';
             scrollRect.verticalNormalizedPosition = 0f;
         }
-
         public void ParseInput(string s) {
 
             string[] _input = s.Split(' ');

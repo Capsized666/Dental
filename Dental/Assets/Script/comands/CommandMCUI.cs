@@ -16,7 +16,7 @@ namespace Consoleum
         public CommandMCUI()
         {
             Name = "MCUI";
-            Command = "MCUI";
+            Command = "mcui";
             Description = "Work with MCUI";
             Help = "no arguments";
 
@@ -29,12 +29,15 @@ namespace Consoleum
             {
                 
                 DeveloperConsole.Instance.AddMessageToConsole(
-                    $"size:{MCUI.Instance.getCanvasSize().x},{MCUI.Instance.getCanvasSize().y}"
+                    $"size:{MCUI.Instance.getCanvasSize().x}:{MCUI.Instance.getCanvasSize().y}"
                 ) ; 
                 return;
             }
             if (args.Length == 2)
             {
+                DeveloperConsole.Instance.AddMessageToConsole(
+                    $"size:{args.Length}"
+                );
                 if (args[1] == "dim")
                 {
                     foreach (RectTransform item in MCUI.Instance.transform)
