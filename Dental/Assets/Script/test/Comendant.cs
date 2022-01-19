@@ -143,10 +143,10 @@ public sealed class Comendant : MonoBehaviour
         {
             foreach (var item in curretstruct.objectList)
             {
-                if (item.name == Recvisit.)
-                {
-
-                }
+                //if (item.name == Recvisit)
+                //{
+                //
+                //}
             }
         }
         if (curretstruct.objectList.Length == bufferstruct.objectList.Length)
