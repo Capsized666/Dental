@@ -241,7 +241,7 @@ public sealed class ComendantOnScene : MonoBehaviour
     Scene scene;
     LoadScreen loadScreen;
     int startCount = 0;
-    string[] ignore; 
+    string[] ignore;
     //public IEnumerator coroutine;
 
     public static ComendantOnScene Instance;
@@ -273,13 +273,18 @@ public sealed class ComendantOnScene : MonoBehaviour
     {
         guiOn = false;
         var cam = FindObjectsOfType(typeof(Comendant));
+        print($"{cam.Length} Comendants");
+        /*
+         
         foreach (Comendant item in cam)
         {
             if (item!= Instance)
             {
+                print("It hapens");
                 DestroyImmediate(item.gameObject);
             }
         }
+         */
         initState();
         startCount = Recvisit.Count;
         loadScreen.setProgress(0,1);
@@ -345,6 +350,15 @@ public sealed class ComendantOnScene : MonoBehaviour
             initState();  
         }
 #if UNITY_EDITOR
+        EditorWork();
+#endif
+
+        
+    }
+
+#if UNITY_EDITOR
+    private void EditorWork()
+    {
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             print("Writing Json");
@@ -359,28 +373,38 @@ public sealed class ComendantOnScene : MonoBehaviour
         {
             guiOn = true != guiOn ? true : false;
         }
-#endif
     }
+
     void OnGUI()
     {
         if (guiOn)
         {
             GUI.skin.button.fontSize = 20;
 
-            if (GUI.Button(new Rect(10, 80, 380, 60), "Next scene" + scene.buildIndex))
+            if (GUI.Button(new Rect(10, 80, 380, 60), $"It is {scene.buildIndex}. Next scene? " ))
             {
                 //int nextSceneIndex = UnityEngine.Random.Range(0, 4);
-                State = "opa";
-                SceneManager.LoadScene(
-                    SceneManager.sceneCountInBuildSettings != scene.buildIndex + 1 ? scene.buildIndex + 1 : 0
-                    , LoadSceneMode.Single);
-            }
+                State = $"{SceneManager.sceneCountInBuildSettings}";
 
-            if (GUI.Button(new Rect(10, 140, 380, 60), "Load " + State))
+                SceneManager.LoadScene(
+                    SceneManager.sceneCountInBuildSettings == scene.buildIndex + 1 ? 0 : scene.buildIndex + 1
+                    , LoadSceneMode.Single);//); 
+            }
+            if (GUI.Button(new Rect(10, 140, 380, 60), $"It is {scene.buildIndex}.Add Next scene? "))
+            {
+                //int nextSceneIndex = UnityEngine.Random.Range(0, 4);
+                State = $"{SceneManager.sceneCountInBuildSettings}";
+
+                SceneManager.LoadScene(
+                    SceneManager.sceneCountInBuildSettings == scene.buildIndex + 1 ? 0 : scene.buildIndex + 1
+                    , LoadSceneMode.Additive);//Single); 
+            }
+            if (GUI.Button(new Rect(10, 200, 380, 60), "Load " + State))
             {
                 try
                 {
-                    Addressables.LoadAssetAsync<GameObject>(State).Completed += OnLoadAsset;
+                    State = $"{scene.buildIndex} of {SceneManager.sceneCountInBuildSettings}";
+                    
                 }
                 catch (Exception e)
                 {
@@ -390,6 +414,8 @@ public sealed class ComendantOnScene : MonoBehaviour
             }
         }   
     }
+#endif
+
     private void writeJson()
     {
         main resurseList = new main();
@@ -488,8 +514,16 @@ public sealed class ComendantOnScene : MonoBehaviour
             s = System.Text.Encoding.Default.GetString(arr);
             fileStream.Close();
         }
+        try
+        {
+            curretstruct = JsonUtility.FromJson<main>(s);
+        }
 
-        curretstruct = JsonUtility.FromJson<main>(s);
+        catch (Exception)
+        {
+            print($"eBATY");
+            
+        }
         //bufferstruct = new main();
     }
     private void ChekScene()
