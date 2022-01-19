@@ -12,7 +12,7 @@ public class ServiceStuff:MonoBehaviour {
     [SerializeField]
     Lang currlang;
     [SerializeField]
-    mainSetting currLangPack;
+    public mainSetting currLangPack;
     [SerializeField]
     gameMode curentMode;
     private void Awake()
@@ -70,6 +70,9 @@ public class ServiceStuff:MonoBehaviour {
 
 public class EventString : UnityEvent<string> { }
 
+
+
+
 public enum gameMode
 {
     practical = 0,
@@ -81,10 +84,15 @@ public enum Lang
     ru = 1,
     en = 2
 }
-
 [Serializable]
 public struct mainSetting
 {
+
+    public enum TextType { 
+        doctor=1,
+        pacient=2
+    }
+
     //public List<ServiceText> uitext;
     public serviceText[] ServiceText;
     public questionText[] DQuestion;
@@ -92,15 +100,25 @@ public struct mainSetting
 
     public void fillAllText()
     {
+
         foreach (var item in ServiceText)
         {
             item.fillText();
         }
         foreach (var item in DQuestion)
         {
-            //item.fillText();
+
+            item.fillText();
+            item.fillAllText();
+        }
+        foreach (var item in PAnswer)
+        {
+            item.fillAllText();
         }
     }
+
+
+
     public Dictionary<Lang, string> FindByName(string s)
     {
         foreach (var item in ServiceText)
@@ -112,8 +130,91 @@ public struct mainSetting
         }
         return new Dictionary<Lang, string>();
     }
-}
 
+    public Dictionary<Lang, string> FindDioalogText(TextType tt, string name,string patientNum=null) {
+        switch (tt)
+        {
+            case TextType.doctor:
+                foreach (var item in DQuestion)
+                {
+                    if (name == item.uiname)
+                    {
+                        return item.uiTextD;
+                    }
+                    foreach (var itm in item.ServiceText)
+                    {
+                        if (itm.uiname==name)
+                        {
+                            return itm.uiTextD;
+                        }
+                    } 
+                }     
+                break;
+            case TextType.pacient:
+                foreach (var item in PAnswer)
+                {
+
+                    if (patientNum==item.Patient)
+                    {
+                        foreach (var itm in item.PassportData)
+                        {
+                            if (itm.uiname ==name)
+                            {
+                                return itm.uiTextD;
+                            }
+                        }
+                        foreach (var itm in item.PatientComplaints)
+                        {
+                            if (itm.uiname == name)
+                            {
+                                return itm.uiTextD;
+                            }
+                        }
+                    }
+                }
+                break;
+        }
+        return new Dictionary<Lang, string>();
+    }
+}
+[Serializable]
+public class questionText
+{
+    public string uiname;
+    public string[] uitext;
+    public serviceText[] ServiceText;
+    public Dictionary<Lang, String> uiTextD = new Dictionary<Lang, string>();
+    public void fillText()
+    {
+        uiTextD.Add(Lang.ua, uitext[0]);
+        uiTextD.Add(Lang.ru, uitext[1]);
+        uiTextD.Add(Lang.en, uitext[2]);
+    }
+    public void fillAllText() {
+        foreach (var item in ServiceText)
+        {
+            item.fillText();
+        }
+    }
+}
+[Serializable]
+public class answerText
+{
+    public string Patient;
+    public serviceText[] PassportData;
+    public serviceText[] PatientComplaints;
+    public void fillAllText()
+    {
+        foreach (var item in PassportData)
+        {
+            item.fillText();
+        }
+        foreach (var item in PatientComplaints)
+        {
+            item.fillText();
+        }
+    }
+}
 [Serializable]
 public class serviceText
 {
@@ -127,22 +228,5 @@ public class serviceText
         uiTextD.Add(Lang.ru, uitext[1]);
         uiTextD.Add(Lang.en, uitext[2]);
     }
-}
 
-[Serializable]
-public struct questionText
-{
-    public string uiname;
-    public string[] uitext;
-    public serviceText[] ServiceText;
-
-
-}
-
-[Serializable]
-public struct answerText
-{
-    public string Patient;
-    public serviceText[] PassportData;
-    public serviceText[] PatientComplaints;
 }

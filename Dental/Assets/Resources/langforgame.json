@@ -1,5 +1,5 @@
 {
-   "ServiceText": [
+   "ServiceText": 	[
       {
          "uiname": "New Game",
          "uitext": [
@@ -80,5 +80,364 @@
             "Exam"
          ]
       }
-   ]
+   ],
+   "DQuestion"	:	[
+      {		 
+            "uiname":"Passport Data",
+            "uitext":["Паспортні данні",
+                        "Паспортные данные",
+                        "Passport Data"],
+            "ServiceText":[
+               {
+                  "uiname":"Our name",
+                  "uitext":["Ваше повне ім`я",
+                              "Ваше полное имя",
+                              "Your full name"]
+               },
+               {
+                  "uiname":"Age",
+                  "uitext":["Ваш вік",
+                              "Ваш возраст",
+                              "Your age"]
+               },
+               {
+                  "uiname":"Nationality",
+                  "uitext":["Ваша національність",
+                              "Ваша национальность",
+                              "Your nationality"]
+               },
+               {
+                  "uiname":"HomeAddress",
+                  "uitext":["Ваша домашня адреса",
+                              "Ваш домашний адрес",
+                              "Your home address"]
+               },
+               {
+                  "uiname":"Work",
+                  "uitext":["Ваше місце роботи",
+                              "Ваше место работы",
+                              "Your work place "]
+               },
+               {
+                  "uiname":"Profession",
+                  "uitext":["Ваше професія",
+                              "Ваше профессия",
+                              "Your Profession "]
+               },
+               {
+                  "uiname":"DateToClinic",
+                  "uitext":["Дата надходження до клініки",
+                              "Дата поступления в клинику",
+                              "Date of admission to the clinic"]
+               },
+               {
+                  "uiname":"Diagnosis",
+                  "uitext":["Діагноз лікувальної установи, що направила",
+                              "Диагноз направившего лечебного учреждения",
+                              "Referring hospital diagnosis"]
+               }
+            ]
+        },
+		{		 
+            "uiname":"Patient complaints",
+            "uitext":["Скарги пацієнта",
+                        "Жалобы пациента",
+                        "Patient complaints"],
+            "ServiceText":[
+               {
+                  "uiname":"Reason",
+                  "uitext":["З якого приводу звертаетесь",
+                              "По какому поводу обращаетесь",
+                              "What are you asking about?"]
+               },
+               {
+                  "uiname":"Pain",
+                  "uitext":["Яку біль відчуваєте?",
+                              "Какую боль ощущаете?",
+                              "What pain do you feel?"]
+               },
+               {
+                  "uiname":"Swelling",
+                  "uitext":["Чи е припухлість?",
+                              "Есть ли припухлость?",
+                              "Is it swelling?"]
+               },
+               {
+                  "uiname":"Dysfunction",
+                  "uitext":["Чимось заважае?",
+                              "Чем-то мешает?",
+                              "Is something interfering?"]
+               },
+               {
+                  "uiname":"Neoplasm",
+                  "uitext":["Відчуваете новоутворення?",
+                              "Чувствуете новообразование?",
+                              "Feeling new?"]
+               },
+               {
+                  "uiname":"Smell",
+                  "uitext":["Наявність запаху?",
+                              "Наличие запаха?",
+                              "The presence of odor?"]
+               },
+               {
+                  "uiname":"Selections",
+                  "uitext":["Наявність виділень?",
+                              "Наличие выделений?",
+                              "The presence of selections?"]
+               },
+               {
+                  "uiname":"Salivation",
+                  "uitext":["Чи змінилось слиновиділення?",
+                              "Изменилось ли слюноотделение?",
+                              "Has salivation changed?"]
+               },
+               {
+                  "uiname":"Taste",
+                  "uitext":["Чи змінився присмак?",
+                              "Изменился ли привкус?",
+                              "Has the taste changed?"]
+               },
+               {
+                  "uiname":"Sensitivity",
+                  "uitext":["Яке порушення чутливості?",
+                              "Каково нарушение чувствительности?",
+                              "What is a sensitivity disorder?"]
+               }
+            ]
+        }
+    ],
+	"PAnswer":[
+		{
+			"Patient":"Patient1",
+			"PassportData":[
+               {
+                  "uiname":"Our name",
+                  "uitext":["Токарєв Артур Ігорович",
+                              "Токарев Артур Игоревич",
+                              "Tokarev Artur Igorovich"]
+               },
+               {
+                  "uiname":"Age",
+                  "uitext":["27 років",
+                              "27 лет",
+                              "27 years old"]
+               },
+               {
+                  "uiname":"Nationality",
+                  "uitext":["Українець",
+                              "Украинец",
+                              "Ukrainian"]
+               },
+               {
+                  "uiname":"HomeAddress",
+                  "uitext":["Місто Харків вулиця Курилівська, 95",
+                              "Город Харьков улица Куриловская, 95",
+                              "The city of Kharkiv, 95 Kurylivska Street"]
+               },
+               {
+                  "uiname":"Work",
+                  "uitext":["Харьковский тракторній завод",
+                              "Харьковский тракторный завод",
+                              "Kharkiv Tractor Plant"]
+               },
+               {
+                  "uiname":"Profession",
+                  "uitext":["Слюсар",
+                              "Слесарь",
+                              "Mechanic"]
+               },
+               {
+                  "uiname":"DateToClinic",
+                  "uitext":["Сьогодні",
+                              "Сегодня",
+                              "Today"]
+               },
+               {
+                  "uiname":"Diagnosis",
+                  "uitext":["Прийшов самостійно",
+                              "Пришел самостоятельно",
+                              "I came on my own"]
+               }
+            ],
+			"PatientComplaints":[
+			{
+                  "uiname":"Reason",
+                  "uitext":["З якого приводу звертаетесь",
+                              "По какому поводу обращаетесь",
+                              "What are you asking about?"]
+               },
+               {
+                  "uiname":"Pain",
+                  "uitext":["Яку біль відчуваєте?",
+                              "Какую боль ощущаете?",
+                              "What pain do you feel?"]
+               },
+               {
+                  "uiname":"Swelling",
+                  "uitext":["Чи е припухлість?",
+                              "Есть ли припухлость?",
+                              "Is it swelling?"]
+               },
+               {
+                  "uiname":"Dysfunction",
+                  "uitext":["Чимось заважае?",
+                              "Чем-то мешает?",
+                              "Is something interfering?"]
+               },
+               {
+                  "uiname":"Neoplasm",
+                  "uitext":["Відчуваете новоутворення?",
+                              "Чувствуете новообразование?",
+                              "Feeling new?"]
+               },
+               {
+                  "uiname":"Smell",
+                  "uitext":["Наявність запаху?",
+                              "Наличие запаха?",
+                              "The presence of odor?"]
+               },
+               {
+                  "uiname":"Selections",
+                  "uitext":["Наявність виділень?",
+                              "Наличие выделений?",
+                              "The presence of selections?"]
+               },
+               {
+                  "uiname":"Salivation",
+                  "uitext":["Чи змінилось слиновиділення?",
+                              "Изменилось ли слюноотделение?",
+                              "Has salivation changed?"]
+               },
+               {
+                  "uiname":"Taste",
+                  "uitext":["Чи змінився присмак?",
+                              "Изменился ли привкус?",
+                              "Has the taste changed?"]
+               },
+               {
+                  "uiname":"Sensitivity",
+                  "uitext":["Яке порушення чутливості?",
+                              "Каково нарушение чувствительности?",
+                              "What is a sensitivity disorder?"]
+               }]
+		},
+		{
+			"Patient":"Patient2",
+			"PassportData":[
+               {
+                  "uiname":"Our name",
+                  "uitext":["Христенко Ілля Андрійович",
+                              "Христенко Илья Андреевич",
+                              "Khristenko Ilya Andreevich"]
+               },
+               {
+                  "uiname":"Age",
+                  "uitext":["42 роки",
+                              "42 года",
+                              "42 years old"]
+               },
+               {
+                  "uiname":"Nationality",
+                  "uitext":["Українець",
+                              "Украинец",
+                              "Ukrainian"]
+               },
+               {
+                  "uiname":"HomeAddress",
+                  "uitext":["Місто Харків вулиця Академіка Павлова, 135",
+                              "Город Харьков улица Академика Павлова, 135",
+                              "The city of Kharkiv, Academician Pavlov Street, 135"]
+               },
+               {
+                  "uiname":"Work",
+                  "uitext":["Харківський радіозавод Протон",
+                              "Харьковский радиозавод Протон",
+                              "Kharkov Radio Plant Proton"]
+               },
+               {
+                  "uiname":"Profession",
+                  "uitext":["Наладчик",
+                              "Наладчик",
+                              "Service technician"]
+               },
+               {
+                  "uiname":"DateToClinic",
+                  "uitext":["Сьогодні",
+                              "Сегодня",
+                              "Today"]
+               },
+               {
+                  "uiname":"Diagnosis",
+                  "uitext":["Прийшов самостійно",
+                              "Пришел самостоятельно",
+                              "I came on my own"]
+               }
+            ],
+			"PatientComplaints":[
+			{
+                  "uiname":"Reason",
+                  "uitext":["З якого приводу звертаетесь",
+                              "По какому поводу обращаетесь",
+                              "What are you asking about?"]
+               },
+               {
+                  "uiname":"Pain",
+                  "uitext":["Яку біль відчуваєте?",
+                              "Какую боль ощущаете?",
+                              "What pain do you feel?"]
+               },
+               {
+                  "uiname":"Swelling",
+                  "uitext":["Чи е припухлість?",
+                              "Есть ли припухлость?",
+                              "Is it swelling?"]
+               },
+               {
+                  "uiname":"Dysfunction",
+                  "uitext":["Чимось заважае?",
+                              "Чем-то мешает?",
+                              "Is something interfering?"]
+               },
+               {
+                  "uiname":"Neoplasm",
+                  "uitext":["Відчуваете новоутворення?",
+                              "Чувствуете новообразование?",
+                              "Feeling new?"]
+               },
+               {
+                  "uiname":"Smell",
+                  "uitext":["Наявність запаху?",
+                              "Наличие запаха?",
+                              "The presence of odor?"]
+               },
+               {
+                  "uiname":"Selections",
+                  "uitext":["Наявність виділень?",
+                              "Наличие выделений?",
+                              "The presence of selections?"]
+               },
+               {
+                  "uiname":"Salivation",
+                  "uitext":["Чи змінилось слиновиділення?",
+                              "Изменилось ли слюноотделение?",
+                              "Has salivation changed?"]
+               },
+               {
+                  "uiname":"Taste",
+                  "uitext":["Чи змінився присмак?",
+                              "Изменился ли привкус?",
+                              "Has the taste changed?"]
+               },
+               {
+                  "uiname":"Sensitivity",
+                  "uitext":["Яке порушення чутливості?",
+                              "Каково нарушение чувствительности?",
+                              "What is a sensitivity disorder?"]
+               }]
+		}
+	]
+ 
+   
+   
 }

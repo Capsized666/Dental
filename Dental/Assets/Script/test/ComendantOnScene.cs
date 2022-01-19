@@ -269,23 +269,6 @@ public sealed class ComendantOnScene : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
-    private void loadArdessable(out addressableGuidNameList adressList)
-    {
-        var path = Path.Combine(Application.dataPath + "/Resources", "assetTable.json");
-        FileStream fileStream = new FileStream(path,
-                          FileMode.OpenOrCreate,
-                          FileAccess.ReadWrite,
-                          FileShare.None);
-        string s = "";
-        if (fileStream.CanRead)
-        {
-            byte[] arr = new byte[fileStream.Length];
-            fileStream.Read(arr, 0, arr.Length);
-            s = System.Text.Encoding.Default.GetString(arr);
-            fileStream.Close();
-        }
-        adressList = JsonUtility.FromJson<addressableGuidNameList>(s);
-    }
     void OnEnable()
     {
         guiOn = false;
@@ -303,6 +286,23 @@ public sealed class ComendantOnScene : MonoBehaviour
         StartCoroutine(LoadLost());
     }
 
+    private void loadArdessable(out addressableGuidNameList adressList)
+    {
+        var path = Path.Combine(Application.dataPath + "/Resources", "assetTable.json");
+        FileStream fileStream = new FileStream(path,
+                          FileMode.OpenOrCreate,
+                          FileAccess.ReadWrite,
+                          FileShare.None);
+        string s = "";
+        if (fileStream.CanRead)
+        {
+            byte[] arr = new byte[fileStream.Length];
+            fileStream.Read(arr, 0, arr.Length);
+            s = System.Text.Encoding.Default.GetString(arr);
+            fileStream.Close();
+        }
+        adressList = JsonUtility.FromJson<addressableGuidNameList>(s);
+    }
     IEnumerator LoadLost() {
         
         if (curretstruct.objectList.Length> Recvisit.Count)
@@ -314,10 +314,10 @@ public sealed class ComendantOnScene : MonoBehaviour
                 {
                     //UpdateScene();
                     //AsyncOperationHandle asynAction = new AsyncOperationHandle();
+                    //print(asynAction.GetHashCode()+" v");
                     var asynAction = Addressables.LoadAssetAsync<GameObject>
                         (curretstruct.objectList[i].name);
                     curretstruct.objectList[i].HashCode=asynAction.GetHashCode();
-                    //print(asynAction.GetHashCode()+" v");
                     asynAction.Completed += OnLoadAsset;
 
                     loadScreen.setProgress(Recvisit.Count,

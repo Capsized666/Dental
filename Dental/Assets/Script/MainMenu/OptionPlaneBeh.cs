@@ -13,12 +13,6 @@ public class OptionPlaneBeh : MonoBehaviour
     public RectTransform rtmode;
     public RectTransform rtmodeName;
     //
-    public TextMeshProUGUI lang;
-    public TextMeshProUGUI language;
-    public TextMeshProUGUI mode;
-    public TextMeshProUGUI modeName;
-    public TextMeshProUGUI back;
-    public TextMeshProUGUI label;
     void Start()
     {
         
