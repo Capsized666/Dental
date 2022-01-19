@@ -1,0 +1,60 @@
+{
+	"places":[
+	{
+		"Name":"Main",
+		"variant":[{
+			"ua":"Головна будівля",
+			"ru":"Главное здание",
+			"en":"Main Building"
+		}]
+	},
+	{
+		"Name":"Corridor",
+		"variant":[{
+			"ua":"Коридор",
+			"ru":"Коридор",
+			"en":"Сorridor"
+		}]
+	},
+	{
+		"Name":"Kafedra",
+		"variant":[{
+			"ua":"Кафедра пат. анатомії",
+			"ru":"Кафедра пат. анатомии",
+			"en":"Department of Pat. Anatomy"
+		}]
+	},
+  {
+		"Name":"Hall",
+		"variant":[{
+			"ua":"Хол",
+			"ru":"Хол",
+			"en":"Hall"
+		}]
+	},
+	  {
+		"Name":"Dvor",
+		"variant":[{
+			"ua":"Двір",
+			"ru":"Двор",
+			"en":"Courtyard"
+		}]
+	},
+		{
+		"Name":"In",
+		"variant":[{
+			"ua":"Внутрішній",
+			"ru":"Внутренний",
+			"en":"Inside"
+		}]
+	},
+		{
+		"Name":"Out",
+		"variant":[{
+			"ua":"Зовнышный",
+			"ru":"Внешний",
+			"en":"Outside"
+		}]
+	}
+	]
+}

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -13,14 +14,23 @@ public class FirstPlaneButtonBeh : MonoBehaviour, IPointerDownHandler
     public FPButton currentcase;
     public FirstPlaneBeh parent;
     
+    public TextMeshProUGUI tmpText;
+    Dictionary<Lang, string> nameDic = new Dictionary<Lang, string>();
+    public menuManager _mm;
+
     void Awake()
     {
+        _mm = FindObjectOfType<menuManager>();
         parent = gameObject.GetComponentInParent<FirstPlaneBeh>();
+        tmpText = GetComponent<TextMeshProUGUI>();
     }
-
+    private void Start()
+    {
+      nameDic = ServiceStuff.Instance.getUIDict(gameObject.name);
+    }
     void Update()
     {
-        
+        tmpText.text = nameDic[ServiceStuff.Instance.getLang()];
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -28,14 +38,12 @@ public class FirstPlaneButtonBeh : MonoBehaviour, IPointerDownHandler
         switch (currentcase)
         {
             case FPButton.newgame:
-                //zagruz sceni
-                //print("ng");
+                _mm.setState(menuState.newGame);
                 break;
             case FPButton.option:
-                //print("op");
+                _mm.setState(menuState.Option);
                 break;
             case FPButton.exit:
-                //print("ex");
                 Application.Quit();
                 break;
             default:
