@@ -21,9 +21,13 @@ public class ServiceStuff:MonoBehaviour {
         currlang=Lang.en;
         curentMode = gameMode.practical;
         loadLang();
-       
         DontDestroyOnLoad(Instance);
     }
+    private void OnEnable()
+    {
+        ChekScene();
+    }
+
     private void loadLang()
     {
         var path = Path.Combine(Application.dataPath + "/Resources", "langforgame.json");
@@ -65,14 +69,30 @@ public class ServiceStuff:MonoBehaviour {
     }
     public void changeMode() {
         curentMode = curentMode == gameMode.practical ? gameMode.examinate: gameMode.practical;
-    } 
+    }
+
+    private void ChekScene()
+    {
+        var foundObjects = FindObjectsOfType<GameObject>();
+        foreach (var item in foundObjects)
+        {
+            var chek = item.GetComponent<ServiceStuff>();
+            if (chek != null & chek != Instance)
+            {
+                DestroyImmediate(item);
+                break;
+            }        
+        }
+    }
+
+
 }
 
+
+
+
+
 public class EventString : UnityEvent<string> { }
-
-
-
-
 public enum gameMode
 {
     practical = 0,

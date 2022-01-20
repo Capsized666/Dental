@@ -2,28 +2,6 @@
     "objectList": [
         {
             "HashCode": 0,
-            "name": "ServiceStuff",
-            "position": [
-                603.0,
-                316.5,
-                52.0
-            ],
-            "rotation": [
-                1.0,
-                0.0,
-                0.0,
-                0.0
-            ],
-            "scale": [
-                1.0,
-                1.0,
-                1.0
-            ],
-            "parent": "root",
-            "child": []
-        },
-        {
-            "HashCode": 0,
             "name": "Directional Light",
             "position": [
                 0.0,

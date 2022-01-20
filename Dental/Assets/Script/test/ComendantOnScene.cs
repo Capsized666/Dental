@@ -8,7 +8,8 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.SceneManagement;
 
 [Serializable]
-public struct obj4load {
+public struct obj4load
+{
     public int HashCode;
     public string name;
     public float[] position;
@@ -17,7 +18,8 @@ public struct obj4load {
     public string parent;
     public string[] child;
 
-    public void fillFields(Transform t) {
+    public void fillFields(Transform t)
+    {
         name = t.gameObject.name;
         position = new float[3]{
                 t.position.x,
@@ -39,7 +41,8 @@ public struct obj4load {
         {
             parent = "root";
         }
-        else {
+        else
+        {
             parent = t.parent.name;
         }
         if (t.childCount != 0)
@@ -47,18 +50,19 @@ public struct obj4load {
             child = new string[t.childCount];
             for (int i = 0; i < t.childCount; i++)
             {
-                child[i]= t.GetChild(i).gameObject.name;            
+                child[i] = t.GetChild(i).gameObject.name;
             }
         }
 
     }
     public void getPos(out Vector3 p, out Quaternion r, out Vector3 s)
     {
-        p = new Vector3(position[0],position[1],position[2]);
+        p = new Vector3(position[0], position[1], position[2]);
         r = new Quaternion(rotation[0], rotation[1], rotation[2], rotation[3]);
         s = new Vector3(scale[0], scale[1], scale[2]);
     }
-    public void empty() {
+    public void empty()
+    {
         position = new float[3]{
                 0,
                 0,
@@ -80,9 +84,10 @@ public struct obj4load {
         child = null;
         name = "empty";
     }
-    public bool compare(obj4load cobj) {
+    public bool compare(obj4load cobj)
+    {
         return (name == cobj.name)
-            &(position [0] == cobj.position[0])
+            & (position[0] == cobj.position[0])
             & (position[1] == cobj.position[1])
             & (position[2] == cobj.position[2])
 
@@ -91,18 +96,19 @@ public struct obj4load {
             & (rotation[2] == cobj.rotation[2])
             & (rotation[3] == cobj.rotation[3])
 
-            
+
             & (scale[0] == cobj.scale[0])
             & (scale[1] == cobj.scale[1])
             & (scale[2] == cobj.scale[2])
-            
+
 
             & (parent == cobj.parent)
 
             & (compareChild(cobj.child));
     }
-    bool compareChild(string[] args) {
-        if (child==null && args==null)
+    bool compareChild(string[] args)
+    {
+        if (child == null && args == null)
         {
             return true;
         }
@@ -120,10 +126,11 @@ public struct obj4load {
             {
                 return false;
             }
-        } 
+        }
         return true;
     }
-    public obj4load convertGO(GameObject obj) {
+    public obj4load convertGO(GameObject obj)
+    {
         obj4load nobj = new obj4load();
         nobj.fillFields(obj.transform);
         //nobj.name = obj.name;
@@ -132,8 +139,8 @@ public struct obj4load {
 
     internal bool compareTransform(GameObject item)
     {
-        return (item.name==name)&
-            (item.transform.position[0] == position[0]) 
+        return (item.name == name) &
+            (item.transform.position[0] == position[0])
             & (position[1] == item.transform.position[1])
             & (position[2] == item.transform.position[2])
 
@@ -151,26 +158,29 @@ public struct obj4load {
     }
 }
 [Serializable]
-public struct main {
+public struct main
+{
     public obj4load[] objectList;
-    public obj4load getByName(string name) {
-        
+    public obj4load getByName(string name)
+    {
+
         foreach (var item in objectList)
         {
-            if (name==item.name)
+            if (name == item.name)
             {
                 return item;
-            }    
+            }
         }
         obj4load ver = new obj4load();
         ver.empty();
         return ver;
     }
-    public void AddObj(obj4load obj) {
+    public void AddObj(obj4load obj)
+    {
 
-        List <obj4load> vrem  = new List<obj4load>();
+        List<obj4load> vrem = new List<obj4load>();
 
-        if (objectList!=null)
+        if (objectList != null)
         {
             foreach (var item in objectList)
             {
@@ -180,7 +190,8 @@ public struct main {
         vrem.Add(obj);
         objectList = vrem.ToArray();
     }
-    public bool containsObj(obj4load obj) {
+    public bool containsObj(obj4load obj)
+    {
         for (int i = 0; i < objectList.Length; i++)
         {
             if (objectList[i].Equals(obj))
@@ -191,7 +202,8 @@ public struct main {
         return false;
     }
 
-    public bool containsObj(GameObject obj) {
+    public bool containsObj(GameObject obj)
+    {
         foreach (var item in objectList)
         {
             obj4load nobj = new obj4load();
@@ -204,7 +216,8 @@ public struct main {
         return false;
     }
 
-    public obj4load getByHashCode(int hash) {
+    public obj4load getByHashCode(int hash)
+    {
         foreach (var item in objectList)
         {
             if (item.HashCode == hash)
@@ -215,14 +228,15 @@ public struct main {
         return new obj4load();
     }
 
-    public obj4load findParent(string name, string parent) {
+    public obj4load findParent(string name, string parent)
+    {
         foreach (var item in objectList)
         {
-            if ( item.child!=null & item.name==parent)
+            if (item.child != null & item.name == parent)
             {
                 foreach (var chil in item.child)
                 {
-                    if (chil==name)
+                    if (chil == name)
                     {
                         return item;
                     }
@@ -231,12 +245,14 @@ public struct main {
         }
         return new obj4load();
     }
-} 
+}
 
-
-
+public enum scenes { 
+    MainMenu,
+    Cabinet
+}
 public sealed class ComendantOnScene : MonoBehaviour
-{   
+{
     bool guiOn;
     Scene scene;
     LoadScreen loadScreen;
@@ -245,11 +261,12 @@ public sealed class ComendantOnScene : MonoBehaviour
     //public IEnumerator coroutine;
 
     public static ComendantOnScene Instance;
-     
+
     [Space]
+    public Scene[] curentScenes;
     public TextAsset IgnoreList;
     [SerializeField]
-    public static string State = "ret";
+    public static string State { get; private set; } = "ret";
     public string nameOfFile;
     [Space]
     public List<GameObject> Recvisit = new List<GameObject>();
@@ -257,7 +274,7 @@ public sealed class ComendantOnScene : MonoBehaviour
     //public main bufferstruct;
     public addressableGuidNameList adressList;
     void Awake()
-     {
+    {
         loadArdessable(out adressList);
         //coroutine = LoadLost();
         curretstruct = new main();
@@ -272,22 +289,9 @@ public sealed class ComendantOnScene : MonoBehaviour
     void OnEnable()
     {
         guiOn = false;
-        var cam = FindObjectsOfType(typeof(Comendant));
-        print($"{cam.Length} Comendants");
-        /*
-         
-        foreach (Comendant item in cam)
-        {
-            if (item!= Instance)
-            {
-                print("It hapens");
-                DestroyImmediate(item.gameObject);
-            }
-        }
-         */
         initState();
         startCount = Recvisit.Count;
-        loadScreen.setProgress(0,1);
+        loadScreen.setProgress(0, 1);
         StartCoroutine(LoadLost());
     }
 
@@ -308,11 +312,12 @@ public sealed class ComendantOnScene : MonoBehaviour
         }
         adressList = JsonUtility.FromJson<addressableGuidNameList>(s);
     }
-    IEnumerator LoadLost() {
-        
-        if (curretstruct.objectList.Length> Recvisit.Count)
+    IEnumerator LoadLost()
+    {
+
+        if (curretstruct.objectList.Length > Recvisit.Count)
         {
-            
+
             for (int i = 0; i < curretstruct.objectList.Length; i++)
             {
                 if (adressList.canBeLoaded(curretstruct.objectList[i].name))
@@ -320,21 +325,18 @@ public sealed class ComendantOnScene : MonoBehaviour
                     //UpdateScene();
                     //AsyncOperationHandle asynAction = new AsyncOperationHandle();
                     //print(asynAction.GetHashCode()+" v");
+
                     var asynAction = Addressables.LoadAssetAsync<GameObject>
                         (curretstruct.objectList[i].name);
-                    curretstruct.objectList[i].HashCode=asynAction.GetHashCode();
+                    curretstruct.objectList[i].HashCode = asynAction.GetHashCode();
                     asynAction.Completed += OnLoadAsset;
-
                     loadScreen.setProgress(Recvisit.Count,
                                             curretstruct.objectList.Length);
-                /*
-                 */
                     yield return new WaitForSecondsRealtime(.4f);
+                    
                 }
             }
         }
-        
-            
         yield break;
         //yield return null;
     }
@@ -342,23 +344,27 @@ public sealed class ComendantOnScene : MonoBehaviour
     {
         if (curretstruct.objectList.Length == Recvisit.Count)
         {
-            loadScreen.setProgress(1,1);
+            loadScreen.setProgress(1, 1);
             loadScreen.setHide(true);
         }
-        if (scene!= SceneManager.GetActiveScene())
+        if (scene != SceneManager.GetActiveScene())
         {
-            initState();  
+            initState();
         }
 #if UNITY_EDITOR
         EditorWork();
 #endif
 
-        
+
     }
 
 #if UNITY_EDITOR
     private void EditorWork()
     {
+        if (curentScenes.Length != SceneManager.sceneCount)//GetAllScenes().Length)
+        {
+            curentScenes = SceneManager.GetAllScenes();
+        }
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             print("Writing Json");
@@ -381,10 +387,10 @@ public sealed class ComendantOnScene : MonoBehaviour
         {
             GUI.skin.button.fontSize = 20;
 
-            if (GUI.Button(new Rect(10, 80, 380, 60), $"It is {scene.buildIndex}. Next scene? " ))
+            if (GUI.Button(new Rect(10, 80, 380, 60), $"It is {scene.buildIndex}. Next scene? "))
             {
                 //int nextSceneIndex = UnityEngine.Random.Range(0, 4);
-                State = $"{SceneManager.sceneCountInBuildSettings}";
+                //State = $"{SceneManager.sceneCountInBuildSettings}";
 
                 SceneManager.LoadScene(
                     SceneManager.sceneCountInBuildSettings == scene.buildIndex + 1 ? 0 : scene.buildIndex + 1
@@ -404,7 +410,7 @@ public sealed class ComendantOnScene : MonoBehaviour
                 try
                 {
                     State = $"{scene.buildIndex} of {SceneManager.sceneCountInBuildSettings}";
-                    
+
                 }
                 catch (Exception e)
                 {
@@ -412,10 +418,12 @@ public sealed class ComendantOnScene : MonoBehaviour
                 }
 
             }
-        }   
+        }
     }
 #endif
-
+    public void setState(string s) {
+        State = s;
+    }
     private void writeJson()
     {
         main resurseList = new main();
@@ -428,12 +436,12 @@ public sealed class ComendantOnScene : MonoBehaviour
             fill.Add(nobj);
         }
 
-        fill = sortArray(fill); 
-        resurseList.objectList =  fill.ToArray();
+        fill = sortArray(fill);
+        resurseList.objectList = fill.ToArray();
 
-        var path = Path.Combine(Application.dataPath+ "/Resources", nameOfFile);
+        var path = Path.Combine(Application.dataPath + "/Resources", nameOfFile);
         var s = JsonUtility.ToJson(resurseList, true);
-        
+
         try
         {
             if (File.Exists(path))
@@ -457,11 +465,12 @@ public sealed class ComendantOnScene : MonoBehaviour
             print($"Pizda togo sho {e.ToString()}");
         }
     }
-    private List<obj4load> sortArray( List<obj4load> objOld) {
+    private List<obj4load> sortArray(List<obj4load> objOld)
+    {
         List<obj4load> objNew = new List<obj4load>();
         for (int i = 0; i < objOld.Count; i++)
         {
-            if (objOld[i].parent=="root")
+            if (objOld[i].parent == "root")
             {
                 objNew.Add(objOld[i]);
             }
@@ -477,7 +486,7 @@ public sealed class ComendantOnScene : MonoBehaviour
     }
     private void setIgnorlist()
     {
-        var p=IgnoreList.text;
+        var p = IgnoreList.text;
         ignore = p.Split('\n');
     }
     private void UpdateScene()
@@ -488,25 +497,25 @@ public sealed class ComendantOnScene : MonoBehaviour
     private void initState()
     {
         setIgnorlist();
-        UpdateScene(); 
-        scene = SceneManager.GetActiveScene(); 
+        UpdateScene();
+        scene = SceneManager.GetActiveScene();
 
-        nameOfFile =$"data_{scene.name}";
-        nameOfFile +=".json";
-        if (scene.name=="PlayScene")
+        nameOfFile = $"data_{scene.name}";
+        nameOfFile += ".json";
+        if (scene.name == "Cabinet")
         {
             nameOfFile = $"data_{scene.name}_{State}";
             nameOfFile += ".json";
         }
 
         var path = Path.Combine(Application.dataPath + "/Resources", nameOfFile);
-        
+
         FileStream fileStream = new FileStream(path,
                            FileMode.OpenOrCreate,
                            FileAccess.ReadWrite,
                            FileShare.None);
 
-        string s = ""; 
+        string s = "";
         if (fileStream.CanRead)
         {
             byte[] arr = new byte[fileStream.Length];
@@ -522,7 +531,7 @@ public sealed class ComendantOnScene : MonoBehaviour
         catch (Exception)
         {
             print($"eBATY");
-            
+
         }
         //bufferstruct = new main();
     }
@@ -531,18 +540,25 @@ public sealed class ComendantOnScene : MonoBehaviour
         var foundObjects = FindObjectsOfType<GameObject>();
         foreach (var item in foundObjects)
         {
-           if (chekFamilyTree(item))
-           {
-               Recvisit.Add(item);
-           }
+            var chek = item.GetComponent<ComendantOnScene>();
+            if (chek!=null&chek != Instance)
+            {
+                DestroyImmediate(item);
+                break;
+            }
+            if (chekFamilyTree(item))
+            {
+                Recvisit.Add(item);
+            }
         }
     }
 
     private bool chekFamilyTree(GameObject item)
     {
-        if (item.transform.parent!=null)
+        if (item.transform.parent != null)
         {
             return chekFamilyTree(item.transform.parent.gameObject);
+
         }
         else
         {
@@ -551,7 +567,8 @@ public sealed class ComendantOnScene : MonoBehaviour
         //return true;
     }
 
-    private bool ChekIgnore(string s) {
+    private bool ChekIgnore(string s)
+    {
         for (int i = 0; i < ignore.Length; i++)
         {
             if (ignore[i].Contains(s))
@@ -562,23 +579,24 @@ public sealed class ComendantOnScene : MonoBehaviour
         }
         return true;
     }
-    Transform findParent(obj4load go) {
+    Transform findParent(obj4load go)
+    {
         foreach (var item in Recvisit)
         {
             if (go.compareTransform(item))
             {
-                
+
                 return item.transform;
-            
+
             }
         }
         return null;
-    } 
-                
-    void OnLoadAsset(AsyncOperationHandle <GameObject> handle)  
+    }
+
+    void OnLoadAsset(AsyncOperationHandle<GameObject> handle)
     {
         //print(handle.GetHashCode() +  " w");
-            switch (handle.Status)
+        switch (handle.Status)
         {
             case AsyncOperationStatus.None:
                 break;
@@ -592,27 +610,31 @@ public sealed class ComendantOnScene : MonoBehaviour
                 Vector3 p, s = Vector3.zero;
                 Quaternion r = Quaternion.identity;
 
-                
+
                 var cur = curretstruct.getByHashCode(handle.GetHashCode());
-                cur.getPos(out p,out r,out s);
-                spawnObject.transform.position      = p;
-                spawnObject.transform.rotation      = r;
-                spawnObject.transform.localScale    = s;
+                cur.getPos(out p, out r, out s);
+                spawnObject.transform.position = p;
+                spawnObject.transform.rotation = r;
+                spawnObject.transform.localScale = s;
                 Recvisit.Add(spawnObject);
 
 
                 if (cur.parent != "root")
                 {
-                    var par = curretstruct.findParent(cur.name,cur.parent);
+                    var par = curretstruct.findParent(cur.name, cur.parent);
                     spawnObject.transform.SetParent(findParent(par));
-                }  
+                }
 
                 break;
             case AsyncOperationStatus.Failed:
                 Debug.LogWarning("Spawn object faild");
                 break;
         }
-                Addressables.Release(handle);
+        Addressables.Release(handle);
     }
-    
+
+    public void loadScene(scenes s)
+    {
+        SceneManager.LoadScene(s.ToString(), LoadSceneMode.Single);
+    }
 }

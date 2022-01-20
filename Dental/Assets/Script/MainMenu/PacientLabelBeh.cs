@@ -21,19 +21,11 @@ public class PacientLabelBeh : MonoBehaviour,IPointerDownHandler
         tmpText = GetComponentInChildren<TextMeshProUGUI > ();
         textRt  = tmpText.GetComponent<RectTransform>() ;
     }
-
-    // Update is called once per frame
     void Update()
     {
         sizeManager();
         namingPacient();
     }
-
-    private void OnMouseDown()
-    {
-        
-    }
-
     private void namingPacient()
     {//ServiceStuff.Instance.getLang()
 
@@ -56,8 +48,7 @@ public class PacientLabelBeh : MonoBehaviour,IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        //print($"kill bill");
-
-
+        ComendantOnScene.Instance.setState(gameObject.name);
+        ComendantOnScene.Instance.loadScene(scenes.Cabinet);
     }
 }
