@@ -245,12 +245,12 @@ public struct main
         }
         return new obj4load();
     }
-}
 
 public enum scenes { 
     MainMenu,
     Cabinet
 }
+
 public sealed class ComendantOnScene : MonoBehaviour
 {
     bool guiOn;
@@ -320,6 +320,7 @@ public sealed class ComendantOnScene : MonoBehaviour
 
             for (int i = 0; i < curretstruct.objectList.Length; i++)
             {
+
                 if (adressList.canBeLoaded(curretstruct.objectList[i].name))
                 {
                     //UpdateScene();
@@ -335,6 +336,7 @@ public sealed class ComendantOnScene : MonoBehaviour
                     yield return new WaitForSecondsRealtime(.4f);
                     
                 }
+
             }
         }
         yield break;
