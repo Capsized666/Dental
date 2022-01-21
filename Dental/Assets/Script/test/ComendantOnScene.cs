@@ -245,7 +245,7 @@ public struct main
         }
         return new obj4load();
     }
-
+}
 public enum scenes { 
     MainMenu,
     Cabinet

@@ -21,9 +21,9 @@ public class menuManager : MonoBehaviour
 
     public RectTransform BackImg;
 
-    public RectTransform fp;
-    public RectTransform op;
-    public RectTransform ntp;
+    RectTransform fp;
+    RectTransform op;
+    RectTransform ntp;
 
     void Awake()
     {
