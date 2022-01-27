@@ -9,6 +9,18 @@ using UnityEngine.Events;
 public class ServiceStuff:MonoBehaviour {
 
     public static ServiceStuff Instance;
+    /*{
+        get
+        {
+            if (Instance!=null)
+            {
+            return Instance;
+            }
+                Instance = new ServiceStuff();
+                return Instance;
+        }
+        private set { Instance = value; }
+    }*/
     [SerializeField]
     Lang currlang;
     [SerializeField]

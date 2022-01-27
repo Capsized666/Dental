@@ -25,10 +25,15 @@ public class LoadScreen : MonoBehaviour
     }
 
     public void setProgress(float count,float complet) {
-        Bar.setPersent(count/complet);
+        if (Bar!=null)
+        {
+            Bar.setPersent(count/complet);
+        }
+
     }
     public void setHide(bool b) {
         ishide = b;
+       // print($"{ishide} {Time.timeScale}");
     }
 
 }
