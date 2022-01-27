@@ -2,11 +2,11 @@
     "objectList": [
         {
             "HashCode": 0,
-            "name": "Canvas",
+            "name": "Main Camera",
             "position": [
-                563.0,
-                392.0,
-                0.0
+                0.0,
+                1.0,
+                -10.0
             ],
             "rotation": [
                 1.0,
@@ -20,12 +20,7 @@
                 1.0
             ],
             "parent": "root",
-            "child": [
-                "Main Background",
-                "FirstPlane",
-                "Options",
-                "NewGame"
-            ]
+            "child": []
         },
         {
             "HashCode": 0,
@@ -51,11 +46,11 @@
         },
         {
             "HashCode": 0,
-            "name": "Main Camera",
+            "name": "Canvas",
             "position": [
-                0.0,
-                1.0,
-                -10.0
+                579.5,
+                306.5,
+                0.0
             ],
             "rotation": [
                 1.0,
@@ -69,15 +64,17 @@
                 1.0
             ],
             "parent": "root",
-            "child": []
+            "child": [
+                "menuManager"
+            ]
         },
         {
             "HashCode": 0,
-            "name": "ServiceStuff",
+            "name": "menuManager",
             "position": [
-                603.0,
-                316.5,
-                52.0
+                579.5,
+                306.5,
+                0.0
             ],
             "rotation": [
                 1.0,
@@ -90,15 +87,533 @@
                 1.0,
                 1.0
             ],
-            "parent": "root",
+            "parent": "Canvas",
+            "child": [
+                "Main Background",
+                "FirstPlane",
+                "NewGame",
+                "Options"
+            ]
+        },
+        {
+            "HashCode": 0,
+            "name": "Main Background",
+            "position": [
+                579.5,
+                306.5,
+                0.0
+            ],
+            "rotation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "menuManager",
             "child": []
         },
         {
             "HashCode": 0,
-            "name": "Label",
+            "name": "FirstPlane",
             "position": [
-                563.0,
-                784.0,
+                579.5,
+                306.5,
+                0.0
+            ],
+            "rotation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "menuManager",
+            "child": [
+                "New Game",
+                "Options",
+                "Exit"
+            ]
+        },
+        {
+            "HashCode": 0,
+            "name": "New Game",
+            "position": [
+                579.5,
+                183.89999389648438,
+                0.0
+            ],
+            "rotation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "FirstPlane",
+            "child": []
+        },
+        {
+            "HashCode": 0,
+            "name": "Options",
+            "position": [
+                579.5,
+                122.60000610351563,
+                0.0
+            ],
+            "rotation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "FirstPlane",
+            "child": []
+        },
+        {
+            "HashCode": 0,
+            "name": "Exit",
+            "position": [
+                579.5,
+                61.30000305175781,
+                0.0
+            ],
+            "rotation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "FirstPlane",
+            "child": []
+        },
+        {
+            "HashCode": 0,
+            "name": "NewGame",
+            "position": [
+                579.5,
+                306.5,
+                0.0
+            ],
+            "rotation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "menuManager",
+            "child": [
+                "Back",
+                "NGLabel",
+                "Scroll View"
+            ]
+        },
+        {
+            "HashCode": 0,
+            "name": "Back",
+            "position": [
+                0.0,
+                613.0,
+                0.0
+            ],
+            "rotation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "NewGame",
+            "child": []
+        },
+        {
+            "HashCode": 0,
+            "name": "NGLabel",
+            "position": [
+                579.5,
+                613.0,
+                0.0
+            ],
+            "rotation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "NewGame",
+            "child": []
+        },
+        {
+            "HashCode": 0,
+            "name": "Scroll View",
+            "position": [
+                579.5,
+                306.5,
+                0.0
+            ],
+            "rotation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "NewGame",
+            "child": [
+                "Viewport",
+                "Scrollbar Horizontal",
+                "Scrollbar Vertical"
+            ]
+        },
+        {
+            "HashCode": 0,
+            "name": "Viewport",
+            "position": [
+                162.56170654296876,
+                592.9637451171875,
+                0.0
+            ],
+            "rotation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "Scroll View",
+            "child": [
+                "Content"
+            ]
+        },
+        {
+            "HashCode": 0,
+            "name": "Content",
+            "position": [
+                162.56170654296876,
+                592.9637451171875,
+                0.0
+            ],
+            "rotation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "Viewport",
+            "child": []
+        },
+        {
+            "HashCode": 0,
+            "name": "Scrollbar Horizontal",
+            "position": [
+                162.56170654296876,
+                20.0362548828125,
+                0.0
+            ],
+            "rotation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "Scroll View",
+            "child": [
+                "Sliding Area"
+            ]
+        },
+        {
+            "HashCode": 0,
+            "name": "Sliding Area",
+            "position": [
+                571.0,
+                30.0362548828125,
+                0.0
+            ],
+            "rotation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "Scrollbar Horizontal",
+            "child": [
+                "Handle"
+            ]
+        },
+        {
+            "HashCode": 0,
+            "name": "Handle",
+            "position": [
+                172.56170654296876,
+                30.0362548828125,
+                0.0
+            ],
+            "rotation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "Sliding Area",
+            "child": []
+        },
+        {
+            "HashCode": 0,
+            "name": "Scrollbar Vertical",
+            "position": [
+                996.4382934570313,
+                592.9637451171875,
+                0.0
+            ],
+            "rotation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "Scroll View",
+            "child": [
+                "Sliding Area"
+            ]
+        },
+        {
+            "HashCode": 0,
+            "name": "Sliding Area",
+            "position": [
+                986.4382934570313,
+                306.5,
+                0.0
+            ],
+            "rotation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "Scrollbar Vertical",
+            "child": [
+                "Handle"
+            ]
+        },
+        {
+            "HashCode": 0,
+            "name": "Handle",
+            "position": [
+                986.4382934570313,
+                306.5,
+                0.0
+            ],
+            "rotation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "Sliding Area",
+            "child": []
+        },
+        {
+            "HashCode": 0,
+            "name": "Options",
+            "position": [
+                579.5,
+                306.5,
+                0.0
+            ],
+            "rotation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "menuManager",
+            "child": [
+                "Options",
+                "Lang",
+                "Language",
+                "Mode",
+                "ModeName",
+                "Back"
+            ]
+        },
+        {
+            "HashCode": 0,
+            "name": "Options",
+            "position": [
+                579.5,
+                613.0,
+                0.0
+            ],
+            "rotation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "Options",
+            "child": []
+        },
+        {
+            "HashCode": 0,
+            "name": "Lang",
+            "position": [
+                518.2000122070313,
+                367.79998779296877,
+                0.0
+            ],
+            "rotation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "Options",
+            "child": []
+        },
+        {
+            "HashCode": 0,
+            "name": "Language",
+            "position": [
+                640.7999877929688,
+                367.79998779296877,
+                0.0
+            ],
+            "rotation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "Options",
+            "child": []
+        },
+        {
+            "HashCode": 0,
+            "name": "Mode",
+            "position": [
+                518.2000122070313,
+                245.1999969482422,
+                0.0
+            ],
+            "rotation": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "parent": "Options",
+            "child": []
+        },
+        {
+            "HashCode": 0,
+            "name": "ModeName",
+            "position": [
+                640.7999877929688,
+                245.1999969482422,
                 0.0
             ],
             "rotation": [
@@ -120,7 +635,7 @@
             "name": "Back",
             "position": [
                 0.0,
-                784.0,
+                613.0,
                 0.0
             ],
             "rotation": [
@@ -134,170 +649,8 @@
                 1.0,
                 1.0
             ],
-            "parent": "NewGame",
+            "parent": "Options",
             "child": []
-        },
-        {
-            "HashCode": 0,
-            "name": "NewGame",
-            "position": [
-                563.0,
-                392.0,
-                0.0
-            ],
-            "rotation": [
-                1.0,
-                0.0,
-                0.0,
-                0.0
-            ],
-            "scale": [
-                1.0,
-                1.0,
-                1.0
-            ],
-            "parent": "Canvas",
-            "child": [
-                "Back"
-            ]
-        },
-        {
-            "HashCode": 0,
-            "name": "Options",
-            "position": [
-                563.0,
-                392.0,
-                0.0
-            ],
-            "rotation": [
-                1.0,
-                0.0,
-                0.0,
-                0.0
-            ],
-            "scale": [
-                1.0,
-                1.0,
-                1.0
-            ],
-            "parent": "Canvas",
-            "child": [
-                "Label"
-            ]
-        },
-        {
-            "HashCode": 0,
-            "name": "Options",
-            "position": [
-                563.0,
-                127.20001220703125,
-                0.0
-            ],
-            "rotation": [
-                1.0,
-                0.0,
-                0.0,
-                0.0
-            ],
-            "scale": [
-                1.0,
-                1.0,
-                1.0
-            ],
-            "parent": "FirstPlane",
-            "child": []
-        },
-        {
-            "HashCode": 0,
-            "name": "Main Background",
-            "position": [
-                563.0,
-                392.0,
-                0.0
-            ],
-            "rotation": [
-                1.0,
-                0.0,
-                0.0,
-                0.0
-            ],
-            "scale": [
-                1.0,
-                1.0,
-                1.0
-            ],
-            "parent": "Canvas",
-            "child": []
-        },
-        {
-            "HashCode": 0,
-            "name": "New Game",
-            "position": [
-                563.0,
-                178.30999755859376,
-                0.0
-            ],
-            "rotation": [
-                1.0,
-                0.0,
-                0.0,
-                0.0
-            ],
-            "scale": [
-                1.0,
-                1.0,
-                1.0
-            ],
-            "parent": "FirstPlane",
-            "child": []
-        },
-        {
-            "HashCode": 0,
-            "name": "Exit",
-            "position": [
-                563.0,
-                70.10000610351563,
-                0.0
-            ],
-            "rotation": [
-                1.0,
-                0.0,
-                0.0,
-                0.0
-            ],
-            "scale": [
-                1.0,
-                1.0,
-                1.0
-            ],
-            "parent": "FirstPlane",
-            "child": []
-        },
-        {
-            "HashCode": 0,
-            "name": "FirstPlane",
-            "position": [
-                563.0,
-                392.0,
-                0.0
-            ],
-            "rotation": [
-                1.0,
-                0.0,
-                0.0,
-                0.0
-            ],
-            "scale": [
-                1.0,
-                1.0,
-                1.0
-            ],
-            "parent": "Canvas",
-            "child": [
-                "New Game",
-                "Options",
-                "Exit"
-            ]
         }
     ]
 }

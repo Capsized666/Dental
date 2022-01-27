@@ -79,6 +79,39 @@
             "Экзамен",
             "Exam"
          ]
+      },
+	  {
+         "uiname": "Pause",
+         "uitext": [
+            "Пауза",
+            "Пауза",
+            "Pause"
+         ]
+      },
+	  {
+         "uiname": "ExitQ",
+         "uitext": [
+            "Ти справді хочеш піти?",
+            "Вы действительно хотите уйти?",
+            "Do you really want to leave?"
+         ]
+      }
+	  ,
+	  {
+         "uiname": "Yes",
+         "uitext": [
+            "Так",
+            "Да",
+            "Yes"
+         ]
+      },
+	  {
+         "uiname": "No",
+         "uitext": [
+            "Ні",
+            "Нет",
+            "No"
+         ]
       }
    ],
    "DQuestion"	:	[

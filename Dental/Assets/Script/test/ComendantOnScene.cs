@@ -291,9 +291,15 @@ public sealed class ComendantOnScene : MonoBehaviour
         guiOn = false;
         initState();
         startCount = Recvisit.Count;
-        loadScreen.setProgress(0, 1);
+        if (loadScreen!=null)
+        {
+            loadScreen.setProgress(0, 1);
+        }
+        Time.timeScale = Time.timeScale != 1 ? 1 : Time.timeScale;
         StartCoroutine(LoadLost());
     }
+        
+
 
     private void loadArdessable(out addressableGuidNameList adressList)
     {
@@ -348,6 +354,7 @@ public sealed class ComendantOnScene : MonoBehaviour
         {
             loadScreen.setProgress(1, 1);
             loadScreen.setHide(true);
+            
         }
         if (scene != SceneManager.GetActiveScene())
         {
@@ -539,20 +546,35 @@ public sealed class ComendantOnScene : MonoBehaviour
     }
     private void ChekScene()
     {
-        var foundObjects = FindObjectsOfType<GameObject>();
-        foreach (var item in foundObjects)
+        var fObjects = FindObjectsOfType<GameObject>();
+        foreach (var item in fObjects)
         {
             var chek = item.GetComponent<ComendantOnScene>();
-            if (chek!=null&chek != Instance)
+            if (chek != null & chek != Instance)
             {
                 DestroyImmediate(item);
                 break;
             }
-            if (chekFamilyTree(item))
+        }
+        var foundObjects = SceneManager.GetActiveScene().GetRootGameObjects();
+        foreach (var item in foundObjects)
+        {
+            if (ChekIgnore(item.name))
             {
                 Recvisit.Add(item);
+                Recvisit.AddRange(getAllChildren(item));
             }
         }
+    }
+    private List<GameObject> getAllChildren(GameObject go) {
+        var res = new List<GameObject>();
+        
+        for (int i = 0; i < go.transform.childCount; i++)
+        {
+            res.Add(go.transform.GetChild(i).gameObject);
+            res.AddRange(getAllChildren(go.transform.GetChild(i).gameObject));
+        }
+        return res;
     }
 
     private bool chekFamilyTree(GameObject item)
@@ -560,15 +582,12 @@ public sealed class ComendantOnScene : MonoBehaviour
         if (item.transform.parent != null)
         {
             return chekFamilyTree(item.transform.parent.gameObject);
-
         }
         else
         {
             return ChekIgnore(item.name);
         }
-        //return true;
     }
-
     private bool ChekIgnore(string s)
     {
         for (int i = 0; i < ignore.Length; i++)
@@ -577,7 +596,6 @@ public sealed class ComendantOnScene : MonoBehaviour
             {
                 return false;
             }
-
         }
         return true;
     }
@@ -587,14 +605,11 @@ public sealed class ComendantOnScene : MonoBehaviour
         {
             if (go.compareTransform(item))
             {
-
                 return item.transform;
-
             }
         }
         return null;
     }
-
     void OnLoadAsset(AsyncOperationHandle<GameObject> handle)
     {
         //print(handle.GetHashCode() +  " w");
@@ -634,7 +649,6 @@ public sealed class ComendantOnScene : MonoBehaviour
         }
         Addressables.Release(handle);
     }
-
     public void loadScene(scenes s)
     {
         SceneManager.LoadScene(s.ToString(), LoadSceneMode.Single);
