@@ -12,7 +12,7 @@ public enum scenes {
     Cabinet
 }
 
-public sealed class ComendantOnScene : MonoBehaviour
+public class ComendantOnScene : MonoBehaviour
 {
     bool guiOn;
     Scene scene;
