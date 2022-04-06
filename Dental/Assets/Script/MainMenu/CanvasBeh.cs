@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CanvasBeh : MonoBehaviour
 {
+    
     public static CanvasBeh Instance;
     Canvas canvas;
     InteractiveText _interText;
