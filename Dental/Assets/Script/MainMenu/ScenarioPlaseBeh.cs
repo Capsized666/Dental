@@ -30,6 +30,7 @@ public class ScenarioPlaseBeh : MonoBehaviour
 
     private void creatingLabel()
     {
+        
         var lp = ServiceStuff.Instance.currLangPack;
         var pacientcount = lp.PAnswer.Length >= 3 ? 3 : lp.PAnswer.Length;  
         //for (int i = 0; i < pacientcount; i++)
@@ -47,13 +48,9 @@ public class ScenarioPlaseBeh : MonoBehaviour
             plb.AddDictionary(lp.PAnswer[i].PassportData[1].uiTextD);
             go.transform.SetParent(content);
             ContentPanels.Add(rt);
-            
         }
     }
             
-
-
-
     void Update()
     {
         sizeManager();

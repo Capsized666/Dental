@@ -66,9 +66,9 @@ public sealed class Character : MonoBehaviour
                 //Cursor.visible = true;
             }
         }
-
-
     }
+
+
 
     public void setActivity(bool b) {
         disable = b;

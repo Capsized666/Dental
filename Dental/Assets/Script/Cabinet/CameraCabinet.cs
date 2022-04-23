@@ -1,16 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraCabinet : MonoBehaviour
 {
+    enum WorkState { 
+        FPV=1,
+        Free,
+    }
+    WorkState currentstate=WorkState.FPV;
     public Inputs mInputs;
     public float rotateSpeed;
     private Vector2 m_Rotation;
+    bool action;
+    //public TextInfo textInfo;
     // Start is called before the first frame update
     void Awake()
     {
         mInputs = new Inputs();
+        mInputs.Player.Action.started +=
+            ctx =>
+            {
+                action = true;
+            };
+        mInputs.Player.Action.canceled +=
+            ctx =>
+            {
+                action = false;
+            };
     }
 
     private void OnEnable()
@@ -21,19 +39,85 @@ public class CameraCabinet : MonoBehaviour
     {
         mInputs.Disable();
     }
-    // Update is called once per frame
+   
     void Update()
     {
         var look = mInputs.Player.Look.ReadValue<Vector2>();
+        if (ScenaManager.Instance.currentState == gamestate.moving)
+        {
+
         Look(look);
+        RayRutine();
+        }
     }
+
+    private void RayRutine()
+    {
+        Ray ray = new Ray(transform.position, transform.forward);
+        
+        RaycastHit hit;
+
+            
+        if (Physics.Raycast( ray,out hit ,2f))
+        {
+            switch (ScenaManager.Instance.currentState)
+            {
+                case gamestate.moving:
+                    switch (hit.collider.gameObject.name)
+                    {
+                        case "Pacient":
+                            UIEventSystem.Instance.InfoTextShowT(hit.collider.gameObject.name);//ui dynamic
+                            if (action)
+                            {
+                                ScenaManager.Instance.currentState = gamestate.asking; 
+                                UIEventSystem.Instance.InfoTextHideT();
+                            }
+                            break;
+                        case "Exit":
+                            UIEventSystem.Instance.InfoTextShowT(hit.collider.gameObject.name);//ui dynamic
+                            if (action)
+                            {
+                                //ScenaManager.Instance.currentState = gamestate.asking;
+                                SceneManager.LoadScene(0);
+                                UIEventSystem.Instance.InfoTextHideT();
+                            }
+                            break;
+                        case "Medcard":
+                            UIEventSystem.Instance.InfoTextShowT(hit.collider.gameObject.name);//ui dynamic
+                            if (action)
+                            {
+                                UIEventSystem.Instance.MedicalCardShowT();
+                                
+                            }
+                            break;
+                        default:
+                            //UIEventSystem.Instance.InfoTextHideT();
+                            break;
+                    }
+                    break;
+                case gamestate.asking:
+                    break;
+                default:
+                    //UIEventSystem.Instance.InfoTextHideT();
+                    break;
+            }
+        }
+            else {
+            UIEventSystem.Instance.InfoTextHideT(); }
+
+    }
+
     private void Look(Vector2 rotate)
     {
         if (rotate.sqrMagnitude < 0.01)
             return;
         var scaledRotateSpeed = rotateSpeed * Time.deltaTime;
-        //m_Rotation.y += rotate.x * scaledRotateSpeed;
         m_Rotation.x = Mathf.Clamp(m_Rotation.x - rotate.y * scaledRotateSpeed, -89, 89);
+        if (currentstate==WorkState.Free)
+        {
+            m_Rotation.y += rotate.x * scaledRotateSpeed;
+        }
         transform.localEulerAngles = m_Rotation;
+
     }
 }

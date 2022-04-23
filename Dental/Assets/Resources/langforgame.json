@@ -112,7 +112,24 @@
             "Нет",
             "No"
          ]
+      },
+	  {
+         "uiname": "Medcard",
+         "uitext": [
+            "Зробити записи",
+            "Сделать запипси",
+            "Make notes"
+         ]
+      },
+	  {
+         "uiname": "Pacient",
+         "uitext": [
+            "Опитати",
+            "Опросить",
+            "Interrogate"
+         ]
       }
+	  
    ],
    "DQuestion"	:	[
       {		 
