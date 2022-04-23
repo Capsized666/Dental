@@ -12,8 +12,8 @@ public class LoadScreen : MonoBehaviour
     void Awake()
     {
         Bar = GetComponentInChildren<LoaderBar>(); 
-
     }
+
 
     void FixedUpdate()
     {

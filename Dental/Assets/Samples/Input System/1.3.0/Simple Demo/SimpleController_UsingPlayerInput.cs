@@ -20,10 +20,12 @@ public class SimpleController_UsingPlayerInput : MonoBehaviour
     {
         m_Move = context.ReadValue<Vector2>();
     }
+
     public void OnLook(InputAction.CallbackContext context)
     {
         m_Look = context.ReadValue<Vector2>();
     }
+
     public void OnFire(InputAction.CallbackContext context)
     {
         switch (context.phase)

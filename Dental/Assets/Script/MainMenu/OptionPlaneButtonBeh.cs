@@ -25,6 +25,7 @@ public class OptionPlaneButtonBeh : MonoBehaviour, IPointerDownHandler
     void Start()
     {
         tmpText = GetComponent<TextMeshProUGUI>();
+        
         nameDic = ServiceStuff.Instance.getUIDict(gameObject.name);
     }
     void Update()

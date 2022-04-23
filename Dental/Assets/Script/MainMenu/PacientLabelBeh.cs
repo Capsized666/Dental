@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class PacientLabelBeh : MonoBehaviour,IPointerDownHandler
 {
@@ -18,7 +16,7 @@ public class PacientLabelBeh : MonoBehaviour,IPointerDownHandler
     void Start()
     {
         curentRt= GetComponent<RectTransform>() ;
-        tmpText = GetComponentInChildren<TextMeshProUGUI > ();
+        tmpText = GetComponentInChildren<TextMeshProUGUI>();
         textRt  = tmpText.GetComponent<RectTransform>() ;
     }
     void Update()
@@ -45,10 +43,12 @@ public class PacientLabelBeh : MonoBehaviour,IPointerDownHandler
     public void AddDictionary(Dictionary<Lang, string> dic) {
         namePacient.Add(dic);
     }
-
+    
     public void OnPointerDown(PointerEventData eventData)
     {
-        ComendantOnScene.Instance.setState(gameObject.name);
-        ComendantOnScene.Instance.loadScene(scenes.Cabinet);
+        ServiceStuff.Instance.Chose = gameObject.name;
+        ScenaManager.Instance.LoadScene("Cabinet");
+        //ComendantOnScene.Instance.setState(gameObject.name);
+        //ComendantOnScene.Instance.loadScene(scenes.Cabinet);
     }
 }

@@ -59,9 +59,25 @@ public class ComendantOnScene : MonoBehaviour
         Time.timeScale = Time.timeScale != 1 ? 1 : Time.timeScale;
         StartCoroutine(LoadLost());
     }
-        
+    void FixedUpdate()
+    {
+        if (curretstruct.objectList.Length == Recvisit.Count)
+        {
+            loadScreen.setProgress(1, 1);
+            loadScreen.setHide(true);
+            
+        }
+        if (scene != SceneManager.GetActiveScene())
+        {
+            initState();
+        }
+#if UNITY_EDITOR
+        EditorWork();
+#endif
 
 
+    }
+     
     private void loadArdessable(out addressableGuidNameList adressList)
     {
         var path = Path.Combine(Application.dataPath + "/Resources", "assetTable.json");
@@ -79,6 +95,7 @@ public class ComendantOnScene : MonoBehaviour
         }
         adressList = JsonUtility.FromJson<addressableGuidNameList>(s);
     }
+
     IEnumerator LoadLost()
     {
 
@@ -109,24 +126,6 @@ public class ComendantOnScene : MonoBehaviour
         yield break;
         //yield return null;
     }
-    void FixedUpdate()
-    {
-        if (curretstruct.objectList.Length == Recvisit.Count)
-        {
-            loadScreen.setProgress(1, 1);
-            loadScreen.setHide(true);
-            
-        }
-        if (scene != SceneManager.GetActiveScene())
-        {
-            initState();
-        }
-#if UNITY_EDITOR
-        EditorWork();
-#endif
-
-
-    }
 
 #if UNITY_EDITOR
     private void EditorWork()
@@ -139,7 +138,7 @@ public class ComendantOnScene : MonoBehaviour
         {
             print("Writing Json");
             UpdateScene();
-            writeJson();
+            writeJson(); 
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -150,7 +149,6 @@ public class ComendantOnScene : MonoBehaviour
             guiOn = true != guiOn ? true : false;
         }
     }
-
     void OnGUI()
     {
         if (guiOn)
@@ -414,4 +412,5 @@ public class ComendantOnScene : MonoBehaviour
     {
         SceneManager.LoadScene(s.ToString(), LoadSceneMode.Single);
     }
+
 }
