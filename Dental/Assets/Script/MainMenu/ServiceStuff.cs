@@ -194,6 +194,18 @@ public struct mainSetting
         }
         return new Dictionary<Lang, string>();
     }
+
+    public answerText GetPatientAnswers(string Name) {
+        foreach (var item in PAnswer)
+        {
+            if (item.Patient == Name)
+            {
+                return item;
+            }
+        }
+
+        return null;
+    }
 }
 [Serializable]
 public class questionText
@@ -201,7 +213,7 @@ public class questionText
     public string uiname;
     public string[] uitext;
     public serviceText[] ServiceText;
-    public Dictionary<Lang, String> uiTextD = new Dictionary<Lang, string>();
+    public Dictionary<Lang, string> uiTextD = new Dictionary<Lang, string>();
     public void fillText()
     {
         uiTextD.Add(Lang.ua, uitext[0]);

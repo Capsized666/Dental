@@ -5,7 +5,7 @@ using System;
 public class Quest
 {
     public List<QuestEvent> questEvents = new List<QuestEvent>();
-    List<QuestEvent> pathList = new List<QuestEvent>();
+    
     public Quest(){
     }
     public QuestEvent AddQuestEvent(string n,string d)

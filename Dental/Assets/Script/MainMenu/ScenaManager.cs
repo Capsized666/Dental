@@ -129,7 +129,7 @@ public sealed class ScenaManager : MonoBehaviour
         if (onChangeScene != null)
         {
             onChangeScene();
-            //print($"tres"+onInfoTextShow.ToString());
+            
         }
 
     }

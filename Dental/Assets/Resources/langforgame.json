@@ -1,5 +1,5 @@
 {
-   "ServiceText": 	[
+	"ServiceText": 	[
       {
          "uiname": "New Game",
          "uitext": [
@@ -95,8 +95,7 @@
             "Вы действительно хотите уйти?",
             "Do you really want to leave?"
          ]
-      }
-	  ,
+      },
 	  {
          "uiname": "Yes",
          "uitext": [
@@ -131,7 +130,7 @@
       }
 	  
    ],
-   "DQuestion"	:	[
+	"DQuestion"	:	[
       {		 
             "uiname":"Passport Data",
             "uitext":["Паспортні данні",
