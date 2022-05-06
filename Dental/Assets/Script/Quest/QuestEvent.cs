@@ -6,12 +6,14 @@ using UnityEngine;
 public class QuestEvent 
 {
     public enum EventStatus { WAITING,CURRENT,DONE};
+    public EventStatus status;
+
+
     public string name;
     public string description;
     public string id { get; }
     public int order=-1;
 
-    public EventStatus status;
 
     public List<QuestPath> pathlist = new List<QuestPath>();
 

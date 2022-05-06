@@ -62,6 +62,15 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Quest"",
+                    ""type"": ""Button"",
+                    ""id"": ""e64c0f88-6a58-49ad-827f-17e2c4158f67"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -163,6 +172,17 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b0abed6c-1061-4116-bfce-ff0316983f70"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Quest"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -192,6 +212,7 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
         m_Player_Action = m_Player.FindAction("Action", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
+        m_Player_Quest = m_Player.FindAction("Quest", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -255,6 +276,7 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Action;
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Pause;
+    private readonly InputAction m_Player_Quest;
     public struct PlayerActions
     {
         private @Inputs m_Wrapper;
@@ -263,6 +285,7 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
         public InputAction @Action => m_Wrapper.m_Player_Action;
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
+        public InputAction @Quest => m_Wrapper.m_Player_Quest;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -284,6 +307,9 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                 @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @Quest.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuest;
+                @Quest.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuest;
+                @Quest.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuest;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -300,6 +326,9 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
+                @Quest.started += instance.OnQuest;
+                @Quest.performed += instance.OnQuest;
+                @Quest.canceled += instance.OnQuest;
             }
         }
     }
@@ -319,5 +348,6 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
         void OnAction(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnQuest(InputAction.CallbackContext context);
     }
 }

@@ -13,6 +13,11 @@ public class UIEventSystem : MonoBehaviour
     public event Action onMedicalCardShow;
     public event Action onMedicalCardHide;
 
+    public event Action onAskingBarShow;
+    public event Action onAskingBarHide;
+
+    public event Action onQuestBarShow;
+    public event Action onQuestBarHide;
 
 
 
@@ -42,6 +47,20 @@ public class UIEventSystem : MonoBehaviour
         if (onMedicalCardHide != null)
         {
             onMedicalCardHide();
+        }
+    }
+    public void AskingBarShowT()
+    {
+        if (onAskingBarShow != null)
+        {
+            onAskingBarShow();
+        }
+    }
+    public void AskingBarHideT()
+    {
+        if (onAskingBarHide != null)
+        {
+            onAskingBarHide();
         }
     }
 

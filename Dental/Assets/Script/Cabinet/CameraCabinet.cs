@@ -14,6 +14,7 @@ public class CameraCabinet : MonoBehaviour
     public float rotateSpeed;
     private Vector2 m_Rotation;
     bool action;
+    bool quest;
     //public TextInfo textInfo;
     // Start is called before the first frame update
     void Awake()
@@ -28,6 +29,16 @@ public class CameraCabinet : MonoBehaviour
             ctx =>
             {
                 action = false;
+            };
+        mInputs.Player.Quest.started +=
+    ctx =>
+    {
+        quest = true;
+    };
+        mInputs.Player.Quest.canceled +=
+            ctx =>
+            {
+                quest = false;
             };
     }
 
@@ -69,7 +80,8 @@ public class CameraCabinet : MonoBehaviour
                             UIEventSystem.Instance.InfoTextShowT(hit.collider.gameObject.name);//ui dynamic
                             if (action)
                             {
-                                ScenaManager.Instance.currentState = gamestate.asking; 
+                                
+                                UIEventSystem.Instance.AskingBarShowT();
                                 UIEventSystem.Instance.InfoTextHideT();
                             }
                             break;
@@ -87,8 +99,8 @@ public class CameraCabinet : MonoBehaviour
                             if (action)
                             {
                                 UIEventSystem.Instance.MedicalCardShowT();
-                                
                             }
+                                
                             break;
                         default:
                             //UIEventSystem.Instance.InfoTextHideT();
@@ -104,7 +116,10 @@ public class CameraCabinet : MonoBehaviour
         }
             else {
             UIEventSystem.Instance.InfoTextHideT(); }
-
+        //if (ScenaManager.Instance.currentState == gamestate.moving&& quest)
+        //{
+        //    UIEventSystem.Instance.AskingBarShowT();
+        //}
     }
 
     private void Look(Vector2 rotate)
