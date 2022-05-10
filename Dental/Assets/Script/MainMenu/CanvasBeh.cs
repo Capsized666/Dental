@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CanvasBeh : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class CanvasBeh : MonoBehaviour
     public static CanvasBeh Instance;
     Canvas canvas;
     InteractiveText _interText;
+    Image currImage;   
     // Start is called before the first frame update
     void Awake()
     {

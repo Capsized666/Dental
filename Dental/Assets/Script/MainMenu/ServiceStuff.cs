@@ -118,6 +118,7 @@ public struct mainSetting
     public serviceText[] ServiceText;
     public questionText[] DQuestion;
     public answerText[] PAnswer;
+    public GameQuests[] GQuests;
 
     public void fillAllText()
     {
@@ -132,6 +133,10 @@ public struct mainSetting
             item.fillAllText();
         }
         foreach (var item in PAnswer)
+        {
+            item.fillAllText();
+        }
+        foreach (var item in GQuests)
         {
             item.fillAllText();
         }
@@ -194,7 +199,16 @@ public struct mainSetting
         }
         return new Dictionary<Lang, string>();
     }
-
+    public questionText GetQuestionBlock(string name) {
+        for (int i = 0; i < DQuestion.Length; i++)
+        {
+            if (DQuestion[i].uiname==name)
+            {
+                return DQuestion[i];
+            }
+        }
+        return null;
+    }
     public answerText GetPatientAnswers(string Name) {
         foreach (var item in PAnswer)
         {
@@ -204,6 +218,17 @@ public struct mainSetting
             }
         }
 
+        return null;
+    }
+
+    public GameQuests getByName(string name) {
+        foreach (var item in GQuests)
+        {
+            if (name==item.QuestsName)
+            {
+                return item;
+            }
+        }
         return null;
     }
 }
@@ -233,6 +258,20 @@ public class answerText
     public string Patient;
     public serviceText[] PassportData;
     public serviceText[] PatientComplaints;
+
+    public serviceText[] GetAnsverBloc(string s) {
+        switch (s)
+        {
+            case "Passport Data":
+                return PassportData;
+                break;
+            case "Patient complaints":
+                return PatientComplaints;
+                break;
+            default:
+                return null;
+        }
+    }
     public void fillAllText()
     {
         foreach (var item in PassportData)
@@ -261,7 +300,31 @@ public class serviceText
 
 }
 
-
+[Serializable]
+public class GameQuests
+{
+    public string QuestsName;//":"Passport Data",
+    public int[] RightOrder;
+    public int[] MustOrder;
+    public serviceText[] Details;
+    public void fillAllText()
+    {
+        foreach (var item in Details)
+        {
+            item.fillText();
+        }
+    }
+    public Dictionary<Lang, String> GetDetalis(string name) {
+        for (int i = 0; i < Details.Length; i++)
+        {
+            if (name== Details[i].uiname)
+            {
+                return Details[i].uiTextD;
+            }
+        }
+        return null;
+    }
+ }
 //Addressables.LoadAssetAsync<GameObject>("langforgame").Completed += OnLoadDone;
 
 /*

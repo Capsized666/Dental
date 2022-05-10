@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,8 @@ using UnityEngine.UI;
 public class MedicalCard : MonoBehaviour
 {
     public List<Sprite> pages = new List<Sprite>();
+    public List<Text> coloms = new List<Text>();
+
     public Image CurrentImage;
     private int pagenumber=0;
     bool visiable=false;
@@ -55,4 +58,20 @@ public class MedicalCard : MonoBehaviour
         }
     }
         
+}
+
+[Serializable]
+public struct CardPlaces
+{
+    public Place[] DrawObgects;
+
+}
+[Serializable]
+public struct Place
+{
+    public string name  ;//"MainList",
+    public int[] size   ;//[1169 , 826],
+    public int[] poin   ;//[0,0]
+    public int page;
+
 }

@@ -10,18 +10,30 @@ public class QuestEvent
 
 
     public string name;
-    public string description;
+    public Dictionary<Lang, string> description;
     public string id { get; }
     public int order=-1;
+    public GameQuests qvestInfo; 
 
 
     public List<QuestPath> pathlist = new List<QuestPath>();
+    
 
+    public QuestEvent(GameQuests q) {
+
+        id = Guid.NewGuid().ToString();
+        qvestInfo = q;
+        name = q.QuestsName;
+        description = q.GetDetalis(name);
+        status = EventStatus.WAITING;
+
+    }
     public QuestEvent(string n,string d)
     {
         id = Guid.NewGuid().ToString();
         name = n;
-        description = d;
+        description = new Dictionary<Lang, string>() 
+        { {Lang.en, "Erorr" } };
         status = EventStatus.WAITING;
 
     }
