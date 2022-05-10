@@ -258,6 +258,7 @@
     ],
 	"PAnswer":[
 		{
+			
 			"Patient":"Patient1",
 			"PassportData":[
                {
@@ -485,8 +486,37 @@
                               "What is a sensitivity disorder?"]
                }]
 		}
+	],
+	"GQuests":[
+		{
+			"QuestsName":"Passport Data",
+			"RightOrder":[1,2,3,4,5,6,7,8],
+			"MustOrder":[1,2,3,7,8],
+			"Details":
+			[
+					{
+					  "uiname":"Description",
+					  "uitext":[	"Заповнити паспортні дані у медичну картку",
+									"Заполнить паспортные данные в медицинскую карту",
+									"Fill in the passport data in the medical card"]
+				   }
+			]
+		},
+		{
+			"QuestsName":"Patient complaints",
+			"RightOrder":[1,2,3,4,5,6,7,8,9,10],
+			"MustOrder":[1,2,3,5,4,7,8,10],
+			"Details":
+			[
+					{
+					  "uiname":"Description",
+					  "uitext":[	"Вислухати скарги Паціента",
+									"Выслушать жалобы Пациента",
+									"Listen to the patient's complaints"]
+				   }
+			]
+		}
 	]
- 
    
    
 }

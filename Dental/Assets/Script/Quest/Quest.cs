@@ -5,12 +5,19 @@ using System;
 public class Quest
 {
     public List<QuestEvent> questEvents = new List<QuestEvent>();
-    
+     
     public Quest(){
     }
+
     public QuestEvent AddQuestEvent(string n,string d)
     {
         QuestEvent questEvent = new QuestEvent(n, d);
+        questEvents.Add(questEvent);
+        return questEvent;
+    }
+    public QuestEvent AddQuestEvent(GameQuests d)
+    {
+        QuestEvent questEvent = new QuestEvent(d);
         questEvents.Add(questEvent);
         return questEvent;
     }
@@ -49,6 +56,25 @@ public class Quest
                 BFS(e.end.id, orderNumber + 1);
             }
         }
+    }
+
+    public void setLinearPath() {
+        for (int i = 0; i < questEvents.Count-1; i++)
+        {
+            AddPath(questEvents[i].id, questEvents[i+1].id);
+        }
+        BFS(questEvents[0].id);
+        questEvents[0].UpdateQuestEvent(QuestEvent.EventStatus.CURRENT);
+    }
+    public QuestEvent getCurent() {
+        foreach (var item in questEvents)
+        {
+            if (item.status==QuestEvent.EventStatus.CURRENT)
+            {
+                return item;
+            }
+        }
+        return null;
     }
 
     public void PrintPath()
