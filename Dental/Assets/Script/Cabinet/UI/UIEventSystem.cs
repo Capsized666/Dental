@@ -6,7 +6,7 @@ using System;
 public class UIEventSystem : MonoBehaviour
 {
     public static UIEventSystem Instance;
-
+    
     public event Action<string> onInfoTextShow;
     public event Action onInfoTextHide;
 
@@ -60,9 +60,27 @@ public class UIEventSystem : MonoBehaviour
     {
         if (onAskingBarHide != null)
         {
+            
             onAskingBarHide();
         }
     }
+
+    public void QuestBarShowT()
+    {
+        if (onQuestBarShow != null) 
+        {
+            onQuestBarShow();
+        }
+    }
+    public void QuestBarHideT()
+    {
+        
+        if (onQuestBarHide != null)
+        {
+            onQuestBarHide();
+        }
+    }
+
 
     private void Awake()
     {

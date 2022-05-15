@@ -34,11 +34,13 @@ public class CameraCabinet : MonoBehaviour
     ctx =>
     {
         quest = true;
+        //print(quest);
     };
         mInputs.Player.Quest.canceled +=
             ctx =>
             {
                 quest = false;
+                //print(quest);
             };
     }
 
@@ -103,7 +105,7 @@ public class CameraCabinet : MonoBehaviour
                                 
                             break;
                         default:
-                            //UIEventSystem.Instance.InfoTextHideT();
+                            
                             break;
                     }
                     break;
@@ -116,6 +118,13 @@ public class CameraCabinet : MonoBehaviour
         }
             else {
             UIEventSystem.Instance.InfoTextHideT(); }
+        if (quest)
+        {
+           
+            UIEventSystem.Instance.QuestBarShowT();
+        }
+            
+        
         //if (ScenaManager.Instance.currentState == gamestate.moving&& quest)
         //{
         //    UIEventSystem.Instance.AskingBarShowT();

@@ -258,7 +258,7 @@
     ],
 	"PAnswer":[
 		{
-			
+			"Sex" : "1",
 			"Patient":"Patient1",
 			"PassportData":[
                {
@@ -281,13 +281,13 @@
                },
                {
                   "uiname":"HomeAddress",
-                  "uitext":["Місто Харків вулиця Курилівська, 95",
+                  "uitext":["Місто Харків вулиця Курилівська, 95 ",
                               "Город Харьков улица Куриловская, 95",
                               "The city of Kharkiv, 95 Kurylivska Street"]
                },
                {
                   "uiname":"Work",
-                  "uitext":["Харьковский тракторній завод",
+                  "uitext":["Харьківский тракторний завод",
                               "Харьковский тракторный завод",
                               "Kharkiv Tractor Plant"]
                },
@@ -373,6 +373,7 @@
                }]
 		},
 		{
+			"Sex" : "1",
 			"Patient":"Patient2",
 			"PassportData":[
                {
@@ -487,36 +488,104 @@
                }]
 		}
 	],
-	"GQuests":[
-		{
-			"QuestsName":"Passport Data",
-			"RightOrder":[1,2,3,4,5,6,7,8],
-			"MustOrder":[1,2,3,7,8],
-			"Details":
-			[
-					{
-					  "uiname":"Description",
-					  "uitext":[	"Заповнити паспортні дані у медичну картку",
-									"Заполнить паспортные данные в медицинскую карту",
-									"Fill in the passport data in the medical card"]
-				   }
-			]
-		},
-		{
-			"QuestsName":"Patient complaints",
-			"RightOrder":[1,2,3,4,5,6,7,8,9,10],
-			"MustOrder":[1,2,3,5,4,7,8,10],
-			"Details":
-			[
-					{
-					  "uiname":"Description",
-					  "uitext":[	"Вислухати скарги Паціента",
-									"Выслушать жалобы Пациента",
-									"Listen to the patient's complaints"]
-				   }
-			]
-		}
-	]
+	
+   "GQuests": [
+   {
+      "QuestsName": "Game",
+      "PlayZone": [
+        {
+          "Name": "Game",
+          "RightOrder": [
+            "Passport Data"
+            
+          ],
+          "MustOrder": [
+            "Passport Data"
+          ]
+        }],
+      "Details": []
+    },
+	
+    {
+      "QuestsName": "Passport Data",
+      "PlayZone": [
+        {
+          "Name": "Passport Data",
+          "RightOrder": [
+            "Vocal",
+            "MedicalCard"
+          ],
+          "MustOrder": [
+                "Vocal",
+            "MedicalCard"
+          ]
+        },           
+        {
+          "Name": "Vocal",
+          "RightOrder": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8"
+          ],
+          "MustOrder": [
+                "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6"
+            
+          ]
+        },
+        {
+          "Name": "MedicalCard",
+          "RightOrder": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "MustOrder": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ]
+        }
+      ],
+      "Details": [
+        {
+          "uiname": "Passport Data",
+          "uitext": [
+            "Заповнити паспортні дані у медичну картку",
+            "Заполнить паспортные данные в медицинскую карту",
+            "Fill in the passport data in the medical card"
+          ]
+        },
+        {
+          "uiname": "Vocal",
+          "uitext": [
+            "Дізнатись про паспортні дані пацієнта",
+            "Узнать паспортные данные пациента",
+            "Find out the patient's passport data"
+          ]
+        },{
+          "uiname": "MedicalCard",
+          "uitext": [
+            "Заповнити медичну картку",
+            "Заполнить медицинскую карту",
+            "Fill out a medical card"
+          ]
+        }
+        
+      ]
+    }
+  ]
    
    
 }
