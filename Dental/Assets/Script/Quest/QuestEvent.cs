@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[Serializable]
 public class QuestEvent 
 {
     public enum EventStatus { WAITING,CURRENT,DONE};
@@ -13,27 +13,28 @@ public class QuestEvent
     public Dictionary<Lang, string> description;
     public string id { get; }
     public int order=-1;
-    public GameQuests qvestInfo; 
+    public questZone curentquest;
 
 
     public List<QuestPath> pathlist = new List<QuestPath>();
-    
 
-    public QuestEvent(GameQuests q) {
+    public QuestEvent()
+    {
+
+    }
+    public QuestEvent(questZone q, Dictionary<Lang, string> d) {
 
         id = Guid.NewGuid().ToString();
-        qvestInfo = q;
-        name = q.QuestsName;
-        description = q.GetDetalis(name);
+        name = q.Name;
+        description = d;
         status = EventStatus.WAITING;
 
     }
-    public QuestEvent(string n,string d)
+    public QuestEvent(string n, Dictionary<Lang, string> d)
     {
         id = Guid.NewGuid().ToString();
         name = n;
-        description = new Dictionary<Lang, string>() 
-        { {Lang.en, "Erorr" } };
+        description = d;
         status = EventStatus.WAITING;
 
     }
@@ -41,5 +42,7 @@ public class QuestEvent
     {
         status = es;
     }
-
+    public void SetQZ(questZone qz) {
+        curentquest = qz;
+    }
 }

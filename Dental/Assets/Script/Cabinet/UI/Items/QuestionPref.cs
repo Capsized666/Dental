@@ -18,6 +18,12 @@ public class QuestionPref : MonoBehaviour
         QuestionText = gameObject.GetComponentInChildren<Text>();
         QuestButton = gameObject.GetComponentInChildren<Button>();
     }
+    void Start() {
+        if (true)
+        {
+
+        }
+    }
     public void SetOrderNumber(int i) {
         Order = i;
     }
@@ -32,16 +38,11 @@ public class QuestionPref : MonoBehaviour
         QuestionText.text = uiQuest[l];
         QuestButton.onClick.AddListener(()=> {
             curator.Ansvering(Order, uiQuest, uiAnsw);
-            Destroy(gameObject);
-            curator.FillField();
+            
         }) ;
     }
 
 
-    void Start()
-    {
-            
-    }
 
     // Update is called once per frame
     void Update()

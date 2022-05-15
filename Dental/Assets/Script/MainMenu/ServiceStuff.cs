@@ -29,7 +29,7 @@ public sealed class ServiceStuff:MonoBehaviour {
             { // Экземпляр объекта уже существует на сцене
                 Destroy(gameObject); // Удаляем объект
             }
-            currlang =Lang.en;
+        currlang =Lang.ua;
         curentMode = gameMode.practical;
         loadLang();
         DontDestroyOnLoad(Instance);
@@ -231,6 +231,9 @@ public struct mainSetting
         }
         return null;
     }
+
+
+
 }
 [Serializable]
 public class questionText
@@ -255,6 +258,7 @@ public class questionText
 [Serializable]
 public class answerText
 {
+    public int Sex;
     public string Patient;
     public serviceText[] PassportData;
     public serviceText[] PatientComplaints;
@@ -304,8 +308,7 @@ public class serviceText
 public class GameQuests
 {
     public string QuestsName;//":"Passport Data",
-    public int[] RightOrder;
-    public int[] MustOrder;
+    public questZone[] PlayZone;
     public serviceText[] Details;
     public void fillAllText()
     {
@@ -324,7 +327,8 @@ public class GameQuests
         }
         return null;
     }
- }
+
+}
 //Addressables.LoadAssetAsync<GameObject>("langforgame").Completed += OnLoadDone;
 
 /*
