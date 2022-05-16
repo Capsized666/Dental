@@ -32,7 +32,7 @@ public class QuestManager : MonoBehaviour
         };
         
         mainPlane = GetComponent<RectTransform>();
-        print("dse");
+        //print("dse");
     }
     void Start()
     {
@@ -99,17 +99,9 @@ public class QuestManager : MonoBehaviour
                 {
                     var quest = new Quest();
                     quests.Add(quest.AddQuestEvents(item));
-                    
                 }
-                
             }
         }
-
-
-            //
-            //    }
-            //}
-
         for (int i = 0; i < quests.Count-1; i++)
         {
             quests[i].AddPath(quests[i].lastEvent.curentquest,
@@ -124,36 +116,28 @@ public class QuestManager : MonoBehaviour
         mainPlane.sizeDelta = CanSize * 0.89f;
         for (int i = 0; i < quests.Count; i++)
         {
-            for (int j = 0; j < quests[i].questEvents.Count; j++)
-            {
-                var butt = CrtQButton(quests[i].questEvents[j]);
+            //for (int j = 0; j < quests[i].questEvents.Count; j++)
+            //{
+                var butt = CrtQButton(quests[i]);
                 butt.transform.SetParent(Content);
                 butt.GetComponent<RectTransform>().sizeDelta=new Vector2(0,150);
                 Content.sizeDelta+= new Vector2(0, 150);
-            }
+            //}
         }
     }
 
-    GameObject CrtQButton(GameQuests currentGQ)
+    GameObject CrtQButton(Quest quest)
     {
 
         GameObject b = Instantiate(prefabHead);
         var scrpt = b.GetComponent<MainQuestPref>();
         //var f = getAsking().GetDetalis(e.name);
-        //scrpt.Setup(e, f);
+        scrpt.Setup(quest,prefabregul);
+        return b;
+    }
         
-        return b;
-    }
 
-    GameObject CrtQButton(QuestEvent e) {
-        GameObject b = Instantiate(prefabregul); 
-        var scrpt = b.GetComponent<QuestPref>();
 
-        var f = getAsking().GetDetalis(e.name);
-        scrpt.Setup(e,f);
-    
-        return b;
-    }
     public GameQuests getAsking()
     {
         foreach (var item in quests)

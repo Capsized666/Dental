@@ -40,6 +40,24 @@ public class Quest
         }
         return null;
     }
+
+    public QuestEvent[] GetBodyQuest()
+    {
+        List<QuestEvent> body = new List<QuestEvent>();
+
+        for (int i = 0; i < questEvents.Count; i++)
+        {
+
+            if (questEvents[i].curentquest.Name != currentGQ.QuestsName)
+            {
+                body.Add(questEvents[i]);
+            }
+        }
+        return body.ToArray();
+
+                
+    }
+
     public Quest AddQuestEvents(GameQuests d)
     {
         currentGQ = d;
