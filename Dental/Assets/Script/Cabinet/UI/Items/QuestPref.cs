@@ -8,7 +8,7 @@ public class QuestPref : MonoBehaviour
     QuestEvent currEvent;
     QuestEvent.EventStatus currStatus;
     RectTransform rtCurrent;
-    Dictionary<Lang, string> uiText = new Dictionary<Lang, string>();
+    Dictionary<Lang, string> uiText = new Dictionary<Lang, string>();   
     Text currentText;
 
 
