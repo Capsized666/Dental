@@ -6,7 +6,7 @@ using UnityEngine;
 public class QuestEvent 
 {
     public enum EventStatus { WAITING,CURRENT,DONE};
-    public EventStatus status;
+    public EventStatus status { get; private set; }
 
 
     public string name;

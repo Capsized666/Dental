@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AskinBar : MonoBehaviour
+public class Vocal : MonoBehaviour
 {
     public Image CurrentImage;
     public RectTransform currentScroll;
@@ -23,7 +23,6 @@ public class AskinBar : MonoBehaviour
         = new List<Dictionary<Lang, string>>();
     public List<int> OrderAnswers =
         new List<int>();
-
     bool ansverVisible= false;
     bool visiable = false;
     void Awake()
@@ -61,8 +60,16 @@ public class AskinBar : MonoBehaviour
     }
     public void Hide()
     {
+
         visiable = false;
+        List<string> answ = new List<string>();
+        for (int i = 0; i < OrderAnswers.Count; i++)
+        {
+            answ.Add((OrderAnswers[i]+1).ToString());
+        }
+        item.GetAnsvers(answ.ToArray());
         ScenaManager.Instance.currentState = gamestate.moving;
+
     }
     public void FillField()
     {
@@ -219,6 +226,12 @@ public class AskinBar : MonoBehaviour
         }
       
     
+    }
+
+    QuestPref item;
+    public void SetEvent(QuestPref i)
+    {
+        item = i;
     }
 }
 

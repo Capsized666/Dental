@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class QuestionPref : MonoBehaviour
 {
-    AskinBar curator;
+    Vocal curator;
     Text QuestionText;
     Button QuestButton;
     int Order;
@@ -19,10 +19,7 @@ public class QuestionPref : MonoBehaviour
         QuestButton = gameObject.GetComponentInChildren<Button>();
     }
     void Start() {
-        if (true)
-        {
-
-        }
+       
     }
     public void SetOrderNumber(int i) {
         Order = i;
@@ -30,7 +27,7 @@ public class QuestionPref : MonoBehaviour
     public void RefreshData() {
         QuestionText.text = uiQuest[ServiceStuff.Instance.getLang()];
     }
-    public void SetCurator(AskinBar c) {
+    public void SetCurator(Vocal c) {
         curator = c;
     }
     public void RefreshData(Lang l)
