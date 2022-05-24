@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public interface ITransferData {
+    public string[] GetData();
+}
+
 public class MedicalCard : MonoBehaviour
 {
     public List<Sprite> pages = new List<Sprite>();
@@ -133,7 +137,13 @@ public class MedicalCard : MonoBehaviour
             CurrentImage.rectTransform.anchoredPosition = new Vector2(Mathf.Lerp(CurrentImage.rectTransform.anchoredPosition.x, CanvasBeh.Instance.getSize().x, Time.deltaTime * 3), 0);
         }
     }
-        
+
+
+    QuestPref item;
+    public void SetEvent(QuestPref i)
+    {
+        item = i;
+    }
 }
 
 [Serializable]

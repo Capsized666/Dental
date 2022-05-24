@@ -86,8 +86,6 @@ public class QuestManager : MonoBehaviour
             }
             
         }
-
-                   
         for (int i = 0; i < gameflow.PlayZone[0].MustOrder.Length; i++)
         {
            

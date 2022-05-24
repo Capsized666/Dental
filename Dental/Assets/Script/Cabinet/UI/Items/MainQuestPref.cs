@@ -8,19 +8,19 @@ public class MainQuestPref : MonoBehaviour
 {
 
     Quest Quest;
-    Dictionary<Lang, string> uiText = new Dictionary<Lang, string>();
-    QuestEvent              HeadQust;
-    QuestEvent.EventStatus  HeadStatus;
-    QuestEvent[]            currEvents;
+    Dictionary<Lang, string>    uiText      = new Dictionary<Lang, string>();
+    QuestEvent                  HeadQust;
+    //QuestEvent.EventStatus      HeadStatus;
+    QuestEvent[]                currEvents;
     [Space]
-    GameObject questprefab;
-    List<GameObject> questList = new List<GameObject>();
+    GameObject                  questprefab;
+    List<GameObject>            questList   = new List<GameObject>();
 
     [Space]
-    RectTransform rtCurrent;
-    Button CurrentButton;
-    Text currentText;
-    bool expand=false;
+    RectTransform   rtCurrent;
+    Button          CurrentButton;
+    Text            currentText;
+    bool            expand                  =false;
 
 
 
@@ -28,17 +28,17 @@ public class MainQuestPref : MonoBehaviour
         Quest       = g;
         questprefab = quest;
         HeadQust    = g.GetHeadQuest();
-        currEvents   = g.GetBodyQuest();
+        currEvents  = g.GetBodyQuest();
         uiText      = g.currentGQ.GetDetalis(g.currentGQ.QuestsName);
         currentText.text = uiText[ServiceStuff.Instance.getLang()];
         rtCurrent.sizeDelta = new Vector2(0,CanvasBeh.Instance.getSize().y*0.15f);
         UpdateButton(HeadQust.status);
         CurrentButton.onClick.AddListener(()=> {
-            if (HeadStatus!=QuestEvent.EventStatus.DONE)
+            if (HeadQust.status!=QuestEvent.EventStatus.DONE)
             {
                 expand = !expand;
             }
-            if (HeadStatus == QuestEvent.EventStatus.DONE)
+            if (HeadQust.status == QuestEvent.EventStatus.DONE)
             {
                 CurrentButton.interactable = false;
             }
@@ -49,12 +49,12 @@ public class MainQuestPref : MonoBehaviour
     {
         GameObject b = Instantiate(questprefab);
         var scrpt = b.GetComponent<QuestPref>();
-
         var f = Quest.currentGQ.GetDetalis(e.name);
         scrpt.Setup(e, f);
-
         return b;
     }
+
+
     private void RollOver()
     {
         foreach (var item in currEvents)
@@ -64,22 +64,42 @@ public class MainQuestPref : MonoBehaviour
             butt.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 150);
             rtCurrent.sizeDelta += new Vector2(0, 150);
             questList.Add(butt);
+            var scrpt = butt.GetComponent<QuestPref>();
+            SendEvent(scrpt);
         }
-       
-    }    
+    }
+
+    private void SendEvent(QuestPref item)
+    {
+        var questObgect = GameObject.Find(item.currEvent.name);
+        switch (item.currEvent.name)
+        {
+            case "Vocal":
+                var v =questObgect.GetComponent<Vocal>();
+                v.SetEvent(item);
+                break;
+            case "MedicalCard":
+                var m = questObgect.GetComponent<MedicalCard>();
+                m.SetEvent(item);
+                break;
+            default:
+                break;
+        }
+    }
+
     public void UpdateButton(QuestEvent.EventStatus s)
     {
-        HeadStatus = s;
+        HeadQust.UpdateQuestEvent(s);
         switch (s)
         {
             case QuestEvent.EventStatus.WAITING:
                 currentText.color = Color.black;
                 break;
             case QuestEvent.EventStatus.CURRENT:
-                currentText.color = Color.green;
+                currentText.color = Color.red;
                 break;
             case QuestEvent.EventStatus.DONE:
-                currentText.color = Color.yellow;
+                currentText.color = Color.green;
                 break;
             default:
                 break;
@@ -97,29 +117,55 @@ public class MainQuestPref : MonoBehaviour
     void Update()
     {
         Expand(expand);
+        QuestRules();
     }
-        
-         
 
-        
-        
+    private void QuestRules()
+    {
+        switch (HeadQust.status)
+        {
+            case QuestEvent.EventStatus.WAITING:
+                break;
+            case QuestEvent.EventStatus.CURRENT:
+                if (currEvents[0].status== QuestEvent.EventStatus.WAITING)
+                {
+                    foreach (var item in questList)
+                    {
+                        if (item.GetComponent<QuestPref>().currEvent == currEvents[0])
+                        {
+                            item.GetComponent<QuestPref>().UpdateButton(QuestEvent.EventStatus.CURRENT);
+                        }
+                    }
+                }
+                //print(currEvents[0].status);
+                
+                /*
+                int done = 0;
+                for (int i = 0; i < currEvents.Length; i++)
+                {
+                    if (currEvents[i].status==QuestEvent.EventStatus.DONE)
+                    {
+                        done++;
+                    }
+                }
+                if (true)
+                {
 
-                //print("wqw");
-                //        print("wqw");
-                //        print("wqw+");
-            //if (rtCurrent.sizeDelta.y * 1.1f == ySize)
-            //{
-            //}
-            //if (rtCurrent.sizeDelta.y==ySize)
-            //{
-            //}
-            //print("wqw-");
-            //    print("wqw-");
+                }
+                */
+                break;
+            case QuestEvent.EventStatus.DONE:
+                break;
+            default:
+                break;
+        }
+    }
+
     private void Expand(bool e)
     {
         var ySize = CanvasBeh.Instance.getSize().y * 0.15f;
         var xSize = CanvasBeh.Instance.getSize().x * 0.90f;
-
+        currentText.rectTransform.sizeDelta = new Vector3(0,ySize);
         if (e)
         {
             rtCurrent.sizeDelta = new Vector2(0,
@@ -138,16 +184,6 @@ public class MainQuestPref : MonoBehaviour
                     Mathf.Lerp(rt.anchoredPosition.y, (ySize+20)*Mathf.Abs(questList.Count - i), Time.deltaTime * 6)
                     );
             }
-                //var t = rtCurrent.childCount;
-                //for (int i = t-1; i > 0; i--)
-                //{
-                //    var questTransf = rtCurrent.transform.GetChild(i);
-                //    QuestPref q = GetComponent<QuestPref>();
-                //    if (q !=null)
-                //    {
-                //        var rt = questTransf.GetComponent<RectTransform>();
-                //}
-                //}
         }
         else {
             rtCurrent.sizeDelta = new Vector2(0,
@@ -164,24 +200,6 @@ public class MainQuestPref : MonoBehaviour
                     Mathf.Lerp(rt.anchoredPosition.y, 0, Time.deltaTime * 6)
                     );
             }
-            //var t = rtCurrent.childCount;
-            //for (int i = 0; i < t; i++)
-            //{
-            //    var questTransf = rtCurrent.transform.GetChild(i);
-            //    QuestPref q = new QuestPref();
-            //    if (questTransf.TryGetComponent<QuestPref>(out q))
-            //    {
-            //        var rt = questTransf.GetComponent<RectTransform>();
-            //        rt.sizeDelta = new Vector2(
-            //            Mathf.Lerp(rt.sizeDelta.x, 0, Time.deltaTime * 6),
-            //            Mathf.Lerp(rt.sizeDelta.y, 0, Time.deltaTime * 6)
-            //            );
-            //        rt.anchoredPosition = new Vector2(
-            //            Mathf.Lerp(rt.sizeDelta.x, 0, Time.deltaTime * 6),
-            //            Mathf.Lerp(rt.sizeDelta.y, 0, Time.deltaTime * 6)
-            //            );
-            //    }
-            //}
         }
     }
 }
