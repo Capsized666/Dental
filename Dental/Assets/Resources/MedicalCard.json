@@ -1,142 +1,436 @@
 {
-  
-  "DrawObgects": 
-  [
-    
-  {
-    "name": "MainList",
-    "size": [1169 , 826],
-    "point":[0,0],
-    "page":0
-  },  
-  {
-    "name": "Name_1",
-    "size": [826 , 25],
-    "point":[271,380],
-    "page":0
-  },
- {
-    "name": "Gender_2",
-    "size": [37 , 23],
-    "point":[457,413],
-    "page":0
-  },
-  {
-    "name": "DateOfBirth_3",
-    "size": [151 , 23],
-    "point":[824,413],
-    "page":0
-  },  
-  {
-    "name": "Address_4",
-    "size": [725 , 20],
-    "point":[372,450],
-    "page":0
-  },
-  {
-    "name": "Diagnosis_5",
-    "size": [971 , 38],
-    "point":[126,472],
-    "page":0
-  },
-  {
-    "name": "Complaints_6",
-    "size": [971 , 58],
-    "point":[126,515],
-    "page":0
-  },
-  {
-    "name": "Diseases_7",
-    "size": [763 , 54],
-    "point":[334,579],
-    "page":0
-  },
-  {
-    "name": "Diseases_8",
-    "size": [752 , 71],
-    "point":[345,639],
-    "page":0
-  }, 
-  {
-    "name": "DentalCondition_9",
-    "size": [497 , 75],
-    "point":[586,117],
-    "page":1
-  },
-  {
-    "name": "DentalCondition_1",
-    "size": [780 , 181],
-    "point":[303,234],
-    "page":1
-  },
-  {
-    "name": "DentalCondition_2",
-    "size": [780 , 145],
-    "point":[303,482],
-    "page":1
-  },
-  {
-    "name": "Bite",
-    "size": [920 , 44],
-    "point":[166,100],
-    "page":2
-  },
-  {
-    "name": "Mucous",
-    "size": [1039 , 181],
-    "point":[47,168],
-    "page":2
-  },
-  {
-    "name": "Research_12",
-    "size": [589 , 137],
-    "point":[497,349],
-    "page":2
-  },
-  {
-    "name": "Color",
-    "size": [884 , 25],
-    "point":[202,500],
-    "page":2
-  },
-  {
-    "name": "Date",
-    "size": [650 , 49],
-    "point":[436,525],
-    "page":2
-  },
-  {
-    "name": "ControlDate",
-    "size": [708 , 141],
-    "point":[378,578],
-    "page":2
-  },
-
-  {
-    "name": "Diary",
-    "size": [1039 , 483],
-    "point":[48,186],
-    "page":3
-  },
- 
-  {
-    "name": "Anamnesis",
-    "size": [1039 , 320],
-    "point":[48,186],
-    "page":4
-  },
-  {
-    "name": "Epicrisis",
-    "size": [1039 , 120],
-    "point":[48,533],
-    "page":4
-  },
-
-    {
-    "name": "Plan",
-    "size": [1039 , 506],
-    "point":[48,141],
-    "page":5
-  }
-  ]
+    "DrawObgects": [
+        {
+            "name": "MainList",
+            "size": [
+                1169,
+                826
+            ],
+            "point": [
+                0,
+                0
+            ],
+            "page": 0
+        },
+        {
+            "name": "Name_1",
+            "size": [
+                825,
+                23
+            ],
+            "point": [
+                271,
+                380
+            ],
+            "page": 0
+        },
+        {
+            "name": "Gender_2",
+            "size": [
+                37,
+                23
+            ],
+            "point": [
+                457,
+                412
+            ],
+            "page": 0
+        },
+        {
+            "name": "DateOfBirth_3",
+            "size": [
+                151,
+                23
+            ],
+            "point": [
+                824,
+                412
+            ],
+            "page": 0
+        },
+        {
+            "name": "Address_4",
+            "size": [
+                725,
+                20
+            ],
+            "point": [
+                372,
+                450
+            ],
+            "page": 0
+        },
+        {
+            "name": "Diagnosis_5",
+            "size": [
+                969,
+                38
+            ],
+            "point": [
+                126,
+                472
+            ],
+            "page": 0
+        },
+        {
+            "name": "Complaints_6",
+            "size": [
+                969,
+                57
+            ],
+            "point": [
+                126,
+                515
+            ],
+            "page": 0
+        },
+        {
+            "name": "Diseases_7",
+            "size": [
+                763,
+                54
+            ],
+            "point": [
+                334,
+                579
+            ],
+            "page": 0
+        },
+        {
+            "name": "Diseases_8",
+            "size": [
+                752,
+                71
+            ],
+            "point": [
+                345,
+                639
+            ],
+            "page": 0
+        },
+        {
+            "name": "DentalCondition_9",
+            "size": [
+                497,
+                75
+            ],
+            "point": [
+                586,
+                117
+            ],
+            "page": 1
+        },
+        {
+            "name": "DC 18 1",
+            "size": [
+                41,
+                44
+            ],
+            "point": [
+                302,
+                369
+            ],
+            "page": 1
+        },
+        {
+            "name": "DC 18 2",
+            "size": [
+                41,
+                44
+            ],
+            "point": [
+                302,
+                323
+            ],
+            "page": 1
+        },
+        {
+            "name": "DC 18 3",
+            "size": [
+                41,
+                44
+            ],
+            "point": [
+                302,
+                276
+            ],
+            "page": 1
+        },
+        {
+            "name": "DC 18 4",
+            "size": [
+                41,
+                44
+            ],
+            "point": [
+                302,
+                230
+            ],
+            "page": 1
+        },
+        {
+            "name": "DC 48 1",
+            "size": [
+                41,
+                44
+            ],
+            "point": [
+                302,
+                484
+            ],
+            "page": 1
+        },
+        {
+            "name": "DC 48 2",
+            "size": [
+                41,
+                44
+            ],
+            "point": [
+                302,
+                512
+            ],
+            "page": 1
+        },
+        {
+            "name": "DC 48 3",
+            "size": [
+                41,
+                44
+            ],
+            "point": [
+                302,
+                554
+            ],
+            "page": 1
+        },
+        {
+            "name": "DC 48 4",
+            "size": [
+                41,
+                33
+            ],
+            "point": [
+                302,
+                590
+            ],
+            "page": 1
+        },
+        {
+            "name": "DC 48 1",
+            "size": [
+                41,
+                44
+            ],
+            "point": [
+                342,
+                370
+            ],
+            "page": 1
+        },
+        {
+            "name": "DC 17 2",
+            "size": [
+                41,
+                44
+            ],
+            "point": [
+                342,
+                512
+            ],
+            "page": 1
+        },
+        {
+            "name": "DC 17 3",
+            "size": [
+                41,
+                44
+            ],
+            "point": [
+                342,
+                554
+            ],
+            "page": 1
+        },
+        {
+            "name": "DC 17 4",
+            "size": [
+                41,
+                40
+            ],
+            "point": [
+                344,
+                235
+            ],
+            "page": 1
+        },
+        {
+            "name": "DC 47 1",
+            "size": [
+                41,
+                33
+            ],
+            "point": [
+                344,
+                484
+            ],
+            "page": 1
+        },
+        {
+            "name": "DC 47 2",
+            "size": [
+                41,
+                36
+            ],
+            "point": [
+                344,
+                517
+            ],
+            "page": 1
+        },
+        {
+            "name": "DC 47 3",
+            "size": [
+                44,
+                36
+            ],
+            "point": [
+                342,
+                554
+            ],
+            "page": 1
+        },
+        {
+            "name": "DC 47 4",
+            "size": [
+                42,
+                33
+            ],
+            "point": [
+                344,
+                590
+            ],
+            "page": 1
+        },
+        {
+            "name": "Bite_10",
+            "size": [
+                920,
+                44
+            ],
+            "point": [
+                166,
+                99
+            ],
+            "page": 2
+        },
+        {
+            "name": "Mucous_11",
+            "size": [
+                1039,
+                179
+            ],
+            "point": [
+                47,
+                168
+            ],
+            "page": 2
+        },
+        {
+            "name": "Research_12",
+            "size": [
+                589,
+                137
+            ],
+            "point": [
+                497,
+                349
+            ],
+            "page": 2
+        },
+        {
+            "name": "Color_13",
+            "size": [
+                884,
+                23
+            ],
+            "point": [
+                202,
+                500
+            ],
+            "page": 2
+        },
+        {
+            "name": "Date_14",
+            "size": [
+                650,
+                47
+            ],
+            "point": [
+                436,
+                525
+            ],
+            "page": 2
+        },
+        {
+            "name": "ControlDate_15",
+            "size": [
+                708,
+                141
+            ],
+            "point": [
+                378,
+                578
+            ],
+            "page": 2
+        },
+        {
+            "name": "Diary",
+            "size": [
+                1039,
+                483
+            ],
+            "point": [
+                47,
+                186
+            ],
+            "page": 3
+        },
+        {
+            "name": "Anamnesis",
+            "size": [
+                1039,
+                320
+            ],
+            "point": [
+                47,
+                186
+            ],
+            "page": 4
+        },
+        {
+            "name": "Epicrisis",
+            "size": [
+                1039,
+                120
+            ],
+            "point": [
+                47,
+                533
+            ],
+            "page": 4
+        },
+        {
+            "name": "Plan",
+            "size": [
+                1039,
+                506
+            ],
+            "point": [
+                47,
+                141
+            ],
+            "page": 5
+        }
+    ]
 }

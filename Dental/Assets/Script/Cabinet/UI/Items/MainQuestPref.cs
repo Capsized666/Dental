@@ -34,13 +34,13 @@ public class MainQuestPref : MonoBehaviour
         rtCurrent.sizeDelta = new Vector2(0,CanvasBeh.Instance.getSize().y*0.15f);
         UpdateButton(HeadQust.status);
         CurrentButton.onClick.AddListener(()=> {
+            expand = !expand;
             if (HeadQust.status!=QuestEvent.EventStatus.DONE)
             {
-                expand = !expand;
             }
             if (HeadQust.status == QuestEvent.EventStatus.DONE)
             {
-                CurrentButton.interactable = false;
+                //CurrentButton.interactable = false;
             }
         });
         RollOver();
@@ -54,7 +54,9 @@ public class MainQuestPref : MonoBehaviour
         return b;
     }
 
-
+    public string QustName() {
+        return HeadQust.name;
+    }
     private void RollOver()
     {
         foreach (var item in currEvents)
@@ -65,6 +67,7 @@ public class MainQuestPref : MonoBehaviour
             rtCurrent.sizeDelta += new Vector2(0, 150);
             questList.Add(butt);
             var scrpt = butt.GetComponent<QuestPref>();
+            scrpt.Slavery(this);
             SendEvent(scrpt);
         }
     }
@@ -100,6 +103,14 @@ public class MainQuestPref : MonoBehaviour
                 break;
             case QuestEvent.EventStatus.DONE:
                 currentText.color = Color.green;
+                foreach (var item in HeadQust.pathlist)
+                {
+                    if (item.end.status== QuestEvent.EventStatus.WAITING)
+                    {
+                        item.end.UpdateQuestEvent(QuestEvent.EventStatus.CURRENT);
+                    }
+                }
+
                 break;
             default:
                 break;
@@ -136,6 +147,18 @@ public class MainQuestPref : MonoBehaviour
                             item.GetComponent<QuestPref>().UpdateButton(QuestEvent.EventStatus.CURRENT);
                         }
                     }
+                }
+                int i = 0;
+                foreach (var item in currEvents)
+                {
+                    if (item.status == QuestEvent.EventStatus.DONE)
+                    {
+                        i++;
+                    }
+                }
+                if (i==currEvents.Length)
+                {
+                    UpdateButton(QuestEvent.EventStatus.DONE);
                 }
                 //print(currEvents[0].status);
                 

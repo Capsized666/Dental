@@ -126,15 +126,13 @@ public class QuestManager : MonoBehaviour
 
     GameObject CrtQButton(Quest quest)
     {
-
         GameObject b = Instantiate(prefabHead);
         var scrpt = b.GetComponent<MainQuestPref>();
+        
         //var f = getAsking().GetDetalis(e.name);
         scrpt.Setup(quest,prefabregul);
         return b;
     }
-        
-
 
     public GameQuests getAsking()
     {

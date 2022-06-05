@@ -24,6 +24,11 @@ public class QuestionPref : MonoBehaviour
     public void SetOrderNumber(int i) {
         Order = i;
     }
+    public void SetAnswer(string i)
+    {
+        Answer = i; 
+        
+    }
     public void RefreshData() {
         QuestionText.text = uiQuest[ServiceStuff.Instance.getLang()];
     }
@@ -34,12 +39,10 @@ public class QuestionPref : MonoBehaviour
     {
         QuestionText.text = uiQuest[l];
         QuestButton.onClick.AddListener(()=> {
-            curator.Ansvering(Order, uiQuest, uiAnsw);
+            curator.Ansvering(Order,Answer, uiQuest, uiAnsw);
             
         }) ;
     }
-
-
 
     // Update is called once per frame
     void Update()
