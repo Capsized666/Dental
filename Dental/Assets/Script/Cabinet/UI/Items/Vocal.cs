@@ -21,8 +21,10 @@ public class Vocal : MonoBehaviour
     [SerializeField]
     public List<Dictionary<Lang, string>> PrintAnsvers 
         = new List<Dictionary<Lang, string>>();
-    public List<int> OrderAnswers =
-        new List<int>();
+    public  List<int> OrderNumber =
+    new     List<int>();
+    public List <string> OrderAnswers =
+        new List<string>();
     bool ansverVisible= false;
     bool visiable = false;
     void Awake()
@@ -62,12 +64,7 @@ public class Vocal : MonoBehaviour
     {
 
         visiable = false;
-        List<string> answ = new List<string>();
-        for (int i = 0; i < OrderAnswers.Count; i++)
-        {
-            answ.Add((OrderAnswers[i]+1).ToString());
-        }
-        item.GetAnsvers(answ.ToArray());
+        item.GetAnsvers(OrderAnswers.ToArray());
         ScenaManager.Instance.currentState = gamestate.moving;
 
     }
@@ -89,13 +86,14 @@ public class Vocal : MonoBehaviour
             var answB = answ.GetAnsverBloc(quest.QuestsName);
             for (int i = 0; i < qves.ServiceText.Length; i++)
             {
-                if (IsEnable2Print(i))
+                if (IsEnable2Print(answB[i].uiname))
                 {
                     var repl = Instantiate(textPrfab, RectContent);
                     var script = repl.GetComponent<QuestionPref>();
                     
                     script.SetCurator(this);
                     script.SetOrderNumber(i);
+                    script.SetAnswer(answB[i].uiname);
                     script.uiQuest = qves.ServiceText[i].uiTextD;
                     script.uiAnsw = answB[i].uiTextD;//.ServiceText[i].uiTextD;
                     RectContent.sizeDelta += new Vector2(
@@ -133,7 +131,7 @@ public class Vocal : MonoBehaviour
         
     }
 
-    private bool IsEnable2Print(int chosen) {
+    private bool IsEnable2Print(string chosen) {
         
         if (OrderAnswers.Count>0)
         {
@@ -148,7 +146,8 @@ public class Vocal : MonoBehaviour
         return true;
     }
 
-    public void Ansvering(int oa, Dictionary<Lang, string>q, Dictionary<Lang, string>a) {
+    public void Ansvering(int i,string oa, Dictionary<Lang, string>q, Dictionary<Lang, string>a) {
+        OrderNumber.Add(i);
         OrderAnswers.Add(oa);
         PrintAnsvers.Add(q);
         PrintAnsvers.Add(a);
@@ -185,7 +184,7 @@ public class Vocal : MonoBehaviour
                             GetPatientAnswers(ServiceStuff.Instance.Chose);
             var answB = answ.GetAnsverBloc(quest.QuestsName);
             
-            AnsverField.text = answB[OrderAnswers[OrderAnswers.Count - 1]].uiTextD
+            AnsverField.text = answB[OrderNumber[OrderNumber.Count - 1]].uiTextD
                 [ServiceStuff.Instance.getLang()];
         }
         if (OrderAnswers.Count == 0 | OrderAnswers == null)

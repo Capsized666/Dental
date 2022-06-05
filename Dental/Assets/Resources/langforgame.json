@@ -127,6 +127,36 @@
             "Опросить",
             "Interrogate"
          ]
+      },
+	  {
+         "uiname": "Grade",
+         "uitext": [
+            "Ваша оцінка",
+            "Ваша оценка",
+            "Your assessment"
+         ]
+      },{
+         "uiname": "DONE",
+         "uitext": [
+            "Готово",
+            "Сделано",
+            "Done"
+         ]
+      },
+	  {
+         "uiname": "WELLDONE",
+         "uitext": [
+            "Відмінно",
+            "Отлично",
+            "Perfectly"
+         ]
+      },{
+         "uiname": "NONE",
+         "uitext": [
+            "Не Виконано",
+            "Не выполнено",
+            "Not Done"
+         ]
       }
 	  
    ],
@@ -169,8 +199,8 @@
                },
                {
                   "uiname":"Profession",
-                  "uitext":["Ваше професія",
-                              "Ваше профессия",
+                  "uitext":["Ваша професія",
+                              "Ваша профессия",
                               "Your Profession "]
                },
                {
@@ -262,13 +292,13 @@
 			"Patient":"Patient1",
 			"PassportData":[
                {
-                  "uiname":"Our name",
+                  "uiname":"Name_1",
                   "uitext":["Токарєв Артур Ігорович",
                               "Токарев Артур Игоревич",
                               "Tokarev Artur Igorovich"]
                },
                {
-                  "uiname":"Age",
+                  "uiname":"DateOfBirth_3",
                   "uitext":["27 років",
                               "27 лет",
                               "27 years old"]
@@ -280,7 +310,7 @@
                               "Ukrainian"]
                },
                {
-                  "uiname":"HomeAddress",
+                  "uiname":"Address_4",
                   "uitext":["Місто Харків вулиця Курилівська, 95 ",
                               "Город Харьков улица Куриловская, 95",
                               "The city of Kharkiv, 95 Kurylivska Street"]
@@ -522,39 +552,28 @@
         },           
         {
           "Name": "Vocal",
-          "RightOrder": [
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"
-          ],
           "MustOrder": [
-                "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6"
-            
-          ]
+            "Name_1",
+            "DateOfBirth_3",
+            "Address_4",
+            "DateToClinic",
+            "Diagnosis" 
+          ],
+          "RightOrder": [
+			"Nationality",
+			"Profession",
+			"Work"
+			]
         },
         {
           "Name": "MedicalCard",
-          "RightOrder": [
-            "1",
-            "2",
-            "3",
-            "4"
-          ],
           "MustOrder": [
-            "1",
-            "2",
-            "3",
-            "4"
+            "Name_1",
+            "Gender_2",
+            "DateOfBirth_3",
+            "Address_4"
+          ],
+          "RightOrder": [
           ]
         }
       ],

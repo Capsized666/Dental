@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Reflection;
+using UnityEngine.Events;
 
 public enum QuestResult { 
     NONE,
@@ -13,13 +14,17 @@ public enum QuestResult {
 
 public class QuestPref : MonoBehaviour
 {
+    MainQuestPref Master =null;
+
+     
     public QuestEvent currEvent { get; private set; }
     //QuestEvent.EventStatus currStatus;
     RectTransform rtCurrent;
     Dictionary<Lang, string> uiText = new Dictionary<Lang, string>();   
     Text currentText;
+    Button currentBtn;
     public QuestResult qResult = QuestResult.NONE;
-
+    
     public void Setup(QuestEvent e, Dictionary<Lang, string> txt) {
         currEvent = e;
         //currStatus = e.status;
@@ -30,7 +35,7 @@ public class QuestPref : MonoBehaviour
         }
         currentText.text = uiText[ServiceStuff.Instance.getLang()];
         //questObgect = GameObject.Find(e.name);
-    }   
+    }
     public void UpdateButton(QuestEvent.EventStatus s)
     {
         currEvent.UpdateQuestEvent(s);
@@ -42,8 +47,35 @@ public class QuestPref : MonoBehaviour
             case QuestEvent.EventStatus.CURRENT:
                 currentText.color = Color.red;
                 break;
-            case QuestEvent.EventStatus.DONE:
+            case QuestEvent.EventStatus.DONE:               
                 currentText.color = Color.green;
+                foreach (var item in currEvent.pathlist)
+                {
+                    item.end.UpdateQuestEvent(QuestEvent.EventStatus.CURRENT);
+                }
+                break;
+            default:
+                break;
+        }
+    }
+    public void UpdateButton(QuestEvent.EventStatus s,QuestResult qrv ) 
+    {
+        currEvent.UpdateQuestEvent(s);
+        switch (s)
+        {
+            case QuestEvent.EventStatus.WAITING:
+                currentText.color = Color.black;
+                break;
+            case QuestEvent.EventStatus.CURRENT:
+                currentText.color = Color.red;
+                break;
+            case QuestEvent.EventStatus.DONE:
+                qResult = qrv;
+                currentText.color = Color.green;
+                foreach (var item in currEvent.pathlist)
+                {
+                    item.end.UpdateQuestEvent(QuestEvent.EventStatus.CURRENT);
+                }
                 break;
             default:
                 break;
@@ -53,68 +85,103 @@ public class QuestPref : MonoBehaviour
     {
         rtCurrent = GetComponent<RectTransform>();
         currentText = GetComponentInChildren<Text>();
-    }
-    void Update()
-    {
- //       QuestRules();
+         GetComponentInChildren<Button>().onClick.AddListener(Clic);
+        //currentBtn =
     }
 
+    void Clic()
+    {
+        switch (qResult)
+        {
+            case QuestResult.NONE:
+
+                break;
+            case QuestResult.DONE:
+                currentText.text = $"{qResult.ToString()}";
+                break;
+            case QuestResult.WELLDONE:
+                currentText.text = $"{qResult.ToString()}";
+                break;
+        }
+    }
+        void Update()
+    {
+        QuestRules();
+    }
+
+    public void Slavery(MainQuestPref m) {
+        Master = m;
+    }
+    public string QuestName() {
+        return Master.QustName();
+    }
     public void GetAnsvers(string[] answ) 
     {
         var must = currEvent.curentquest.MustOrder;
         var right = currEvent.curentquest.RightOrder;
-        if (right == answ)
-        {
-            qResult = QuestResult.WELLDONE;
-            UpdateButton(QuestEvent.EventStatus.DONE);
-            return;
-        }
-        //if (must == answ)
-        //{
-        //    UpdateButton(QuestEvent.EventStatus.DONE);
-        //}
         bool[] answIndek = new bool[must.Length];
-        for (int j = 0; j < must.Length; j++)
+        bool[] answFull = new bool[right.Length+ must.Length];
+        
+        if (must.Length <= answ.Length)
         {
             for (int i = 0; i < answ.Length; i++)
             {
-                if (answ[i]==must[j])
+                if (i<must.Length )
                 {
-                    answIndek[j] = true;
+                    if (must[i] == answ[i])
+                    {
+                        answIndek[i] = true;
+                        answFull[i] = true;
+                    }
+
+                }
+                if (answ.Length >= right.Length + must.Length
+                    &i< right.Length)
+                {
+                    if (right[i] == answ[i + must.Length])
+                    {
+                        answFull[i + must.Length] = true;
+                    }
+                }
+                if (i >= must.Length&Vote(answIndek)) {
+                    UpdateButton(QuestEvent.EventStatus.DONE, QuestResult.DONE);
+                }
+                if (i >= answ.Length-1&(answ.Length >= (right.Length + must.Length)) & Vote(answFull))
+                {
+                    UpdateButton(QuestEvent.EventStatus.DONE,
+                    QuestResult.WELLDONE);
+                    return;
                 }
             }
         }
-        foreach (var item in answIndek)
+        if (answ.Length>= (right.Length + must.Length))
         {
-            if (!item)
+            qResult = QuestResult.DONE;
+            UpdateButton(QuestEvent.EventStatus.DONE, QuestResult.DONE);
+        }
+    }
+
+    bool Vote(bool[] voting) {
+        for (int i = 0; i < voting.Length; i++)
+        {
+            if (!voting[i])
             {
-                return;
+                break;
+            }
+            if (i==voting.Length-1&voting[i])
+            {
+                return true;
             }
         }
-        qResult = QuestResult.DONE;
-        UpdateButton(QuestEvent.EventStatus.DONE);
+
+        return false;
+
     }
 
-    private void QuestRules()
+    void QuestRules()
     {
-        switch (currEvent.status)
-        {
-            case QuestEvent.EventStatus.WAITING:
-                break;
-            case QuestEvent.EventStatus.CURRENT:
-                //Component a = questObgect.GetComponent(currEvent.name)as MonoBehaviour;// as Type.GetType(currEvent.name);
-                //ChekAnswers(a);
-                
-                break;
-            case QuestEvent.EventStatus.DONE:
-                break;
-            default:
-                break;
-        }
+        UpdateButton(currEvent.status);
     }
 
-    private void ChekAnswers(ITransferData a)
-    {
-       
+
     }
-}
