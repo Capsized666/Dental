@@ -124,6 +124,19 @@ public sealed class ScenaManager : MonoBehaviour
                  loadScene = asyncHandle.Result;
              };
         }
+    public void LoadScene(int scene)
+    {
+        //ScenaManager.Instance.currentState = gamestate.asking;
+        if (scene==0)
+        {
+            currentState = gamestate.asking;
+        }
+        SceneManager.LoadScene(scene);
+        //Addressables.LoadSceneAsync(scene, LoadSceneMode.Single).Completed += (asyncHandle) =>
+        //{
+        //    loadScene = asyncHandle.Result;
+        //};
+    }
     public void ChangeSceneT()
     {
         if (onChangeScene != null)

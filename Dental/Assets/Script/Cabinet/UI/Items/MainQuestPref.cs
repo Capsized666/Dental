@@ -105,10 +105,13 @@ public class MainQuestPref : MonoBehaviour
                 currentText.color = Color.green;
                 foreach (var item in HeadQust.pathlist)
                 {
-                    if (item.end.status== QuestEvent.EventStatus.WAITING)
+                    if (item.end.status== QuestEvent.EventStatus.WAITING&
+                        item.end.status != QuestEvent.EventStatus.DONE
+                        )
                     {
                         item.end.UpdateQuestEvent(QuestEvent.EventStatus.CURRENT);
                     }
+
                 }
 
                 break;
@@ -178,6 +181,10 @@ public class MainQuestPref : MonoBehaviour
                 */
                 break;
             case QuestEvent.EventStatus.DONE:
+                foreach (var item in currEvents)
+                {
+                    item.UpdateQuestEvent(QuestEvent.EventStatus.DONE);
+                }
                 break;
             default:
                 break;

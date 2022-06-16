@@ -26,7 +26,10 @@ public class MedicalCard : MonoBehaviour
    }
     private void OnDisable()
     {
-
+#if UNITY_EDITOR
+        //Debug.Log("Unity Editor");
+        ChangeTopology();
+#endif
 
     }
 
