@@ -77,7 +77,7 @@ public class Quest
         QuestEvent head = GetHeadQuest();
         if (head!=null)
         {
-            head.UpdateQuestEvent(QuestEvent.EventStatus.CURRENT);
+            //head.UpdateQuestEvent(QuestEvent.EventStatus.CURRENT);
             QuestEvent last = new QuestEvent();
             
             for (int i = 0; i < questEvents.Count; i++)
@@ -106,7 +106,8 @@ public class Quest
             }
             //Debug.Log($"|{last.name}|");
             lastEvent = last;
-            AddPath(last.curentquest,head.curentquest);
+            HeadEvent = head;
+            //AddPath(last.curentquest,head.curentquest);
             //head.UpdateQuestEvent(QuestEvent.EventStatus.DONE);
         }
 

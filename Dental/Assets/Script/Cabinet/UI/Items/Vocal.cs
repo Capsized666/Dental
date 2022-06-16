@@ -83,7 +83,7 @@ public class Vocal : MonoBehaviour
                     Instance.
                     currLangPack.
                     GetQuestionBlock(quest.QuestsName);
-            var answB = answ.GetAnsverBloc(quest.QuestsName);
+            var answB = answ.GetAnsverBloc(quest.QuestsName);   
             for (int i = 0; i < qves.ServiceText.Length; i++)
             {
                 if (IsEnable2Print(answB[i].uiname))

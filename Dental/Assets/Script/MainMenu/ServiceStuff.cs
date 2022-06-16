@@ -293,7 +293,7 @@ public class serviceText
 {
     public string uiname;
     public string[] uitext;
-    public Dictionary<Lang, String> uiTextD = new Dictionary<Lang, string>();
+    public Dictionary<Lang, string> uiTextD = new Dictionary<Lang, string>();
 
     public void fillText()
     {

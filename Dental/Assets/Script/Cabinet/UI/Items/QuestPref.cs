@@ -51,7 +51,12 @@ public class QuestPref : MonoBehaviour
                 currentText.color = Color.green;
                 foreach (var item in currEvent.pathlist)
                 {
-                    item.end.UpdateQuestEvent(QuestEvent.EventStatus.CURRENT);
+                    if (item.end.status == QuestEvent.EventStatus.WAITING &
+                        item.end.status != QuestEvent.EventStatus.DONE
+                        )
+                    {
+                        item.end.UpdateQuestEvent(QuestEvent.EventStatus.CURRENT);
+                    }
                 }
                 break;
             default:
@@ -98,9 +103,11 @@ public class QuestPref : MonoBehaviour
                 break;
             case QuestResult.DONE:
                 currentText.text = $"{qResult.ToString()}";
+                currentText.color = Color.green;
                 break;
             case QuestResult.WELLDONE:
                 currentText.text = $"{qResult.ToString()}";
+                currentText.color = Color.green;
                 break;
         }
     }
@@ -149,7 +156,7 @@ public class QuestPref : MonoBehaviour
                 if (i >= answ.Length-1&(answ.Length >= (right.Length + must.Length)) & Vote(answFull))
                 {
                     UpdateButton(QuestEvent.EventStatus.DONE,
-                    QuestResult.WELLDONE);
+                    QuestResult.WELLDONE);      
                     return;
                 }
             }

@@ -16,13 +16,21 @@ public class QuestManager : MonoBehaviour
 
     public GameObject prefabregul;
     public RectTransform Content;
+    public RectTransform Result;
+   
+
     GameQuests gameflow;
 
-    bool visiable = false;
+    bool visiable   = false;
+    bool result = false;
     private void OnDisable()
     {
         UIEventSystem.Instance.onQuestBarShow -= Show;
         UIEventSystem.Instance.onQuestBarHide -= Hide;
+        UIEventSystem.Instance.onResultShow -= ResultShow;
+        UIEventSystem.Instance.onResultHide -= ResultHide;
+
+
     }
     private void Awake()
     {
@@ -32,7 +40,7 @@ public class QuestManager : MonoBehaviour
         };
         
         mainPlane = GetComponent<RectTransform>();
-        //print("dse");
+        Result.gameObject.SetActive(false);
     }
     void Start()
     {
@@ -40,6 +48,8 @@ public class QuestManager : MonoBehaviour
         CreateUI();
         UIEventSystem.Instance.onQuestBarShow += Show;
         UIEventSystem.Instance.onQuestBarHide += Hide;
+        UIEventSystem.Instance.onResultShow += ResultShow;
+        UIEventSystem.Instance.onResultHide += ResultHide;
     }
     void Update()
     {
@@ -67,6 +77,18 @@ public class QuestManager : MonoBehaviour
         visiable = false;
         ScenaManager.Instance.currentState = gamestate.moving;
     }
+
+    public void ResultShow() {
+        Result.gameObject.SetActive(true);
+        result = true;
+        ScenaManager.Instance.currentState = gamestate.asking;
+    }
+
+    public void ResultHide() {
+        result = false;
+        ScenaManager.Instance.currentState = gamestate.moving;
+    }
+
     private void CleareContent(Transform t, Vector2 startSize)
     {
         for (int i = 0; i < t.childCount; i++)
@@ -74,8 +96,8 @@ public class QuestManager : MonoBehaviour
             Destroy(t.transform.GetChild(i).gameObject);
         }
         t.GetComponent<RectTransform>().sizeDelta = startSize;
-
     }
+
     private void CreateQuect()
     {
         foreach (var item in ServiceStuff.Instance.currLangPack.GQuests)
@@ -103,9 +125,10 @@ public class QuestManager : MonoBehaviour
         for (int i = 0; i < quests.Count-1; i++)
         {
             quests[i].AddPath(quests[i].lastEvent.curentquest,
-                quests[i + 1].lastEvent.curentquest);
+                quests[i + 1].HeadEvent.curentquest);
         }
         quests[0].BFS(quests[0].questEvents[0].id);
+        quests[0].questEvents[0].UpdateQuestEvent(QuestEvent.EventStatus.CURRENT);
     }
     private void CreateUI()
     {
@@ -147,25 +170,3 @@ public class QuestManager : MonoBehaviour
     }
 
 }
-
-        //if (quests.Count>1)
-        //{
-        //    for (int i = 0; i < quests.Count; i++)
-        //    {
-        //
-        //    }
-        //}
-    //public Quest GetCurent() {
-    //    
-    //}
-        //quest.AddQuestEvents(
-        //ServiceStuff.Instance.currLangPack.GQuests[0]);
-        //quest.setLinearPath();
-        //
-        ////QuestEvent a = quest.AddQuestEvent("test1", "descript 1");
-        ////QuestEvent b= quest.AddQuestEvent("test2", "descript 2");
-        ////QuestEvent a = quest.AddQuestEvent("test1", "descript 1");
-        ////quest.AddPath(a.id, b.id);
-        ////
-        ////quest.BFS(a.id);
-        //quest.PrintPath();

@@ -82,7 +82,6 @@ public class CameraCabinet : MonoBehaviour
                             UIEventSystem.Instance.InfoTextShowT(hit.collider.gameObject.name);//ui dynamic
                             if (action)
                             {
-                                
                                 UIEventSystem.Instance.AskingBarShowT();
                                 UIEventSystem.Instance.InfoTextHideT();
                             }
@@ -92,8 +91,8 @@ public class CameraCabinet : MonoBehaviour
                             if (action)
                             {
                                 //ScenaManager.Instance.currentState = gamestate.asking;
-                                SceneManager.LoadScene(0);
-                                UIEventSystem.Instance.InfoTextHideT();
+                                //SceneManager.LoadScene(0);
+                                UIEventSystem.Instance.ResultShowT(); 
                             }
                             break;
                         case "Medcard":
@@ -102,11 +101,11 @@ public class CameraCabinet : MonoBehaviour
                             {
                                 UIEventSystem.Instance.MedicalCardShowT();
                             }
-                                
                             break;
                         default:
-                            
+                                
                             break;
+                            
                     }
                     break;
                 case gamestate.asking:

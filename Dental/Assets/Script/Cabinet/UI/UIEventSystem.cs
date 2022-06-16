@@ -19,6 +19,9 @@ public class UIEventSystem : MonoBehaviour
     public event Action onQuestBarShow;
     public event Action onQuestBarHide;
 
+    public event Action onResultShow;
+    public event Action onResultHide;
+
 
 
     public void InfoTextShowT(string name) {
@@ -64,7 +67,6 @@ public class UIEventSystem : MonoBehaviour
             onAskingBarHide();
         }
     }
-
     public void QuestBarShowT()
     {
         if (onQuestBarShow != null) 
@@ -80,6 +82,23 @@ public class UIEventSystem : MonoBehaviour
             onQuestBarHide();
         }
     }
+
+    public void ResultShowT()
+    {
+        if (onResultShow != null)
+        {
+            onResultShow();
+        }
+    }
+    public void ResultHideT()
+    {
+
+        if (onResultHide != null)
+        {
+            onResultHide();
+        }
+    }
+
 
 
     private void Awake()
