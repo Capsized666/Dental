@@ -15,6 +15,7 @@ public class MainQuestPref : MonoBehaviour
     [Space]
     GameObject                  questprefab;
     List<GameObject>            questList   = new List<GameObject>();
+    List<QuestPref>             questPList  = new List<QuestPref>();
 
     [Space]
     RectTransform   rtCurrent;
@@ -51,6 +52,7 @@ public class MainQuestPref : MonoBehaviour
         var scrpt = b.GetComponent<QuestPref>();
         var f = Quest.currentGQ.GetDetalis(e.name);
         scrpt.Setup(e, f);
+        questPList.Add(scrpt);
         return b;
     }
 
@@ -231,6 +233,18 @@ public class MainQuestPref : MonoBehaviour
                     );
             }
         }
+    }
+
+    public QuestResult Grade() {
+        var gl = QuestResult.WELLDONE;
+        foreach (var item in questPList)
+        {
+            if (item.qResult< gl)
+            {
+                gl = item.qResult;
+            }
+        }
+        return gl;
     }
 }
 

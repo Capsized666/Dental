@@ -10,6 +10,8 @@ public class QuestManager : MonoBehaviour
     public static QuestManager Instance;
     [SerializeField]
     public List<Quest> quests = new List<Quest>();
+    List<MainQuestPref> questList = new List<MainQuestPref>();
+
     [Space]
     public RectTransform mainPlane;
     public GameObject prefabHead;
@@ -21,6 +23,9 @@ public class QuestManager : MonoBehaviour
 
     GameQuests gameflow;
 
+    public GameQuests GameFlow { get { return gameflow; } }
+
+
     bool visiable   = false;
     bool result = false;
     private void OnDisable()
@@ -31,6 +36,18 @@ public class QuestManager : MonoBehaviour
         UIEventSystem.Instance.onResultHide -= ResultHide;
 
 
+    }
+    public QuestResult Grade()
+    {
+        var gl = QuestResult.WELLDONE;
+        foreach (var item in questList)
+        {
+            if (item.Grade() < gl)
+            {
+                gl = item.Grade();
+            }
+        }
+        return gl;
     }
     private void Awake()
     {
@@ -151,9 +168,9 @@ public class QuestManager : MonoBehaviour
     {
         GameObject b = Instantiate(prefabHead);
         var scrpt = b.GetComponent<MainQuestPref>();
-        
         //var f = getAsking().GetDetalis(e.name);
         scrpt.Setup(quest,prefabregul);
+        questList.Add(scrpt);
         return b;
     }
 

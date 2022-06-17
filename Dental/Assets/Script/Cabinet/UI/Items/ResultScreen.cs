@@ -17,17 +17,29 @@ public class ResultScreen : MonoBehaviour
         notice = ServiceStuff.Instance.getUIDict("Grade");//
         grade = ServiceStuff.Instance.getUIDict("NONE");
         ResultText.text = $"{notice[ServiceStuff.Instance.getLang()]} >{grade[ServiceStuff.Instance.getLang()]}<"; 
+    
     }
 
-
+    private void Start()
+    {
+        UIEventSystem.Instance.onResultShow += Graduet;
+    }
+    private void OnDisable()
+    {
+        UIEventSystem.Instance.onResultShow -= Graduet;
+    }
     // Update is called once per frame
     void Update()
     {
-        
+        Graduet();
     }
 
-    public void Graduet() { 
-        
+    public void Graduet() {
+        QuestManager.Instance.Grade();
+        grade = ServiceStuff.Instance.getUIDict($"{QuestManager.Instance.Grade()}");
+        ResultText.text = $"{notice[ServiceStuff.Instance.getLang()]} >{grade[ServiceStuff.Instance.getLang()]}<";
+
+
     }
     public void MainMenu() {
         ScenaManager.Instance.LoadScene(0);
