@@ -86,13 +86,7 @@ public sealed class ServiceStuff:MonoBehaviour {
             }        
         }
     }
-
-
 }
-
-
-
-
 
 public class EventString : UnityEvent<string> { }
 public enum gameMode
