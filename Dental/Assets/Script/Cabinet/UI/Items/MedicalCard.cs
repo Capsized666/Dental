@@ -9,21 +9,24 @@ public class MedicalCard : MonoBehaviour
 {
     public List<Sprite> pages = new List<Sprite>();
     public List<AnswerMC> Field = new List<AnswerMC>();
+    public List<ToothPanel> ToothField = new List<ToothPanel>();
     public TextAsset jsonFile;
     public CardPlaces topology;
     QuestPref item;
 
     public RectTransform TextLoby;
     public GameObject prefab;
+    public GameObject Toothprefab;
+
     public Image CurrentImage;
-    private int pagenumber=0;
-    bool visiable=false;
+    private int pagenumber = 0;
+    bool visiable = false;
     public bool Visioble { get { return visiable; } set { visiable = value; } }
-   private void Awake()
-   {
+    private void Awake()
+    {
         CurrentImage.sprite = pages[pagenumber];
-        topology= JsonUtility.FromJson<CardPlaces>(jsonFile.text);
-   }
+        topology = JsonUtility.FromJson<CardPlaces>(jsonFile.text);
+    }
     private void OnDisable()
     {
 #if UNITY_EDITOR
@@ -32,28 +35,41 @@ public class MedicalCard : MonoBehaviour
 #endif
 
     }
+    [ContextMenu("ChangeTopology")]
 
     private void ChangeTopology()
     {
-
         var canvas = CanvasBeh.Instance.getSize();
         var MainList = topology.getByName("MainList");
         var scaler = (canvas.y / MainList.y) * 0.93f;
-        //var cursize = MainList * scaler;
         List<Place> top4ik = new List<Place>();
 
         for (int i = 0; i < TextLoby.childCount; i++)
         {
-            var ans = TextLoby.GetChild(i).GetComponent<AnswerMC>();
-
+            AnswerMC ans = new AnswerMC();
+            ToothPanel tooth = new ToothPanel();
             Place p = new Place();
-            p.name  = TextLoby.GetChild(i).name;
-            p.SetSize(ans.getSize());
-            p.SetPoint(ans.getPlace()); 
+            if (TextLoby.GetChild(i).TryGetComponent<AnswerMC>(out ans))
+            {
+                p.SetSize(ans.getSize());
+                p.SetPoint(ans.getPlace());
+            }
+            if (TextLoby.GetChild(i).TryGetComponent<ToothPanel>(out tooth))
+            {
+                p.SetSize(tooth.getSize());
+                p.SetPoint(tooth.getPlace());
+            }
+
+            //var ans = TextLoby.GetChild(i).GetComponent<AnswerMC>();
+            //p.SetSize(ans.getSize());
+            //p.SetPoint(ans.getPlace()); 
+
+            p.name = TextLoby.GetChild(i).name;
             p.page = pagenumber;
             topology.SetModif(p);
-            //top4ik.Add(p);
         }
+        //var cursize = MainList * scaler;
+        //top4ik.Add(p);
         //for (int i = 0; i < top4ik.Count; i++)
         //{
         //    var item = topology.GetByName(top4ik[i].name);
@@ -115,20 +131,35 @@ public class MedicalCard : MonoBehaviour
         //var partsToDraw = topology.GetByPage(pagenumber);
         //CleareContent(TextLoby,Vector2.zero);
         
-        if (Field.Count!= topology.DrawObgects.Length)
+        if (Field.Count+ ToothField.Count!= topology.DrawObgects.Length)
         {
             var list = topology.GetAll2Draw(pagenumber);
             for (int i = 0; i < list.Length; i++)
             {
-                if (i>= Field.Count)
+                if (i>= Field.Count+ToothField.Count)
                 {
-                    var a = Instantiate(prefab,TextLoby);
-                    a.name = list[i].name;
-                    var field = a.GetComponent<AnswerMC>();
-                    Field.Add(field);
-                    field.Slavery(this);
-                    field.Current(list[i],scaler);
-                    field.MakeUpdate("");
+                    if (!list[i].name.StartsWith("DC"))
+                    {
+                        var a = Instantiate(prefab,TextLoby);
+                        a.name = list[i].name;
+                        var field = a.GetComponent<AnswerMC>();
+                        Field.Add(field);
+                        field.Slavery(this);
+                        field.Current(list[i],scaler);
+                        field.MakeUpdate("");
+                    }
+                    if (list[i].name.StartsWith("DC"))
+                    {
+                        var a = Instantiate(Toothprefab, TextLoby);
+                        a.name = list[i].name;
+                        var field = a.GetComponent<ToothPanel>();
+                        ToothField.Add(field);
+                        field.Slavery(this);
+                        field.Current(list[i], scaler);
+                        field.MakeUpdate();
+                        /*
+                         */
+                    }
                 }
             }
         }
@@ -144,7 +175,17 @@ public class MedicalCard : MonoBehaviour
                 Field[i].SetVisible(false);
             }
         }
-       
+        for (int i = 0; i < ToothField.Count; i++)
+        {
+            if (ToothField[i].GetCurrent().page == pagenumber)
+            {
+                ToothField[i].SetVisible(true);
+            }
+            else
+            {
+                ToothField[i].SetVisible(false);
+            }
+        }
         CurrentImage.rectTransform.sizeDelta =
             cursize;
     }
@@ -249,7 +290,6 @@ public class MedicalCard : MonoBehaviour
         return false;
 
     }
-
     private string ExtraAdds(string name)
     {
 

@@ -1461,7 +1461,6 @@ GameObject:
   - component: {fileID: 505837005}
   - component: {fileID: 505837004}
   - component: {fileID: 505837008}
-  - component: {fileID: 505837009}
   m_Layer: 0
   m_Name: Pacient
   m_TagString: Untagged
@@ -1561,26 +1560,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa804faa969077d4fb0e2492b3062cfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &505837009
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 505837003}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0f6a56fdf723ad4469e8ea2a1ea6e6a8, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  animator: {fileID: 1351633137}
 --- !u!850595691 &513975451
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -1888,11 +1868,14 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d94dfa2d65c84354b955ccea853a8fdd, type: 3}
   - {fileID: 21300000, guid: 0d3c3d2086cffd843ba859f55c1ad5e0, type: 3}
   Field: []
+  ToothField: []
   jsonFile: {fileID: 4900000, guid: 35bab5e0acf8db740a166e56ed191445, type: 3}
   topology:
     DrawObgects: []
   TextLoby: {fileID: 668387572}
   prefab: {fileID: 936486482826860670, guid: 37df431599b4bd347a0c4a347da3283d, type: 3}
+  Toothprefab: {fileID: 3138107132051926709, guid: 477dd5b661d9a8f44a837c9f649985b4,
+    type: 3}
   CurrentImage: {fileID: 130827944}
 --- !u!222 &576603683
 CanvasRenderer:
@@ -3644,6 +3627,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1351633136}
+  - component: {fileID: 1351633137}
   m_Layer: 0
   m_Name: Gingiva
   m_TagString: Untagged
@@ -3663,11 +3647,31 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 543450653073636383}
   - {fileID: 543450651844888803}
+  - {fileID: 543450653073636383}
   m_Father: {fileID: 505837007}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.1803894}
+--- !u!95 &1351633137
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351633135}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0f6a56fdf723ad4469e8ea2a1ea6e6a8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1401920687
 GameObject:
   m_ObjectHideFlags: 0
@@ -4055,7 +4059,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 279599973}
   m_HandleRect: {fileID: 279599972}
   m_Direction: 2
-  m_Value: 0.00000029612985
+  m_Value: 0
   m_Size: 0.82289964
   m_NumberOfSteps: 1
   m_OnValueChanged:
@@ -6492,7 +6496,7 @@ Transform:
   - {fileID: 241044314638953047}
   - {fileID: 8594440464128226174}
   m_Father: {fileID: 1351633136}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &543450653073636383
 Transform:
@@ -6501,8 +6505,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132148615095973}
-  m_LocalRotation: {x: 0.27509782, y: -0.00595479, z: 0.0000015749829, w: 0.9613979}
-  m_LocalPosition: {x: -0.002, y: -0.084, z: 0.03}
+  m_LocalRotation: {x: 0.28231424, y: -0.0061099418, z: 0.0000010593793, w: 0.95930254}
+  m_LocalPosition: {x: -0.0009841328, y: -0.092267185, z: 0.025030911}
   m_LocalScale: {x: 0.058399998, y: 0.058399998, z: 0.058399998}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6523,8 +6527,8 @@ Transform:
   - {fileID: 4346439369317299189}
   - {fileID: 6150634060088617128}
   m_Father: {fileID: 1351633136}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 31.935, y: -0.773, z: -0.221}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 32.796, y: -0.799, z: -0.235}
 --- !u!33 &562060380789509407
 MeshFilter:
   m_ObjectHideFlags: 0
