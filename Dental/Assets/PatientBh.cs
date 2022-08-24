@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class PatientBh : MonoBehaviour
 {
-    Animator animator;
+
+
+    int openstate = Animator.StringToHash("openstate");   
+    [SerializeField] Animator animator;
     // Start is called before the first frame update
     void Awake()
     {
-        animator = GetComponent<Animator>();
+        //animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -16,4 +19,9 @@ public class PatientBh : MonoBehaviour
     {
         
     }
+
+    public void SetGingivaState(bool b) {
+        animator.SetBool(openstate, b);
+    }
+
 }
