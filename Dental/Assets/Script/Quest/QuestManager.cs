@@ -115,6 +115,7 @@ public class QuestManager : MonoBehaviour
         t.GetComponent<RectTransform>().sizeDelta = startSize;
     }
 
+    
     private void CreateQuect()
     {
         foreach (var item in ServiceStuff.Instance.currLangPack.GQuests)
