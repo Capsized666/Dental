@@ -16,6 +16,8 @@ public sealed class ServiceStuff:MonoBehaviour {
     public TextAsset textasset;
     string pacient;
     public string Chose { get { return pacient; }set {  pacient= value ; } }
+    
+
 
     private void Awake()
     {

@@ -10,7 +10,10 @@ public class QuestManager : MonoBehaviour
     public static QuestManager Instance;
     [SerializeField]
     public List<Quest> quests = new List<Quest>();
+    
     List<MainQuestPref> questList = new List<MainQuestPref>();
+
+
 
     [Space]
     public RectTransform mainPlane;
@@ -142,12 +145,75 @@ public class QuestManager : MonoBehaviour
         }
         for (int i = 0; i < quests.Count-1; i++)
         {
-            quests[i].AddPath(quests[i].lastEvent.curentquest,
-                quests[i + 1].HeadEvent.curentquest);
+            quests[i].AddPath(quests[i].lastEvent.id,
+                quests[i + 1].HeadEvent.id);
         }
-        quests[0].BFS(quests[0].questEvents[0].id);
+
+        
+        //quests[0].BFS(quests[0].questEvents[0].id);
+        BFS(quests[0].questEvents[0].id);
+
         quests[0].questEvents[0].UpdateQuestEvent(QuestEvent.EventStatus.CURRENT);
     }
+    public void AddPath(string fid, string tid)
+    {
+
+        QuestEvent from = FindQuestEvent(fid);// FindQuestEvent(fromQuestEvent);
+        QuestEvent to = FindQuestEvent(tid);// FindQuestEvent(toQuestEvent);
+
+        /*
+        for (int i = 0; i < questEvents.Count; i++)
+        {
+
+            if (fromQuestEvent.Name == questEvents[i].name)
+            {
+                from = questEvents[i];
+            }
+            if (toQuestEvent.Name == questEvents[i].name)
+            {
+                to = questEvents[i];
+            }
+        }
+         */
+
+        if (from != null && to != null & from != to)
+        {
+            QuestPath p = new QuestPath(from, to);
+            from.pathlist.Add(p);
+        }
+    }
+    public void BFS(string id, int orderNumber = 1)
+    {
+
+        QuestEvent thisEvent = FindQuestEvent(id);
+
+        thisEvent.order = orderNumber;
+        foreach (QuestPath e in thisEvent.pathlist)
+        {
+            if (e.end.order == -1)
+            {
+
+                BFS(e.end.id, orderNumber + 1);
+            }
+        }
+    }
+    QuestEvent FindQuestEvent(string id)
+    {
+        foreach (Quest n in quests)
+        {
+            foreach (QuestEvent q in n.questEvents)
+            {
+                if (q.id == id)
+                {
+                    return q;
+                }
+
+            }
+        }
+
+        return null;
+    }
+
     private void CreateUI()
     {
         CleareContent(Content, Vector2.zero);

@@ -24,6 +24,7 @@ public class UIEventSystem : MonoBehaviour
 
 
 
+
     public void InfoTextShowT(string name) {
         if (onInfoTextShow!=null)
         {

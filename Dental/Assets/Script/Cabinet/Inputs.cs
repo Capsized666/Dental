@@ -71,6 +71,15 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Talk"",
+                    ""type"": ""Button"",
+                    ""id"": ""9eeef161-69f6-4d5f-9873-89deabbce5d7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -131,11 +140,33 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""08bb2a12-c94e-45c9-8daa-f649c8cf3391"",
+                    ""path"": ""<XRController>/joystick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Moving"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""982916d3-0890-43c3-addf-32c3e95479cb"",
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Standart"",
+                    ""action"": ""Action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9f588106-b94c-4a11-83f0-61c2543369b7"",
+                    ""path"": ""<XRController>{RightHand}/joystickClicked"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
                     ""action"": ""Action"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -175,12 +206,56 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""8086d548-6400-46c3-85c0-15de88e55831"",
+                    ""path"": ""<OculusTouchController>{RightHand}/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""b0abed6c-1061-4116-bfce-ff0316983f70"",
                     ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Quest"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5418e38c-f26a-4055-97ef-3a12cb1c0207"",
+                    ""path"": ""<XRController>{RightHand}/secondaryButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Quest"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a19d27e3-34a8-4417-8ba3-526d3fa653a4"",
+                    ""path"": ""<XRController>/airTap"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""Standart"",
+                    ""action"": ""Talk"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4d1211d8-2b7a-4e30-86e0-6fcabf55e37d"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Talk"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -213,6 +288,7 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         m_Player_Quest = m_Player.FindAction("Quest", throwIfNotFound: true);
+        m_Player_Talk = m_Player.FindAction("Talk", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -277,6 +353,7 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Pause;
     private readonly InputAction m_Player_Quest;
+    private readonly InputAction m_Player_Talk;
     public struct PlayerActions
     {
         private @Inputs m_Wrapper;
@@ -286,6 +363,7 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputAction @Quest => m_Wrapper.m_Player_Quest;
+        public InputAction @Talk => m_Wrapper.m_Player_Talk;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -310,6 +388,9 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                 @Quest.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuest;
                 @Quest.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuest;
                 @Quest.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuest;
+                @Talk.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTalk;
+                @Talk.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTalk;
+                @Talk.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTalk;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -329,6 +410,9 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                 @Quest.started += instance.OnQuest;
                 @Quest.performed += instance.OnQuest;
                 @Quest.canceled += instance.OnQuest;
+                @Talk.started += instance.OnTalk;
+                @Talk.performed += instance.OnTalk;
+                @Talk.canceled += instance.OnTalk;
             }
         }
     }
@@ -349,5 +433,6 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnQuest(InputAction.CallbackContext context);
+        void OnTalk(InputAction.CallbackContext context);
     }
 }

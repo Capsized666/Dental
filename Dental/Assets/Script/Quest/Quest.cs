@@ -156,11 +156,14 @@ public class Quest
                 return n;
             }
         }
+
         return null;
     }
 
     public void BFS(string id, int orderNumber = 1) {
+        
         QuestEvent thisEvent = FindQuestEvent(id);
+
         thisEvent.order = orderNumber;
         foreach (QuestPath e in thisEvent.pathlist)
         {

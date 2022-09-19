@@ -517,25 +517,25 @@
                               "What is a sensitivity disorder?"]
                }]
 		}
-	],
-	
-   "GQuests": [
-   {
+	], 
+    "GQuests": [
+    {
       "QuestsName": "Game",
       "PlayZone": [
         {
           "Name": "Game",
           "RightOrder": [
             "Passport Data"
-            
           ],
           "MustOrder": [
             "Passport Data"
+			,
+            "Patient complaints"
           ]
-        }],
+        }
+      ],
       "Details": []
     },
-	
     {
       "QuestsName": "Passport Data",
       "PlayZone": [
@@ -546,10 +546,10 @@
             "MedicalCard"
           ],
           "MustOrder": [
-                "Vocal",
+            "Vocal",
             "MedicalCard"
           ]
-        },           
+        },
         {
           "Name": "Vocal",
           "MustOrder": [
@@ -557,13 +557,13 @@
             "DateOfBirth_3",
             "Address_4",
             "DateToClinic",
-            "Diagnosis" 
+            "Diagnosis"
           ],
           "RightOrder": [
-			"Nationality",
-			"Profession",
-			"Work"
-			]
+            "Nationality",
+            "Profession",
+            "Work"
+          ]
         },
         {
           "Name": "MedicalCard",
@@ -573,8 +573,7 @@
             "DateOfBirth_3",
             "Address_4"
           ],
-          "RightOrder": [
-          ]
+          "RightOrder": []
         }
       ],
       "Details": [
@@ -593,7 +592,8 @@
             "Узнать паспортные данные пациента",
             "Find out the patient's passport data"
           ]
-        },{
+        },
+        {
           "uiname": "MedicalCard",
           "uitext": [
             "Заповнити медичну картку",
@@ -601,10 +601,82 @@
             "Fill out a medical card"
           ]
         }
-        
+      ]
+    },
+	
+    {
+      "QuestsName": "Patient complaints",
+      "PlayZone": [
+        {
+          "Name": "Patient complaints",
+          "RightOrder": [
+            "Vocal",
+            "MedicalCard"
+          ],
+          "MustOrder": [
+            "Vocal",
+            "MedicalCard"
+          ]
+        },
+        {
+          "Name": "Vocal",
+          "MustOrder": [
+            "Reason",
+            "Pain",
+            "Smell",
+            "Taste"
+          ],
+          "RightOrder": [
+            "Dysfunction"
+          ]
+        },        
+        {
+          "Name": "MedicalCard",
+          "MustOrder": [
+            "Complaints_6",
+            "DentalCondition_9",
+            "DC 18",
+            "DC 17",
+            "DC 17",
+            "DC 26",
+            "DC 28",
+            "DC 36",
+            "DC 37",
+            "DC 38",
+            "DC 48",
+            "DC 47",
+            "DC 46"
+          ],
+          "RightOrder": []
+        }
+      ],
+      "Details": [
+        {
+          "uiname": "Patient complaints",
+          "uitext": [
+            "Дізнатися скарги пацієнта",
+            "Узнать жалобы пациента",
+            "Find out the patient's complaints"
+          ]
+        },
+        {
+          "uiname": "Vocal",
+          "uitext": [
+            "Дізнатися скарги пацієнта",
+            "Узнать жалобы пациента",
+            "Find out the patient's complaints"
+          ]
+        },
+        {
+          "uiname": "MedicalCard",
+          "uitext": [
+            "Заповнити медичну картку",
+            "Заполнить медицинскую карту",
+            "Fill out a medical card"
+          ]
+        }
       ]
     }
+    
   ]
-   
-   
 }
